@@ -1,0 +1,17 @@
+<div class="newsFrame">
+    <a id="aAction" class="$(hidden)" href="swf:action:$(ID)" style="float:right"><img src="share.png" style="width: 16px; height:16px" ></a>
+    <div style="float:left; width: 48px; min-height: 32px; margin-right: 5px;"><img src="http://imgsvr.shisoft.net/scale?scale=48&retina=true&url=$(AVATAR)" style="left: 10px; width:48px; height:auto;margin-bottom: 5px;" class="img-thumbnail" /></div>
+    <div style="font-size: 17px;font-weight:bolder; width: 60%; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;"><img class="svrImg" src="$(SVR).png"></img>$(AUTHOR)</div>
+    <p style="font-size: 15px;color:rgb(44,93,205); padding-left: 5px; margin-bottom: 15px;"><span class='dynamicDate' data-time='$(TIMESTAMP)' >$(TIME)</span></p>
+    <div>
+        <span style="">$(TITLE)</span>
+        <p style=" color:rgb(170,170,170)" >$(CONTENT)</p>
+        <p style="font-size: smaller; color: rgb(224,224,224); margin-top: 5px">$(REFER)</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="actionBar btn-group btn-group-justified">
+        <a class="btn btn-default" href="swf:repost:$(ID)"><i class="glyphicon glyphicon-retweet"></i></a>
+        <a class="btn btn-default"  href="swf:reply:$(ID)"><i class="glyphicon glyphicon-comment"></i></a>
+        <a class="btn btn-default" href="swf:bookmark:$(ID)"><i class="glyphicon glyphicon-bookmark"></i></a>
+    </div><!-- /.navbar-collapse -->
+</div>

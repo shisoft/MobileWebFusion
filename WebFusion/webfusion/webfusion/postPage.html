@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+            <!-- Bootstrap -->
+            <link href="bootstrap.min.css" rel="stylesheet" media="screen">
+                <style>
+                    body{
+                        white-space: wrap;
+                        wrap: break-word;
+                        padding-bottom: 10px;
+                        background-color: lightgray;
+                    }
+                    .postFrame{
+                        margin: 10px;
+                        padding: 10px;
+                        width: calc(100% - 10px;);
+                        box-shadow: 0 1px 5px rgba(0,0,0,0.25), 0 0 50px rgba(0,0,0,0.1) inset;
+                        background-color: white;
+                        border-radius: 2px;
+                    }
+                    .postFrame:last-child,body:last-child{
+                        border-bottom: none !important;
+                    }
+                    .postFrame:first-of-type > .divText > .spTitle{
+                        font-size: large;
+                        font-weight: bold;
+                    }
+                    .postFrame:first-of-type > .divText > .pSubPosts{
+                        display: none;
+                    }
+                    .postFrame:first-of-type{
+                        box-shadow: 0 1px 5px rgba(255,255,255,1.0);
+                    }
+                    .divContent{
+                        height: auto;
+                        width: auto;
+                        white-space: wrap;
+                        wrap: break-word;
+                        -webkit-transform-origin: 0 0;
+                    }
+                    .divContentWrapper{
+                        overflow-x: auto;
+                        width: 100%;
+                    }
+                    blockquote{
+                        padding-left: 5px;
+                    }
+                    .svrImg{
+                        height: 16px; width:16px; margin-right: 5px; position:relative; top: -2px;
+                    }
+                    </style>
+                <script src="jquery-2.0.3.min.js"></script>
+                <script src="hammer.js"></script>
+                <script src="imagesloaded.pkgd.min.js"></script>
+                <script src="sys.js"></script>
+                <script>
+                    $(document).ready(
+                                      function() {
+                                      $.ajaxSetup({cache: false});
+                                      var obj = document.getElementsByClassName("divContent")[0];
+                                      var frame = document.getElementsByClassName("postFrame")[0];
+                                      var scale = 1.0;
+                                      var scaling = 1.0;
+                                      $(obj).width($(obj).width());
+                                      scale = $(window).width() / $(obj).width();
+                                      //alert(scale);
+                                      if(scale>1.0){
+                                      scale = 1.0
+                                      }
+                                      $(obj).parent().height($(obj).height()*scale);
+                                      imagesLoaded(obj, function() {$(obj).parent().height($(obj).height()*scale);});
+                                      $(obj).css("-webkit-transform", "scale3d("+scale+","+scale+",1)");
+                                      var hammertime = Hammer(obj, {
+                                                              prevent_default: false,
+                                                              no_mouseevents: true
+                                                              })
+                                      .on("pinch", function(env){
+                                          var rscale = env.gesture.scale*scale;
+                                          if (rscale > 2.0 || rscale < 0.2){                             return;
+                                          }
+                                          scaling = env.gesture.scale;
+                                          var fscale = scaling*scale;
+                                          //$(".divContentSizer").width($(obj).width()*fscale).height($(obj).height()*fscale);
+                                          $(obj).css("-webkit-transform", "scale3d("+fscale+","+fscale+",1)");
+                                          $(obj).parent().height($(obj).height()*fscale).width($(obj).width()*fscale);
+                                          }).on("drag",function(){
+                                                //alert("");
+                                                }).on("release",function(){
+                                                      scale = scaling*scale;
+                                                      scaling = 1.0;
+                                                      });
+                                      $("#body").hide().fadeIn(500,function(){
+                                                               document.location = "swf:loaded";
+                                                               });
+                                      });
+                                      $(window).scroll(function() {
+                                                       if(($(window).scrollTop() + $(window).height() > $(document).height() - 60)&&($("#divLoading").length<=0)) {
+                                                       document.location = "swf:nextpage";
+                                                       }
+                                                       });
+                                                       function loading(){
+                                                           $("body").append("<div id='divLoading' style='padding:20px; padding-top 0px;padding-bottom:30px; text-align:center'><img src='indicator.gif' width='16px' height='16px' /></div>");
+                                                           //$("html, body").animate({ scrollTop: $(document).height()-$(window).height() });
+                                                       }
+                function append(path){
+                    //alert(path);
+                    //alert(document.location);
+                    var $div = $("<div>").load("file:///" + path,function(){
+                                               $("#divLoading").remove();
+                                               $("body").append($($div.html()).hide().fadeIn(500));
+                                               })
+                }
+                
+                </script>
+                </head>
+    <body>
+        <div id="body">
+            $(LIST)
+        </div>
+    </body>
+</html>

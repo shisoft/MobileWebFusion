@@ -1,0 +1,29 @@
+{
+	"grouped": true,
+	"title": "ui.register",
+    "controllerName": "RegisterController",
+	"sections": [
+                 {
+                 "elements": [
+                              {"type":"QEntryElement", "title":"ui.username", "key":"username", "placeholder":"ui.placeholder.username"},
+                              {"type":"QEntryElement", "title":"ui.nickname", "key":"nickname", "placeholder":"ui.placeholder.nickname"}
+                              ]
+                 },
+                 {
+                 "elements":[
+                             {"type":"QEntryElement", "title":"ui.password", "key":"password","secureTextEntry":true, "placeholder":"ui.placeholder.password"},
+                             {"type":"QEntryElement", "title":"ui.repeatPasswd", "key":"repeatPasswd","secureTextEntry":true, "placeholder":"ui.placeholder.repeatPasswd"}
+                             ]
+                 },
+                 {
+                 "elements":[
+                             {"type":"QEntryElement", "title":"ui.Captcha", "key":"captcha", "placeholder":"ui.placeholder.Captcha"},
+                             {"type":"QLabelElement"}
+                             ]
+                 },
+                 { "elements":[
+                               { "type":"QButtonElement", "key":"button", "title":"ui.register", "controllerAction":"onRegister:"}
+                               ], "footer":"ui.afterRegister"
+                 }
+                 ]
+}

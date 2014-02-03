@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <link href="jquery.mobile-1.2.0.min.css" rel="stylesheet" />
+            <link href="ios_inspired.css" rel="stylesheet" />
+            <script src="jquery-2.0.3.min.js"></script>
+            <script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
+            <script src="jquery.mobile-1.2.0.min.js"></script>
+            <style>
+                a{
+                    text-decoration: none;
+                }
+            </style>
+            <script>
+                
+                $.ajaxSetup({cache: false}); 
+                
+                var currService; //当前已选择服务的bean
+                var authCallback;
+                var handInput;
+                
+                function loadServiceAddHTML(path){
+                    $.getJSON("file:///" + path,function(data,status){
+                              currService = data;
+                              $("#divOAuth").appendTo("body").hide();
+                              $("#divAddConfig").html(data.addServiceHTML).trigger("create");
+                              $("input").width("");
+                              $("html, body").animate({ scrollTop: 0 }, "slow");
+                          //$("input").keydown(function(event){
+                          //                   if(event.keyCode==13){
+                          //                      ok();
+                          //                   }
+                          //                   });
+                    });
+                }
+                
+                var random;
+                var OAuthObj;
+                var oauthDiv="<div id=\"divOAuth\" style=\"text-align:center;width:100%;padding-top:20px\"><a title='通过服务商登入' href=\"#\" id=\"aSafeLogin\"><img id=\"imgOAuthButton\" src=\"\" /></a></br><div id=\"divCodebox\">并请输入授权码：<input id=\"txPIN\" type=\"text\" /></br><a href=\"#\" id=\"aFinish\">告诉我们</a>后再确定</br></div><input type=\"hidden\" value=\"\" id=\"hiAuth\" /><input type=\"hidden\" value=\"\" id=\"hiAuthUser\" /></div>";
+                var PinRaw
+                
+                $(document).ready(function(){
+                                  $(oauthDiv).appendTo($("body")).hide();
+                                  });
+                function OAuthPIN(r){
+                    OAuthObj=r;
+                    $("#aSafeLogin").unbind('click');
+                    $("#aFinish").unbind('click');
+                    $("#divOAuth").show();
+                    $("#aSafeLogin").click(function(){
+                                           OpenLoginPage(r.url);
+                                           });
+                    $("#aFinish").click(function(){
+                                        FinishAuth("{'pin':'"+e($("#txPIN").val())+"','token':'"+e(r.token)+"','scret':'"+e(r.scret)+"','raw':'"+e(PinRaw)+"'}");
+                                        });
+                }
+                function e(str) {
+                    return window.escape(str);
+                }
+                function OAuthNonePIN(r){
+                    OAuthObj=r;
+                    $("#aSafeLogin").unbind('click');
+                    $("#aFinish").unbind('click');
+                    $("#aSafeLogin").click(function(){
+                                           OpenLoginPage(r.url);
+                                           });
+                    $("#aFinish").click(function(){
+                                        FinishAuth("{'token':'"+e(r.token)+"','screat':'"+e(r.screat)+"'}");
+                                        });
+                }
+                function SetCode(c,raw){
+                    $("#txPIN").val(c);
+                    PinRaw=raw;
+                    $("#aFinish").click();
+                }
+                function StartAuth(callback,_handInput){
+                    handInput = _handInput;
+                    authCallback = callback;
+                    window.location = "swf:startAuth";
+                }
+                function gotAuthURL(path){
+                    $.getJSON("file:///" + path,function(data,status){
+                              var r = data;
+                              $("#divOAuth").appendTo("#divAddConfig").show();
+                              $("#imgOAuthButton").attr("src", "conn_"+currService.code+".png");
+                              if(handInput){
+                              $("#divCodebox").show();
+                              }else{
+                              $("#divCodebox").hide();
+                              }
+                              authCallback(r);
+                              StartAuthComplete();
+                              });
+                }
+                function FinishAuth(feedback){
+                    window.location = "swf://" + feedback;
+                }
+                function authSuccess(path){
+                    $.getJSON("file:///" + path,function(data,status){
+                              var r = data;
+                              $("#hiAuth").val(window.unescape(r.oaat));
+                              $("#hiAuthUser").val(r.account);
+                              $("#aFinish").unbind('click');
+                              confirmAuthSuccess();
+                              });
+                }
+                function showLoading(){
+                    var h=$("#divBody").height();
+                    $("#divBody").addClass("hidden");
+                    $("#divLoading").removeClass("hidden").height(h);
+                }
+                function hideLoading(){
+                    $("#divBody").removeClass("hidden");
+                    $("#divLoading").addClass("hidden");
+                }
+                function getServiceKey(){
+                    //$("#btnOK").attr("value", "加载中...").attr("disabled", "true");
+                    showLoading();
+                    var i = 0;
+                    var strSp = currService.upStr.split("|");
+                    var ups="";
+                    for (i = 0; i < strSp.length; i++) {
+                        if (i % 2 == 0) {
+                            ups += strSp[i];
+                        } else {
+                            var tstr;
+                            tstr = $(strSp[i]).attr("value");
+                            ups += tstr;
+                        }
+                    }
+                    return ups;
+                }
+                function OpenLoginPage(url){
+                    window.location = url;
+                }
+                function done(){
+                    window.location = "swf:done";
+                }
+                function confirmAuthSuccess(){
+                    done();
+                }
+                function StartAuthComplete(){}
+                function startFinishAuth(){
+                    showLoading();
+                }
+            </script>
+    </head>
+    <body>
+        <div data-role="page">
+            <div data-role="content">
+                <div id="divAddConfig" style="padding: 10px"></div>
+                <div id="divOAuth" style="text-align: center; width: 100%; padding-top: 20px">
+                    <a title="安全登入" href="#" id="aSafeLogin">
+                        <img id="imgOAuthButton" src="" />
+                    </a>
+                    </br>
+                    <div id="divCodebox" class="hide" style="display:none">
+                        并请输入授权码：
+                        <input id="txPIN" type="text" />
+                        </br>
+                        <a href="#" id="aFinish">告诉我们</a>后再确定</br>
+                    </div>
+                    <input type="hidden" value="" id="hiAuth" />
+                    <input type="hidden" value="" id="hiAuthUser" />
+                </div>
+            </div><!-- /ui-body wrapper -->
+        </div><!-- /page -->
+    </body> 
+</html>

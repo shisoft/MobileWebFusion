@@ -1,0 +1,31 @@
+{
+	"grouped": true,
+	"title": "func.preferences",
+    "controllerName": "PreferencesController",
+	"sections": [
+                 {"title":"ui.basic",
+                 "elements": [
+                              {"type":"QLabelElement","bind":"value:user", "title":"ui.username", "key":"username"},
+                              {"type":"QEntryElement", "title":"ui.nickname", "bind":"textValue:nickname","key":"nickname"},
+                              {"type":"QLabelElement", "key":"services", "title":"ui.services", "value":"N/A", "controllerAction":"onServices:"}
+                              ]
+                 },
+                 {"title":"ui.security",
+                 "footer":"ui.securityFooter",
+                 "elements":[
+                             { "type":"QButtonElement", "key":"button", "title":"func.alterPassword", "controllerAction":"alterPassword:"}
+                             ]
+                 },
+                 { "elements":[
+                               { "type":"QButtonElement", "key":"button", "title":"func.logout", "controllerAction":"onLogout:"}
+                               ]
+                 },
+                 { "elements":[
+                               { "type":"QButtonElement", "key":"button", "title":"ui.EULA", "controllerAction":"onEULA:"},
+                               { "type":"QButtonElement", "key":"button", "title":"ui.rateUS", "controllerAction":"rateUS:"},
+                               { "type":"QButtonElement", "key":"button", "title":"ui.contactUs", "controllerAction":"contactUS:"},
+                               { "type":"QButtonElement", "key":"button", "title":"ui.aboutMobile", "controllerAction":"aboutMobile:"}
+                               ]
+                 }
+                 ]
+}

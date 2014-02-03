@@ -1,0 +1,266 @@
+/* 
+  Localizable.strings
+  webfusion
+
+  Created by Jack Shi on 13-6-28.
+  Copyright (c) 2013年 Shisoft Corporation & muski. All rights reserved.
+*/
+
+"appName"             = "WebFusion";
+
+/* UI elements */
+
+"Previous"          = "上一步";
+"Next"              = "下一步";
+"Cancel"            = "取消";
+"Done"              = "完成";
+"Dismiss"           = "确定";
+
+
+"ui.ok"             = "确定";
+"ui.messages-no"    = "条消息";
+"ui.cancel"         = "取消";
+"ui.reply"          = "回复";
+"ui.repost"         = "转发";
+"ui.bookmark"       = "收藏";
+"ui.read-later"     = "稍后再读";
+"ui.camera"         = "相机";
+"ui.picture-lib"    = "照片图库";
+"ui.animatedPic"    = "摄制动图";
+"ui.login"          = "登入";
+"ui.loginTitle"     = "登入 WebFusion";
+"ui.inputLogin"     = "请输入您的用户名和密码。如果您还没有帐号，请注册。";
+"ui.username"       = "用户名";
+"ui.password"       = "密码"; 
+"ui.register"       = "注册";
+"ui.general"        = "常用";
+"ui.insight"        = "发觉";
+"ui.pro"            = "专业";
+"ui.others"         = "其他";
+"ui.moreRefer"      = "还有 %d 条相关新鲜事";
+"ui.setBlogTitle"   = "为博客设置标题";
+"ui.setBlogTitleDesc"= "输入标题，此新鲜事将以博客的形式发布到您的社交网络上，并且没有字数限制";
+"ui.noThanks"       = "不用了";
+"ui.composeNews"    = "撰写新鲜事";
+"ui.composeTopic"   = "撰写话题";
+"ui.dismissBlogTitle"= "去除新鲜事标题";
+"ui.dismissBlogTitleDesc"= "您确定要去除标题吗？去除标题后此条新鲜事将以短文本的形式发送，并且有字数限制。";
+"ui.newsWordCountExceed"  = "您的新鲜事字数超出了限定值，请删减后再发送。如果您需要发布较长的内容，请选设定标题以博客形式发送。";
+"ui.addPhoto"       = "添加照片";
+"ui.selLocation"    = "选择地点";
+"ui.use"            = "使用";
+"ui.locateFailed"   = "抱歉，我们无法为您定位。";
+"ui.checkin"        = "签到";
+"ui.sendingNews"    = "正在发布新鲜事...";
+"ui.sending"        = "正在发送...";
+"ui.loading"        = "正在加载...";
+"ui.openInSafari"   = "在 Safari 打开";
+"ui.copyLink"       = "复制链接到剪贴板";
+"ui.subPosts"       = "有 %d 条回复，点击查看";
+"ui.sendTo"         = "发送到：";
+"ui.TypeName"       = "输入名称";
+"ui.TypeTitle"      = "输入标题";
+"ui.recipients"     = "%d 个收件人";
+"ui.fromAll"        = "所有人";
+"ui.fromContact"    = "联系人";
+"ui.fromMe"         = "我自己";
+"ui.contactMethods" = "有 %d 个联系方式";
+"ui.noContactMethods" = "没有联系方式";
+"ui.contactMethodFrom" = "来自“%@”";
+"ui.contactNews"    = "新鲜事";
+"ui.postToContact"  = "发送消息";
+"ui.contactDetails" = "联系人详情";
+"ui.confirmDeleteContactMethod" = "您确定要删除这个来自“%@”的联系方式吗？";
+"ui.edit"           = "编辑";
+"ui.done"           = "完成";
+"ui.addContactPrompt"   = "使用搜索或者直接输入地址的方式添加联系人";
+"ui.searchAddContact" = "搜索添加";
+"ui.inputAddContact"    = "直接输入";
+"ui.selServiceForAddContact" = "请选择联系人使用的服务";
+"ui.inputAddressForContact" = "请输入地址";
+"ui.inputNameForContact" = "请指定联系人名称";
+"ui.setNameForContact"  = "联系人名称";
+"ui.setNameForContactDesc" = "添加此联系人之前，您可以为其指定一个名称。";
+"ui.contactExists"      = "此联系人已经存在于您的联系人列表中";
+"ui.cannotAddContact"      = "抱歉，无法添加次联系人，请稍后再试一试";
+"ui.emptyInput"     = "请输入相关信息后再提交，谢谢。";
+"ui.addContactMethod"   = "添加联系方式";
+"ui.selectContactForNewPost"    = "选择此话题的接收方";
+"ui.combineContactTo"      = "合并联系人到";
+"ui.renameUserContact"  = "您希望将此联系人重命名为";
+"ui.confirmDeleteUserContact" = "您确定要删除此联系人吗？这同时也将删除其联系方式。";
+"ui.nickname"       = "昵称";
+"ui.services"       = "外部服务";
+"ui.basic"          = "基本";
+"ui.security"       = "安全";
+"ui.securityFooter" = "经常修改密码有助于保护您的帐号以及绑定的服务的安全";
+"ui.EULA"           = "用户使用条款";
+"ui.privacyPolicy"  = "隐私政策";
+"ui.rateUS"         = "给我们评分";
+"ui.contactUs"      = "联系我们";
+"ui.aboutWebFusion" = "关于 WebFusion";
+"ui.aboutMobile"    = "关于移动版 WebFusion";
+"ui.operability"    = "操作性";
+"ui.pushNotifications" = "推送通知";
+"ui.soundEffects"   = "音效";
+"ui.vibration"      = "震动";
+"ui.numServices"    = "共 %@ 个服务";
+"ui.addService"     = "添加服务";
+"ui.dispatchAuthService"    = "正在转接服务提供商";
+"ui.addServiceFailed"   = "抱歉，无法添加此服务帐号";
+"ui.I'mAt"          = "我在 %@";
+"ui.photo"          = "照片";
+"ui.discoveryCategory"  = "类别";
+"ui.myInterest"     = "我的兴趣";
+"ui.trendDay"       = "一天内";
+"ui.trendWeek"      = "一周内";
+"ui.trendMonth"     = "一个月内";
+"ui.trendYear"      = "一年内";
+"ui.confirmLogout"  = "您确定要注销 WebFusion 吗?";
+"ui.continue"       = "继续";
+"ui.noDiscoverContent"  = "没有发现到内容，我们缺少您的兴趣特征。";
+"ui.deleteService"  = "您确定要删除此服务吗？删除后此服务相关的联系方式将一起被移除。";
+"ui.delete"  = "删除";
+
+"ui.Captcha"        = "验证码";
+"ui.afterRegister"  = "注册后将自动为您登入。同时，您需要在“偏好设置”里添加服务才能开始正常使用 WebFusion";
+"ui.placeholder.username"   = "您的用户名"; 
+"ui.placeholder.nickname"   = "可以代表你的名字";
+"ui.placeholder.password"   = "长度大于 6 位的密码";
+"ui.placeholder.repeatPasswd"   = "将上面的密码再输入一次";
+"ui.placeholder.Captcha"    = "请输入下面的字符";
+"ui.pleaseInput"        = "请输入%@";
+"ui.wrongCaptcha"   = "抱歉，您输入的验证码不正确，请重新输入";
+"ui.usernameExists" = "抱歉，您输入的用户名已经存在，请换一个用户名";
+"ui.generalError"   = "抱歉，我们遇到了一些错误，请稍后再试";
+
+"ui.orignalPasswd"  = "原密码";
+"ui.newPassword"    = "新密码";
+"ui.repeatPasswd"   = "重复密码";
+"ui.twoPasswordsNotMatch"    = "抱歉，您输入的两次密码并不一致，请重新输入。";
+"ui.passwordLess6Char"  = "抱歉，您输入的密码小于 6 个字符，请输入一个更长的密码";
+
+"ui.reportAbuse"                = "举报不良信息";
+"ui.reason"                     = "原因";
+"ui.reportAbuse.reason-0"       = "虚假广告";
+"ui.reportAbuse.reason-1"       = "裸露、色情或者强烈性暗示";
+"ui.reportAbuse.reason-2"       = "暴力";
+"ui.reportAbuse.reason-3"       = "人身攻击";
+"ui.reportAbuse.reason-4"       = "侵犯隐私";
+"ui.reportAbuse.reason-5"       = "钓鱼或者欺诈";
+"ui.reportAbuse.reason-6"       = "泄漏机密信息";
+"ui.comment"                    = "备注";
+"ui.reportAbuseIntro"           = "如果您看到了令您感到不适的内容，请举报以便帮助我们为您提供更好的网络环境。注意我们不允许 WebFusion 中出现违反使用条款的内容，但是由于我们大部分的数据来自互联网，所以请使用举报功能标记这些违规内容以便我们进行处理。";
+"ui.reportAbuseSucceed"         = "举报成功，我们会根据实际情况进行处理，谢谢您的反馈。";
+"ui.reportAbuseFailed"          = "举报失败，您可能已经举报，请耐心等待我们处理";
+"ui.abuseTag"                   = "<div style='text-align: right; color:rgb(255,0,0)'><img src='abuse@2x.png' width=16px; height=16px /> 被 %d 人举报为不良信息</div>";
+"ui.agreeEULA"                  = "点击注册或者登入代表您同意我们的“<a href='swf:EULA'>用户使用条款</a>”";
+
+"ui.meter"                      = "米";
+"ui.kilometer"                  = "千米";
+"ui.newPOI"                     = "添加地点";
+"ui.newPOIDesc"                 = "请输入您目前所在地点的名称";
+"ui.errorOnIdentifyNewPOI"      = "抱歉，无法添加新地点，因为我们无法确定您目前所在地点的其他信息";
+
+"ui.needAddService"             = "点击右上角加号按钮开始添加服务";
+"ui.aMessageFromUser"           = "来自用户 %@ 关于 WebFusion 的建议";
+
+"ui.LoggingServices"            = "正在登入服务";
+"ui.serviceAddedPleaseWait"     = "请稍等";
+"ui.errorOnGetAuthURL"          = "抱歉，此服务当前无法使用，请稍后重试";
+
+"ui.savingVideo"                = "正在保存视频";
+"ui.failedSavingVideo"          = "抱歉，无法保存视频文件用于处理，请重新拍摄";
+"ui.analyzingVideo"             = "正在分析视频";
+
+"ui.replyToTopic"               = "回复到话题";
+"ui.replyToSender"              = "回复给 %@";
+"ui.sendToReceiver"             = "发送消息给 %@";
+
+/* Functions */
+
+"func.news"         = "新鲜事";
+"func.topics"       = "话题";
+"func.contacts"     = "联系人";
+"func.map"          = "地图";
+"func.favourites"   = "收藏";
+"func.Discover"     = "发现";
+"func.SearchNews"   = "搜索新鲜事";
+"func.trend"        = "趋势";
+"func.preferences"     = "偏好设置"; 
+"func.alterPassword" = "修改密码"; 
+"func.logout"       = "注销";
+"ui.alter"          = "修改";
+
+"ui.requestAddService"  = "感谢您使用 WebFusion，您目前没有添加任何网络服务，现在我们为您呈现的是公共内容。需要现在添加以便我们为您提供个性化服务内容吗？";
+"ui.later"              = "稍后提醒我";
+"ui.startNow"           = "现在开始";
+"ui.thanksForFeedback"  = "谢谢您的反馈，我们会尽快对您的邮件进行回复。";
+"ui.badNetwork"         = "网络不是很给力，请稍后再试";
+"ui.noNetwork"          = "您的设备还没有连接互联网";
+
+/* Timing */
+"ui.just-now"       = "刚才";
+"ui.secs-ago"       = "秒前";
+"ui.minutes-ago"    = "分钟前";
+"ui.hours-ago"      = "小时前";
+"ui.yesterday"      = "昨天";
+"ui.days-ago"       = "天前";
+"ui.weeks-ago"      = "周前";
+"ui.month-ago"      = "个月前";
+"ui.years-ago"      = "年前";
+"ui.centries-ago"   = "世纪前";
+
+/* Missing data */
+"ui.no-content"     = "无内容。";
+"ui.no-title"       = "无标题";
+"ui.no-name"        = "无名氏";
+
+/* Error */
+"err.no-server"     = "无法连接到服务器。";
+"err.wrongPassword"  = "抱歉，无法验证您的身份，请检查。";
+"err.cannotToCopyClipboard"    = "抱歉，无法复制到剪贴板";
+
+/* Accessing server */
+"server.pic-album"  = "WebFusion 移动相册";
+
+/*   HTML Template   */
+"html.accessHref"     = "<a style='margin-top: 10px' href='%@' class='btn btn-mini btn-primary'>访问地址</a>";
+"html.lbsCoordinate"  = "<p class='well well-sm'><a href='http://maps.apple.com/?ll=%f,%f'><img style='width: 16px; height: auto' src='places.png'/> 东经：%f 北纬：%f</a></p>";
+"html.lbsPlace"       = "<p class='well well-sm'><a href='http://maps.apple.com/?ll=%f,%f'><img style='width: 16px; height: auto' src='places.png'/> %@</a></p>";
+
+/*   Service Names   */
+"svr.163t"          = "网易微博";
+"svr.aim"           = "AOL Messenger";
+"svr.baidu"         = "百度";
+"svr.contact"       = "联系人";
+"svr.discuz"        = "dizsuz 论坛";
+"svr.douban"        = "豆瓣";
+"svr.dummy"         = "Shisoft 测试服务";
+"svr.facebook"      = "Facebook";
+"svr.feed"          = "RSS 新闻源";
+"svr.fetion"        = "飞信";
+"svr.flickr"        = "Flickr";
+"svr.foursquare"    = "Foursquare";
+"svr.gtalk"         = "Google Talk";
+"svr.icq"           = "ICQ";
+"svr.instagram"     = "Instagram";
+"svr.jiepang"       = "街旁网";
+"svr.kaixin"        = "开心网";
+"svr.linkedin"      = "LinkedIn";
+"svr.mail"          = "电子邮件";
+"svr.msn"           = "MSN";
+"svr.phpbb"         = "PHPBB 论坛";
+"svr.qq"            = "QQ";
+"svr.qweibo"       = "腾讯微博";
+"svr.renren"        = "人人网";
+"svr.renrendm"      = "人人私信";
+"svr.sinat"         = "新浪微博";
+"svr.tumblr"        = "Tumblr";
+"svr.twitter"       = "Twitter";
+"svr.user"          = "Shisoft 用户";
+"svr.weibodm"       = "新浪微博私信";
+"svr.wordpress"     = "WordPress";
+"svr.xmpp"          = "XMPP";
+"svr.yahoo"         = "雅虎通";
+"svr.yiban"         = "易班";

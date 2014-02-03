@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- Bootstrap -->
+            <link href="bootstrap.min.css" rel="stylesheet" media="screen">
+                <style>
+                    body, .newsFrame{
+                        white-space: wrap;
+                        wrap: break-word;
+                        background-color: lightgray;
+                    }
+                .newsFrame{
+                    margin: 10px;
+                    box-shadow: 0 1px 5px rgba(0,0,0,0.25), 0 0 50px rgba(0,0,0,0.1) inset;
+                    border: solid 1px rgb(224,224,224);
+                    overflow-x: hidden;
+                    width: calc(100% -10px);
+                    padding: 10px;
+                    background-color: white;
+                    border-radius: 2px;
+                }
+                .well{
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                }
+                .newsFrame:last-child,body:last-child{
+                    border-bottom: none !important;
+                }
+                blockquote{
+                    padding-left: 5px;
+                    padding-top : 10px;
+                    padding-bottom: 10px;
+                }
+                blockquote > .newsFrame{
+                    box-shadow: 0 0px 0px rgba(0,0,0,0.1), 0 0 0px;
+                    padding-right: 0px;
+                    margin: 0px;
+                    width: calc(100% + 20px);
+                    border: none;
+                    background-color: rgba(255,255,255,0.0);
+                }
+                blockquote > .newsFrame > .actionBar{
+                    display: none;
+                }
+                .actionBar > .btn {
+                    background-color: #f5f5f5;
+                    border: 1px solid #e3e3e3;
+                }
+                .svrImg{
+                    height: 16px; width:16px; margin-right: 5px; position:relative; top: -2px;
+                }
+                </style>
+                <script src="jquery-2.0.3.min.js"></script>
+                <script src="sys.js"></script>
+                <script src="bootstrap.min.js"></script>
+                <script language="javascript" type="text/javascript" src="jquery.flot.min.js"></script>
+                <script language="javascript" type="text/javascript" src="jquery.flot.categories.min.js"></script>
+                <script language="javascript" type="text/javascript" src="jquery.flot.resize.min.js"></script>
+                <script>
+                    $.ajaxSetup({cache: false});
+                    $(window).scroll(function() {
+                                     if($(window).scrollTop() > 0 && ($(window).scrollTop() + $(window).height() > $(document).height() - 60)&&($("#divLoading").length<=0)) {
+                                     document.location = "swf:nextpage";
+                                     }
+                                     });
+                                     function loading(){
+                                         //$("body").append("");
+                                         //$("html, body").animate({ scrollTop: $(document).height()-$(window).height() });
+                                     }
+                function stopLoading(){
+                    $("#_divLoading").hide();
+                }
+                function removeLoading(){
+                    $("#_divLoading").remove();
+                }
+                function append(path){
+                    //alert(path);
+                    //alert(document.location);
+                    var $div = $("<div>").load("file:///" + path,function(){
+                                               stopLoading();
+                                               $("body").append($($div.html()).hide().fadeIn(500)).append($("#_divLoading").show());
+                                               });
+                }
+                </script>
+                <script>
+                    var plot = null;
+                    var cachedQuery = [];
+                    var currDispQuery;
+                    var inLoad = true;
+                    function plotTrend(path){
+                        $.getJSON("file:///" + path,function(data,status){
+                                  data = data.d;
+                                  if (plot != null) {
+                                  plot.shutdown();
+                                  plot = null;
+                                  }
+                                  //alert(data.acc);
+                                  $("#divGraph").html("").append("<div id=\"placeholder\" style=\"height: 200px\" ></div>").append("<ul class=\"listview fluid\" id=\"newsContainer\"></ul>");
+                                  var d = [];
+                                  var ticks = [];
+                                  $(data.data).each(function() {
+                                                    for (var p in this) {
+                                                    var pnum = new Number(p);
+                                                    //var pname = prettyDate(pnum);
+                                                    //alert(this[p]);
+                                                    d.push([pnum, this[p]]);
+                                                    ticks.push([pnum, ""]);
+                                                    }
+                                                    });
+                                  
+                                  plot = $.plot("#placeholder", [d], {
+                                                series: {
+                                                lines: {
+                                                show: true
+                                                },
+                                                points: {show: false}
+                                                },
+                                                grid: {
+                                                hoverable: false,
+                                                clickable: false
+                                                }
+                                                ,
+                                                xaxis: {
+                                                ticks: ticks
+                                                }
+                                                });
+                                  });
+                    }
+                function reserveForAd(height){
+                    $("#divAdReserve").height(height);
+                }
+                $( document ).ready(function() {
+                                    setTimeout("inLoad=false",500);
+                                    document.location = "swf:loaded";
+                                    $("#body").hide().fadeIn(500);
+                                    });
+                    </script>
+                </head>
+    <body>
+        <div id="divAdReserve"></div>
+        <div id="divGraph"></div>
+        <div id="body">
+            $(LIST)
+        </div>
+        <div id='_divLoading' style='padding:20px; padding-top 0px;padding-bottom:30px; text-align:center'><img src='indicator.gif' width='16px' height='16px' /></div>
+    </body>
+</html>

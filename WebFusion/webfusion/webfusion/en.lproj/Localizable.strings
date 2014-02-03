@@ -1,0 +1,257 @@
+/* 
+  Localizable.strings
+  webfusion
+
+  Created by Jack Shi on 13-6-28.
+  Copyright (c) 2013年 Shisoft Corporation. All rights reserved.
+*/
+
+"appName"             = "WebFusion";
+
+/* UI elements */
+"ui.ok"             = "OK";
+"ui.messages-no"    = "New Messages";
+"ui.cancel"         = "Cancel";
+"ui.reply"          = "Reply";
+"ui.repost"         = "Repost";
+"ui.bookmark"       = "Favourite";
+"ui.read-later"     = "Read It Later";
+"ui.camera"         = "Camera";
+"ui.picture-lib"    = "Photo Library";
+"ui.animatedPic"    = "Record Animated";
+"ui.login"          = "Login";
+"ui.loginTitle"     = "Login to WebFusion";
+"ui.inputLogin"     = "Please input user name and password. If you don't have account, please register.";
+"ui.username"       = "User Name";
+"ui.password"       = "Password";
+"ui.register"       = "Register";
+"ui.general"        = "General";
+"ui.insight"        = "Insight";
+"ui.pro"            = "PRO";
+"ui.others"         = "Others";
+"ui.moreRefer"      = "%d more refered news";
+"ui.setBlogTitle"   = "Title For Blog";
+"ui.setBlogTitleDesc"= "Input a title for your news. It will been sent as blog without word count limition";
+"ui.noThanks"       = "No Thanks";
+"ui.composeNews"    = "Compose News";
+"ui.composeTopic"   = "Compose Topic";
+"ui.dismissBlogTitle"= "Dismiss News Title";
+"ui.dismissBlogTitleDesc"= "Are you sure you want to dismiss blog title? A news without title will been sent as text message with word count limition.";
+"ui.newsWordCountExceed"  = "Word count exceed. Please reconstruct your words and try again.";
+"ui.addPhoto"       = "Add Photo";
+"ui.selLocation"    = "Select Location";
+"ui.use"            = "Use";
+"ui.locateFailed"   = "Sorry, we cannot find your location.";
+"ui.checkin"        = "Checkin";
+"ui.sendingNews"    = "Sending News...";
+"ui.sending"        = "Sending...";
+"ui.loading"        = "Loading...";
+"ui.openInSafari"   = "Open In Safari";
+"ui.copyLink"       = "Copy URL To Clipboard";
+"ui.subPosts"       = "%d replies, tap to watch";
+"ui.sendTo"         = "To:";
+"ui.TypeName"       = "Type a name";
+"ui.TypeTitle"      = "Type a title";
+"ui.recipients"     = "%d recipients";
+"ui.fromAll"        = "All";
+"ui.fromContact"    = "Contacts";
+"ui.fromMe"         = "Myself";
+"ui.contactMethods" = "%d contact methods";
+"ui.noContactMethods" = "No contact method";
+"ui.contactMethodFrom" = "Form \"%@\"";
+"ui.contactNews"    = "News";
+"ui.postToContact"  = "Send Messages";
+"ui.contactDetails" = "Contact Details";
+"ui.confirmDeleteContactMethod" = "Are you sure you want to delete this contact method to the contact form \"%@\"?";
+"ui.edit"           = "Edit";
+"ui.done"           = "Done";
+"ui.addContactPrompt"   = "Add a contact by searching or direct input";
+"ui.searchAddContact" = "Search";
+"ui.inputAddContact"    = "Direct";
+"ui.selServiceForAddContact" = "select the service for the contact";
+"ui.inputAddressForContact" = "the address of the contact";
+"ui.inputNameForContact" = "the name of the contact";
+"ui.setNameForContact"  = "Contact Name";
+"ui.setNameForContactDesc" = "You can set a name for this contact";
+"ui.contactExists"      = "This contact have already existed";
+"ui.cannotAddContact"      = "Sorry, cannot add this contact. Please try again later.";
+"ui.emptyInput"     = "Please complete the form and submit again.";
+"ui.addContactMethod"   = "Add Contact Method";
+"ui.selectContactForNewPost"    = "Recipients For Post";
+"ui.combineContactTo"      = "Combine Contact To";
+"ui.renameUserContact"  = "Rename contact to";
+"ui.confirmDeleteUserContact" = "Are you sure you want to delete this contact? This will delete it's contact method as well.";
+"ui.nickname"       = "Nickname";
+"ui.services"       = "Services";
+"ui.basic"          = "Basics";
+"ui.security"       = "Security";
+"ui.securityFooter" = "Change your passwords often helps to protect your account security and binded services";
+"ui.EULA"           = "End User License Agreement";
+"ui.privacyPolicy"  = "Privacy Policy";
+"ui.rateUS"         = "Rate US";
+"ui.contactUs"      = "Contact US";
+"ui.aboutWebFusion" = "About WebFusion";
+"ui.aboutMobile"    = "About Mobile WebFusion";
+"ui.operability"    = "Operability";
+"ui.pushNotifications" = "Push Notifications";
+"ui.soundEffects"   = "Sound Effects";
+"ui.vibration"      = "Vibration";
+"ui.numServices"    = "%@ Service(s)";
+"ui.addService"     = "Add Service";
+"ui.dispatchAuthService"    = "Dispatching";
+"ui.addServiceFailed"   = "Sorry, we cannot add this service account";
+"ui.I'mAt"          = "I'm at %@";
+"ui.photo"          = "Photo";
+"ui.discoveryCategory"  = "Category";
+"ui.myInterest"     = "My Interest";
+"ui.trendDay"       = "Year";
+"ui.trendWeek"      = "Week";
+"ui.trendMonth"     = "Month";
+"ui.trendYear"      = "Year";
+"ui.confirmLogout"  = "Are you sure logout WebFusion?";
+"ui.continue"       = "Continue";
+"ui.noDiscoverContent"  = "Nothing discovered due to lacking your features.";
+"ui.deleteService"  = "Are you sure delete this service? All of it's contact will be removed.";
+"ui.delete"  = "Delete";
+
+"ui.Captcha"        = "Captcha";
+"ui.afterRegister"  = "We will login for you after register.You should add services in \"Preferences\" to use WebFusion.";
+"ui.placeholder.username"   = "Your Username";
+"ui.placeholder.nickname"   = "Your Name";
+"ui.placeholder.password"   = "At least 6 Characters";
+"ui.placeholder.repeatPasswd"   = "Repeat your password";
+"ui.placeholder.Captcha"    = " The Characters Below";
+"ui.wrongCaptcha"   = "Sorry, wrong captcha, please try again.";
+"ui.usernameExists" = "Sorry, the username is existed. Please use another one.";
+"ui.generalError"   = "Sorry, we've got some error. Please try again later.";
+
+"ui.orignalPasswd"  = "Current Password";
+"ui.newPassword"    = "New Password";
+"ui.repeatPasswd"   = "Repeat Password";
+"ui.twoPasswordsNotMatch"    = "Sorry, the passwords you input does not match, please try again.";
+"ui.pleaseInput"        = "Please input %@";
+"ui.passwordLess6Char"  = "Sorry, your password is less than 6 characters. Please use another password and try again.";
+
+"ui.reportAbuse"                = "Report Abuse";
+"ui.reason"                     = "Reason";
+"ui.reportAbuse.reason-0"       = "False Advertisement";
+"ui.reportAbuse.reason-1"       = "Nudity";
+"ui.reportAbuse.reason-2"       = "Violence";
+"ui.reportAbuse.reason-3"       = "Humiliation";
+"ui.reportAbuse.reason-4"       = "Invasion Of Privacy";
+"ui.reportAbuse.reason-5"       = "Phishing";
+"ui.reportAbuse.reason-6"       = "Divulging Secret";
+"ui.comment"                    = "Comment";
+"ui.reportAbuseIntro"           = "If you see any objectionable content, please report to us. Be advised there's no tolerance for objectionable contents in WebFusion. Most of our data comes from internet, please report those contents that violate our license agreement.";
+"ui.reportAbuseSucceed"         = "Report succeed. Thanks for your feedback.";
+"ui.reportAbuseFailed"          = "Report Failed. Maybe you have already reported this content.";
+"ui.abuseTag"                   = "<div style='text-align: right; color:rgb(255,0,0)'><img src='abuse@2x.png' width=16px; height=16px /> %d abuse report for this content</div>";
+"ui.agreeEULA"                  = "Tap on Login or Register button meant you agreed our \"<a href='swf:EULA'>End-User License Agreement</a>\"";
+
+"ui.meter"                      = "m";
+"ui.kilometer"                  = "km";
+"ui.newPOI"                     = "New Place";
+"ui.newPOIDesc"                 = "Please input the name of the place you are staying at.";
+"ui.errorOnIdentifyNewPOI"      = "Sorry, cannot add new place because we cannot identify other information about your location.";
+
+"ui.needAddService"             = "Tap the plus sign on the top right to add service";
+"ui.aMessageFromUser"           = "A message from %@ about WebFusion";
+
+"ui.serviceAddedPleaseWait"     = "Please Wait";
+"ui.LoggingServices"             = "Logging To Service";
+"ui.errorOnGetAuthURL"          = "Sorry, this service is not available, please try again later";
+
+"ui.savingVideo"                = "Saving Video";
+"ui.failedSavingVideo"          = "Sorry, cannot saving video for futher processing, please record again.";
+"ui.analyzingVideo"             = "Analyzing Video";
+
+"ui.replyToTopic"               = "Reply To Topic";
+"ui.replyToSender"              = "Reply To %@";
+"ui.sendToReceiver"             = "Send Message To %@";
+
+/* Functions */
+"func.news"         = "News";
+"func.topics"       = "Topics";
+"func.contacts"     = "Contacts";
+"func.map"          = "Map";
+"func.favourites"   = "Favourites";
+"func.Discover"     = "Discover";
+"func.SearchNews"       = "Search News";
+"func.trend"        = "Trend";
+"func.preferences"     = "Preferences";
+"func.alterPassword" = "Alter Passwords";
+"func.logout"       = "Logout";
+"ui.continue"       = "Continue";
+"ui.alter"          = "Alter";
+
+"ui.requestAddService"  = "Thank you for using WebFusion. You did not add any web services, we are now presenting public contents. Add now for personalized?";
+"ui.later"              = "Remind Me Later";
+"ui.startNow"           = "Start Now";
+"ui.thanksForFeedback"  = "Thanks for your feedback. We will reply your mail soon.";
+"ui.badNetwork"         = "We are in a bad network condition, please try again later";
+"ui.noNetwork"          = "Your device have no internet connection.";
+
+/* Timing */
+"ui.just-now"       = "Just Now";
+"ui.secs-ago"       = "Seconds Ago";
+"ui.minutes-ago"    = "Minutes Ago";
+"ui.hours-ago"      = "Hours Ago";
+"ui.yesterday"      = "Yesterday";
+"ui.days-ago"       = "Days Ago";
+"ui.weeks-ago"      = "Weeks Ago";
+"ui.month-ago"      = "Month Ago";
+"ui.years-ago"      = "Years Ago";
+"ui.centries-ago"   = "Centries Ago";
+
+/* Missing data */
+"ui.no-content"     = "No Content";
+"ui.no-title"       = "Untitled";
+"ui.no-name"        = "Anoymous";
+
+/* Error */
+"err.no-server"     = "Cannot connect to server";
+"err.wrongPassword"  = "Sorry, we cannot identify your account. Please try again.";
+"err.cannotToCopyClipboard"    = "Sorry, cannot copy to clipboard";
+
+/* Accessing server */
+"server.pic-album"  = "WebFusin Mobile Album";
+
+"html.accessHref"     = "<a style='margin-top: 10px' href='%@' class='btn btn-mini btn-primary'>Open Website</a>";
+"html.lbsCoordinate"  = "<p class='well well-sm'><a href='http://maps.apple.com/?ll=%f,%f'><img style='width: 16px; height: auto' src='places.png'/> Lon：%f Lat：%f</a></p>";
+"html.lbsPlace"       = "<p class='well well-sm'><a href='http://maps.apple.com/?ll=%f,%f'><img style='width: 16px; height: auto' src='places.png'/> %@</a></p>";
+
+/*   Service Names   */
+"svr.163t"          = "163 weibo";
+"svr.aim"           = "AOL Messenger";
+"svr.baidu"         = "Baidu";
+"svr.contact"       = "Contact";
+"svr.discuz"        = "Dizsuz Forum";
+"svr.douban"        = "Douban";
+"svr.dummy"         = "Shisoft Dummuy";
+"svr.facebook"      = "Facebook";
+"svr.feed"          = "RSS News Feed";
+"svr.fetion"        = "Fetion";
+"svr.flickr"        = "Flickr";
+"svr.foursquare"    = "Foursquare";
+"svr.gtalk"         = "Google Talk";
+"svr.icq"           = "ICQ";
+"svr.instagram"     = "Instagram";
+"svr.jiepang"       = "Jiepang";
+"svr.kaixin"        = "Kaixin";
+"svr.linkedin"      = "LinkedIn";
+"svr.mail"          = "E-mail";
+"svr.msn"           = "MSN";
+"svr.phpbb"         = "PHPBB Forum";
+"svr.qq"            = "QQ";
+"svr.qweibo"       = "Tencent Weibo";
+"svr.renren"        = "Renren";
+"svr.renrendm"      = "Renren Direct Message";
+"svr.sinat"         = "Sina Weibo";
+"svr.tumblr"        = "Tumblr";
+"svr.twitter"       = "Twitter";
+"svr.user"          = "Shisoft 用户";
+"svr.weibodm"       = "Sina Weibo Direct Message";
+"svr.wordpress"     = "WordPress";
+"svr.xmpp"          = "XMPP";
+"svr.yahoo"         = "Yahoo Messenger";
+"svr.yiban"         = "Yiban";

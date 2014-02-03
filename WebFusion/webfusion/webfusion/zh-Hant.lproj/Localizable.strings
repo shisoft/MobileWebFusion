@@ -1,0 +1,266 @@
+/*
+   Localizable.strings
+   webfusion
+ 
+   Created by Jack Shi on 13-6-28.
+   Copyright (c) 2013年Shisoft Corporation & muski. All rights reserved.
+ */
+
+"appName" = "WebFusion";
+
+/* UI elements */
+
+"Previous" = "上一步";
+"Next" = "下一步";
+"Cancel" = "取消";
+"Done" = "完成";
+"Dismiss" = "確定";
+
+
+"ui.ok" = "確定";
+"ui.messages-no" = "條消息";
+"ui.cancel" = "取消";
+"ui.reply" = "回复";
+"ui.repost" = "轉發";
+"ui.bookmark" = "收藏";
+"ui.read-later" = "稍後再讀";
+"ui.camera" = "相機";
+"ui.picture-lib" = "照片圖庫";
+"ui.animatedPic" = "攝製動圖";
+"ui.login" = "登入";
+"ui.loginTitle" = "登入 WebFusion";
+"ui.inputLogin" = "請輸入您的用戶名和密碼。如果您還沒有帳號，請註冊。";
+"ui.username" = "用戶名";
+"ui.password" = "密碼";
+"ui.register" = "註冊";
+"ui.general" = "常用";
+"ui.insight" = "發覺";
+"ui.pro" = "專業";
+"ui.others" = "其他";
+"ui.moreRefer" = "還有%d 條相關新鮮事";
+"ui.setBlogTitle" = "為博客設置標題";
+"ui.setBlogTitleDesc"= "輸入標題，此新鮮事將以博客的形式發佈到您的社交網絡上，並且沒有字數限制";
+"ui.noThanks" = "不用了";
+"ui.composeNews" = "撰寫新鮮事";
+"ui.composeTopic" = "撰寫話題";
+"ui.dismissBlogTitle"= "去除新鮮事標題";
+"ui.dismissBlogTitleDesc"= "您確定要去除標題嗎？去除標題後此條新鮮事將以短文本的形式發送，並且有字數限制。";
+"ui.newsWordCountExceed" = "您的新鮮事字數超出了限定值，請刪減後再發送。如果您需要發布較長的內容，請選設定標題以博客形式發送。";
+"ui.addPhoto" = "添加照片";
+"ui.selLocation" = "選擇地點";
+"ui.use" = "使用";
+"ui.locateFailed" = "抱歉，我們無法為您定位。";
+"ui.checkin" = "簽到";
+"ui.sendingNews" = "正在發布新鮮事...";
+"ui.sending" = "正在發送...";
+"ui.loading" = "正在加載...";
+"ui.openInSafari" = "在 Safari 打開";
+"ui.copyLink" = "複製鏈接到剪貼板";
+"ui.subPosts" = "有%d 條回复，點擊查看";
+"ui.sendTo" = "發送到：";
+"ui.TypeName" = "輸入名稱";
+"ui.TypeTitle" = "輸入標題";
+"ui.recipients" = "%d 個收件人";
+"ui.fromAll" = "所有人";
+"ui.fromContact" = "聯繫人";
+"ui.fromMe" = "我自己";
+"ui.contactMethods" = "有 %d 個聯繫方式";
+"ui.noContactMethods" = "沒有聯繫方式";
+"ui.contactMethodFrom" = "來自“%@”";
+"ui.contactNews" = "新鮮事";
+"ui.postToContact" = "發送消息";
+"ui.contactDetails" = "聯繫人詳情";
+"ui.confirmDeleteContactMethod" = "您確定要刪除這個來自“%@”的聯繫方式嗎？";
+"ui.edit" = "編輯";
+"ui.done" = "完成";
+"ui.addContactPrompt" = "使用搜索或者直接輸入地址的方式添加聯繫人";
+"ui.searchAddContact" = "搜索添加";
+"ui.inputAddContact" = "直接輸入";
+"ui.selServiceForAddContact" = "請選擇聯繫人使用的服務";
+"ui.inputAddressForContact" = "請輸入地址";
+"ui.inputNameForContact" = "請指定聯繫人名稱";
+"ui.setNameForContact" = "聯繫人名稱";
+"ui.setNameForContactDesc" = "添加此聯繫人之前，您可以為其指定一個名稱。";
+"ui.contactEx​​ists" = "此聯繫人已經存在於您的聯繫人列表中";
+"ui.cannotAddContact" = "抱歉，無法添加次聯繫人，請稍後再試一試";
+"ui.emptyInput" = "請輸入相關信息後再提交，謝謝。";
+"ui.addContactMethod" = "添加聯繫方式";
+"ui.selectContactForNewPost" = "選擇此話題的接收方";
+"ui.combineContactTo" = "合併聯繫人到";
+"ui.renameUserContact" = "您希望將此聯繫人重命名為";
+"ui.confirmDeleteUserContact" = "您確定要刪除此聯繫人嗎？這同時也將刪除其聯繫方式。";
+"ui.nickname" = "暱稱";
+"ui.services" = "外部服務";
+"ui.basic" = "基本";
+"ui.security" = "安全";
+"ui.securityFooter" = "經常修改密碼有助於保護您的帳號以及綁定的服務的安全";
+"ui.EULA" = "用戶使用條款";
+"ui.privacyPolicy" = "隱私政策";
+"ui.rateUS" = "給我們評分";
+"ui.contactUs" = "聯繫我們";
+"ui.aboutWebFusion" = "關於 WebFusion";
+"ui.aboutMobile" = "關於移動版WebFusion";
+"ui.operability" = "操作性";
+"ui.pushNotifications" = "推送通知";
+"ui.soundEffects" = "音效";
+"ui.vibration" = "震動";
+"ui.numServices" = "共 %@ 個服務";
+"ui.addService" = "添加服務";
+"ui.dispatchAuthService" = "正在轉接服務提供商";
+"ui.addServiceFailed" = "抱歉，無法添加此服務帳號";
+"ui.I'mAt" = "我在 %@";
+"ui.photo" = "照片";
+"ui.discoveryCategory" = "類別";
+"ui.myInterest" = "我的興趣";
+"ui.trendDay" = "一天內";
+"ui.trendWeek" = "一周內";
+"ui.trendMonth" = "一個月內";
+"ui.trendYear" = "一年內";
+"ui.confirmLogout" = "您確定要註銷WebFusion 嗎?";
+"ui.continue" = "繼續";
+"ui.noDiscoverContent" = "沒有發現到內容，我們缺少您的興趣特徵。";
+"ui.deleteService" = "您確定要刪除此服務嗎？刪除後此服務相關的聯繫方式將一起被移除。";
+"ui.delete" = "刪除";
+
+"ui.Captcha" = "驗證碼";
+"ui.afterRegister" = "註冊後將自動為您登入。同時，您需要在“偏好設置”裡添加服務才能開始正常使用WebFusion";
+"ui.placeholder.username" = "您的用戶名";
+"ui.placeholder.nickname" = "可以代表你的名字";
+"ui.placeholder.password" = "長度大於6 位的密碼";
+"ui.placeholder.repeatPasswd" = "將上面的密碼再輸入一次";
+"ui.placeholder.Captcha" = "請輸入下面的字符";
+"ui.pleaseInput" = "請輸入%@";
+"ui.wrongCaptcha" = "抱歉，您輸入的驗證碼不正確，請重新輸入";
+"ui.usernameExists" = "抱歉，您輸入的用戶名已經存在，請換一個用戶名";
+"ui.generalError" = "抱歉，我們遇到了一些錯誤，請稍後再試";
+
+"ui.orignalPasswd" = "原密碼";
+"ui.newPassword" = "新密碼";
+"ui.repeatPasswd" = "重複密碼";
+"ui.twoPasswordsNotMatch" = "抱歉，您輸入的兩次密碼並不一致，請重新輸入。";
+"ui.passwordLess6Char" = "抱歉，您輸入的密碼小於6 個字符，請輸入一個更長的密碼";
+
+"ui.reportAbuse" = "舉報不良信息";
+"ui.reason" = "原因";
+"ui.reportAbuse.reason-0" = "虛假廣告";
+"ui.reportAbuse.reason-1" = "裸露、色情或者強烈性暗示";
+"ui.reportAbuse.reason-2" = "暴力";
+"ui.reportAbuse.reason-3" = "人身攻擊";
+"ui.reportAbuse.reason-4" = "侵犯隱私";
+"ui.reportAbuse.reason-5" = "釣魚或者欺詐";
+"ui.reportAbuse.reason-6" = "洩漏機密信息";
+"ui.comment" = "備註";
+"ui.reportAbuseIntro" = "如果您看到了令您感到不適的內容，請舉報以便幫助我們為您提供更好的網絡環境。注意我們不允許WebFusion 中出現違反使用條款的內容，但是由於我們大部分的數據來自互聯網，所以請使用舉報功能標記這些違規內容以便我們進行處理。";
+"ui.reportAbuseSucceed" = "舉報成功，我們會根據實際情況進行處理，謝謝您的反饋。";
+"ui.reportAbuseFailed" = "舉報失敗，您可能已經舉報，請耐心等待我們處理";
+"ui.abuseTag" = "<div style='text-align: right; color:rgb(255,0,0)'><img src='abuse@2x.png' width=16px; height=16px />被%d 人舉報為不良信息</div>";
+"ui.agreeEULA" = "點擊註冊或者登入代表您同意我們的“<a href='swf:EULA'>用戶使用條款</a>”";
+
+"ui.meter" = "米";
+"ui.kilometer" = "千米";
+"ui.newPOI" = "添加地點";
+"ui.newPOIDesc" = "請輸入您目前所在地點的名稱";
+"ui.errorOnIdentifyNewPOI" = "抱歉，無法添加新地點，因為我們無法確定您目前所在地點的其他信息";
+
+"ui.needAddService" = "點擊右上角加號按鈕開始添加服務";
+"ui.aMessageFromUser" = "來自用戶%@ 關於WebFusion 的建議";
+
+"ui.LoggingServices" = "正在登入服務";
+"ui.serviceAddedPleaseWait" = "請稍等";
+"ui.errorOnGetAuthURL" = "抱歉，此服務當前無法使用，請稍後重試";
+
+"ui.savingVideo" = "正在保存視訊";
+"ui.failedSavingVideo" = "抱歉，無法保存視訊文件用於處理，請重新拍攝";
+"ui.analyzingVideo" = "正在分析視訊";
+
+"ui.replyToTopic" = "回復到話題";
+"ui.replyToSender" = "回复給 %@";
+"ui.sendToReceiver" = "發送訊息給%@";
+
+/* Functions */
+
+"func.news" = "新鮮事";
+"func.topics" = "話題";
+"func.contacts" = "聯繫人";
+"func.map" = "地圖";
+"func.favourites" = "收藏";
+"func.Discover" = "發現";
+"func.SearchNews" = "搜索新鮮事";
+"func.trend" = "趨勢";
+"func.preferences" = "偏好設置";
+"func.alterPassword" = "修改密碼";
+"func.logout" = "註銷";
+"ui.alter" = "修改";
+
+"ui.requestAddService" = "感謝您使用WebFusion，您目前沒有添加任何網絡服務，現在我們為您呈現的是公共內容。需要現在添加以便我們為您提供個性化服務內容嗎？";
+"ui.later" = "稍後提醒我";
+"ui.startNow" = "現在開始";
+"ui.thanksForFeedback" = "謝謝您的反饋，我們會盡快對您的郵件進行回复。";
+"ui.badNetwork" = "網絡不是很給力，請稍後再試";
+"ui.noNetwork" = "您的設備還沒有連接互聯網";
+
+/* Timing */
+"ui.just-now" = "剛才";
+"ui.secs-ago" = "秒前";
+"ui.minutes-ago" = "分鐘前";
+"ui.hours-ago" = "小時前";
+"ui.yesterday" = "昨天";
+"ui.days-ago" = "天前";
+"ui.weeks-ago" = "週前";
+"ui.month-ago" = "個月前";
+"ui.years-ago" = "年前";
+"ui.centries-ago" = "世紀前";
+
+/* Missing data */
+"ui.no-content" = "無內容。";
+"ui.no-title" = "無標題";
+"ui.no-name" = "無名氏";
+
+/* Error */
+"err.no-server" = "無法連接到服務器。";
+"err.wrongPassword" = "抱歉，無法驗證您的身份，請檢查。";
+"err.cannotToCopyClipboard"  = "抱歉，无法复制到剪贴板";
+
+/* Accessing server */
+"server.pic-album" = "WebFusion 移動相冊";
+
+/* HTML Template */
+"html.accessHref" = "<a style='margin-top: 10px' href='%@' class='btn btn-mini btn-primary'>訪問地址</a>";
+"html.lbsCoordinate" = "<p class='well well-sm'><a href='http://maps.apple.com/?ll=%f,%f'><img style='width: 16px; height: auto' src='places.png'/> 東經：%f 北緯：%f</a></p>";
+"html.lbsPlace" =   "<p class='well well-sm'><a href='http://maps.apple.com/?ll=%f,%f'><img style='width: 16px; height: auto' src='places.png'/> %@</a></p>";
+
+/* Service Names */
+"svr.163t" = "網易微博";
+"svr.aim" = "AOL Messenger";
+"svr.baidu" = "百度";
+"svr.contact" = "聯繫人";
+"svr.discuz" = "dizsuz 論壇";
+"svr.douban" = "豆瓣";
+"svr.dummy" = "Shisoft 測試服務";
+"svr.facebook" = "Facebook";
+"svr.feed" = "RSS 新聞源";
+"svr.fetion" = "飛信";
+"svr.flickr" = "Flickr";
+"svr.foursquare" = "Foursquare";
+"svr.gtalk" = "Google Talk";
+"svr.icq" = "ICQ";
+"svr.instagram" = "Instagram";
+"svr.jiepang" = "街旁網";
+"svr.kaixin" = "開心網";
+"svr.linkedin" = "LinkedIn";
+"svr.mail" = "電子郵件";
+"svr.msn" = "MSN";
+"svr.phpbb" = "PHPBB 論壇";
+"svr.qq" = "QQ";
+"svr.qweibo" = "騰訊微博";
+"svr.renren" = "人人網";
+"svr.renrendm" = "人人私信";
+"svr.sinat" = "新浪微博";
+"svr.tumblr" = "Tumblr";
+"svr.twitter" = "Twitter";
+"svr.user" = "Shisoft 用戶";
+"svr.weibodm" = "新浪微博私信";
+"svr.wordpress" = "WordPress";
+"svr.xmpp" = "XMPP";
+"svr.yahoo" = "雅虎通";
+"svr.yiban" = "易班";

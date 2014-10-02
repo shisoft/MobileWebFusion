@@ -7,34 +7,6 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-		F57E520717A4BE4A00B2F264 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F57E51FC17A4BE4900B2F264 /* CGIKit.E.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1DA56E5A177C1B2B00EBE5DD;
-			remoteInfo = CGIJSONObject;
-		};
-		F57E520917A4BE4A00B2F264 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F57E51FC17A4BE4900B2F264 /* CGIKit.E.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1D091F03177D2284001BCCC6;
-			remoteInfo = MobileJSONObject;
-		};
-		F57E520B17A4BE4A00B2F264 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F57E51FC17A4BE4900B2F264 /* CGIKit.E.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1D72DAC7175942BA0020E96C;
-			remoteInfo = CGITest;
-		};
-		F57E520D17A4BE4A00B2F264 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F57E51FC17A4BE4900B2F264 /* CGIKit.E.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1D72DAE4175951020020E96C;
-			remoteInfo = CGISwagList;
-		};
 		F5EC9F18177A0C150077E797 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F5EC9F13177A0C140077E797 /* webfusion.xcodeproj */;
@@ -42,29 +14,39 @@
 			remoteGlobalIDString = F5EC9EC7177A0C140077E797;
 			remoteInfo = webfusion;
 		};
+		F5F8D5FC19DD71D800ECB5E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5F8D5F619DD71D800ECB5E6 /* CGIKit.E.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1D091F03177D2284001BCCC6;
+			remoteInfo = MobileJSONObject;
+		};
+		F5F8D5FE19DD71D800ECB5E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5F8D5F619DD71D800ECB5E6 /* CGIKit.E.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1D72DAC7175942BA0020E96C;
+			remoteInfo = CGITest;
+		};
+		F5F8D60019DD71D800ECB5E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5F8D5F619DD71D800ECB5E6 /* CGIKit.E.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1D72DAE4175951020020E96C;
+			remoteInfo = CGISwagList;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F57E51FC17A4BE4900B2F264 /* CGIKit.E.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CGIKit.E.xcodeproj; path = ../../../Projects/CGIKit.E/CGIKit.E.xcodeproj; sourceTree = "<group>"; };
 		F5EC9F13177A0C140077E797 /* webfusion.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = webfusion.xcodeproj; path = WebFusion/webfusion/webfusion.xcodeproj; sourceTree = "<group>"; };
+		F5F8D5F619DD71D800ECB5E6 /* CGIKit.E.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CGIKit.E.xcodeproj; path = ../CGIKit.E/CGIKit.E.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		F57E51FD17A4BE4900B2F264 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F57E520817A4BE4A00B2F264 /* CGIJSONObject.framework */,
-				F57E520A17A4BE4A00B2F264 /* CGIJSONObject.framework */,
-				F57E520C17A4BE4A00B2F264 /* CGITest.cgi */,
-				F57E520E17A4BE4A00B2F264 /* CGISwagList.cgi */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		F5D44C9D177A032F00359543 = {
 			isa = PBXGroup;
 			children = (
-				F57E51FC17A4BE4900B2F264 /* CGIKit.E.xcodeproj */,
+				F5F8D5F619DD71D800ECB5E6 /* CGIKit.E.xcodeproj */,
 				F5EC9F13177A0C140077E797 /* webfusion.xcodeproj */,
 			);
 			sourceTree = "<group>";
@@ -73,6 +55,16 @@
 			isa = PBXGroup;
 			children = (
 				F5EC9F19177A0C150077E797 /* webfusion.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F5F8D5F719DD71D800ECB5E6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F5F8D5FD19DD71D800ECB5E6 /* CGIJSONObject.framework */,
+				F5F8D5FF19DD71D800ECB5E6 /* CGITest.cgi */,
+				F5F8D60119DD71D800ECB5E6 /* CGISwagList.cgi */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,8 +88,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = F57E51FD17A4BE4900B2F264 /* Products */;
-					ProjectRef = F57E51FC17A4BE4900B2F264 /* CGIKit.E.xcodeproj */;
+					ProductGroup = F5F8D5F719DD71D800ECB5E6 /* Products */;
+					ProjectRef = F5F8D5F619DD71D800ECB5E6 /* CGIKit.E.xcodeproj */;
 				},
 				{
 					ProductGroup = F5EC9F14177A0C140077E797 /* Products */;
@@ -111,39 +103,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		F57E520817A4BE4A00B2F264 /* CGIJSONObject.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CGIJSONObject.framework;
-			remoteRef = F57E520717A4BE4A00B2F264 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F57E520A17A4BE4A00B2F264 /* CGIJSONObject.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework.static;
-			path = CGIJSONObject.framework;
-			remoteRef = F57E520917A4BE4A00B2F264 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F57E520C17A4BE4A00B2F264 /* CGITest.cgi */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = CGITest.cgi;
-			remoteRef = F57E520B17A4BE4A00B2F264 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F57E520E17A4BE4A00B2F264 /* CGISwagList.cgi */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = CGISwagList.cgi;
-			remoteRef = F57E520D17A4BE4A00B2F264 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		F5EC9F19177A0C150077E797 /* webfusion.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = webfusion.app;
 			remoteRef = F5EC9F18177A0C150077E797 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F5F8D5FD19DD71D800ECB5E6 /* CGIJSONObject.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework.static;
+			path = CGIJSONObject.framework;
+			remoteRef = F5F8D5FC19DD71D800ECB5E6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F5F8D5FF19DD71D800ECB5E6 /* CGITest.cgi */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = CGITest.cgi;
+			remoteRef = F5F8D5FE19DD71D800ECB5E6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F5F8D60119DD71D800ECB5E6 /* CGISwagList.cgi */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = CGISwagList.cgi;
+			remoteRef = F5F8D60019DD71D800ECB5E6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

@@ -20,7 +20,7 @@
 #import "UIAlertView+MKBlockAdditions.h"
 #import "CHKeychain.h"
 #import "Appirater.h"
-#import "Toast+UIView.h"
+#import "UIView+Toast.h"
 #import "SWFRegDevicePNSRequest.h"
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <netdb.h>

@@ -30,7 +30,7 @@
     if ([cell isKindOfClass:[QBadgeTableCell class]]) {
         QBadgeTableCell *badgeCell = (QBadgeTableCell*) cell;
         QBadgeElement *badgeElement = (QBadgeElement*) element;
-        badgeCell.left_margin = 30;
+        //badgeCell.left_margin = 30;
         badgeCell.badgeLabel.text = badgeElement.badge;
     }
 }

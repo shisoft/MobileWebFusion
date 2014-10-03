@@ -51,7 +51,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"items_tool"] style:UIBarButtonItemStylePlain target:self action:@selector(toggleLeftView)];
     [SWFNavedCenterViewController changeNavBarColor:[UIColor blackColor] nc:self];
 	// Do any additional setup after loading the view.
 }

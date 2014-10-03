@@ -26,7 +26,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"items_tool"] style:UIBarButtonItemStylePlain target:self action:@selector(toggleLeftView)];
     if (!self.barTintColor) {
         [self changeNavBarColor:[[UIColor alloc] initWithRed:0 green:68 / 255.0 blue:95 / 225.0 alpha:1.0]];
     }

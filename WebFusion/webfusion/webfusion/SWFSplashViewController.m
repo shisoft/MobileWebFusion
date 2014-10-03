@@ -18,7 +18,7 @@
 #import "CHKeychain.h"
 #import "UIAlertView+MKBlockAdditions.h"
 #import "SWFAliveUserViewController.h"
-#import "SWFSwipeViewController.h"
+#import "SWFNewsSwipeViewController.h"
 
 #import "SWFLeftSideMenuViewController.h"
 #import "SWFTopicsViewController.h"
@@ -95,7 +95,9 @@ BOOL logging = YES;
     logging = YES;
     [self rotateLogoDown1];
     [[SWFAppDelegate getDefaultInstance] login:^{
-        [self constructureMainView];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [self constructureMainView];
+        });
     } onWrong:^{
         [self gotoLoginView];
     } onFailed:^{
@@ -138,13 +140,21 @@ BOOL logging = YES;
     SWFAppDelegate *swfad = [SWFAppDelegate getDefaultInstance];
     swfad.rootViewController = [[UITabBarController alloc] init];
     
-    SWFSwipeViewController* newsSwipeView = [[SWFSwipeViewController alloc] initWithViewControllersToSwap:
-                                             [NSArray arrayWithObjects:
-                                              [SWFAppDelegate generateCenterView:[SWFNewsViewController class] name:@"SWFNewsViewController"],
-                                              [SWFAppDelegate generateCenterView:[SWFDiscoverViewController class] name:@"SWFDiscoverViewController"],
-                                              [SWFAppDelegate generateCenterView:[SWFSearchNewsViewController class] name:@"SWFSearchNewsViewController"],
-                                              [SWFAppDelegate generateCenterView:[SWFNewsTrendViewController class] name:@"SWFNewsTrendViewController"],
-                                              nil]];
+    
+    SWFNewsViewController* newsVC = [[SWFNewsViewController alloc] initWithNibName:@"SWFNewsViewController" bundle:nil];
+    SWFDiscoverViewController* discoverVC = [[SWFDiscoverViewController alloc] initWithNibName:@"SWFDiscoverViewController" bundle:nil];
+    SWFSearchNewsViewController* searchVC = [[SWFSearchNewsViewController alloc] initWithNibName:@"SWFSearchNewsViewController" bundle:nil];
+    SWFNewsTrendViewController* trendVC = [[SWFNewsTrendViewController alloc] initWithNibName:@"SWFNewsTrendViewController" bundle:nil];
+   
+    UIViewController* newsSwipeView = [[SWFNewsSwipeViewController alloc] initWithViewControllersToSwap:
+                                       [NSArray arrayWithObjects:
+                                        newsVC,
+                                        discoverVC,
+                                        searchVC,
+                                        trendVC,
+                                        nil]];
+    
+    UINavigationController* newsView = [SWFAppDelegate wrapCenterView:newsSwipeView];
     
     UIViewController* topicView = [SWFAppDelegate generateCenterView:[SWFTopicsViewController class] name:@"SWFTopicsViewController"];
     
@@ -152,10 +162,15 @@ BOOL logging = YES;
     
     UIViewController* myView = [SWFAppDelegate wrapCenterView:[[SWFPreferencesViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"preferences-lite"]]];
     
-    swfad.rootViewController.viewControllers = [NSArray arrayWithObjects:newsSwipeView,
+    newsVC.navItem = newsSwipeView.navigationItem;
+    
+    swfad.rootViewController.viewControllers = [NSArray arrayWithObjects:
+                                                newsView,
                                                 topicView,
                                                 contactView,
-                                                myView, nil];
+                                                myView,
+                                                nil];
+
     
     NSArray* tabButtons = swfad.rootViewController.tabBar.items;
     
@@ -173,6 +188,8 @@ BOOL logging = YES;
     [topicTabButton setTitle:NSLocalizedString(@"ui.tab.topic", nil)];
     [contactTabButton setTitle:NSLocalizedString(@"ui.tab.contact", nil)];
     [myTabButton setTitle:NSLocalizedString(@"ui.tab.my", nil)];
+    
+    [newsSwipeView setTitle:NSLocalizedString(@"ui.tab.news", nil)];
 
     [swfad.window.rootViewController removeFromParentViewController];
     swfad.window.rootViewController = swfad.rootViewController;

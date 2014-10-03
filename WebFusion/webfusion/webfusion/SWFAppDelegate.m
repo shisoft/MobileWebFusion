@@ -39,7 +39,6 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
 @synthesize SWFBackgroundTasks;
 @synthesize currentUser;
 
-
 + (instancetype) getDefaultInstance
 {
     return [UIApplication sharedApplication].delegate;
@@ -170,7 +169,7 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
             return NO;
         }
     }
-    return [(NSNumber*)[self.userFeatures valueForKey:feature] boolValue];
+    return (NSNumber*)[self.userFeatures valueForKey:feature] > 0;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

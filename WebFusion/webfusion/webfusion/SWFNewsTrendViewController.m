@@ -86,7 +86,8 @@
             }
         });
     };
-    [super changeNavBarColor:[[UIColor alloc] initWithRed:169 / 255.0 green:0 / 255.0 blue:176 / 255.0 alpha:1.0]];
+    [self.delegates manualInsets];
+    //[super changeNavBarColor:[[UIColor alloc] initWithRed:169 / 255.0 green:0 / 255.0 blue:176 / 255.0 alpha:1.0]];
     // Do any additional setup after loading the view from its nib.
 }
 

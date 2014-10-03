@@ -52,7 +52,8 @@ UIActionSheet *actionSheet;
         return [discovery streamDiscover];
     }];
     [self.delegates loadNews];
-    [super changeNavBarColor:[[UIColor alloc] initWithRed:137 / 255.0 green:64 / 255.0 blue:131 / 255.0 alpha:1.0]];
+    [self.delegates manualInsets];
+    //[super changeNavBarColor:[[UIColor alloc] initWithRed:137 / 255.0 green:64 / 255.0 blue:131 / 255.0 alpha:1.0]];
     // Do any additional setup after loading the view from its nib.
 }
 

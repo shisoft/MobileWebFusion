@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "SwipeView.h"
 
-@interface SWFSwipeViewController : UIViewController <SwipeViewDelegate, SwipeViewDataSource>
+@interface SWFNewsSwipeViewController : UIViewController <SwipeViewDelegate, SwipeViewDataSource>
 
 @property (weak, nonatomic) IBOutlet SwipeView *swipeView;
 @property (nonatomic) NSArray *views;
 
-- (SWFSwipeViewController*) initWithViewControllersToSwap:(NSArray*) vcs;
+- (SWFNewsSwipeViewController*) initWithViewControllersToSwap:(NSArray*) vcs;
 
 @end

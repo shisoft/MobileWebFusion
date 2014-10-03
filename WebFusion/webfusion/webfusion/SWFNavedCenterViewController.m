@@ -26,9 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (!self.barTintColor) {
-        [self changeNavBarColor:[[UIColor alloc] initWithRed:0 green:68 / 255.0 blue:95 / 225.0 alpha:1.0]];
-    }
+//    if (!self.barTintColor) {
+//        [self changeNavBarColor:[[UIColor alloc] initWithRed:0 green:68 / 255.0 blue:95 / 225.0 alpha:1.0]];
+//    }
     // Do any additional setup after loading the view.
 }
 
@@ -44,23 +44,23 @@
 }
 
 + (void)changeNavBarColor:(UIColor*)color nc:(UIViewController*)nc{
-    @try {
-        nc.navigationController.navigationBar.barTintColor = color;
-        nc.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                   [UIColor whiteColor],UITextAttributeTextColor,
-                                                   nil];
-        //[[UINavigationBar appearance] setTitleTextAttributes:navbarTitleTextAttributes];
-        nc.navigationController.navigationBar.titleTextAttributes = navbarTitleTextAttributes;
-        nc.navigationController.navigationBar.tintAdjustmentMode = UIViewTintAdjustmentModeDimmed;
-        [nc setNeedsStatusBarAppearanceUpdate];
-    }
-    @catch (NSException *exception) {
-        NSLog(@"%@",[exception description]);
-    }
-    @finally {
-        
-    }
+//    @try {
+//        nc.navigationController.navigationBar.barTintColor = color;
+//        nc.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//        NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                                   [UIColor whiteColor],UITextAttributeTextColor,
+//                                                   nil];
+//        //[[UINavigationBar appearance] setTitleTextAttributes:navbarTitleTextAttributes];
+//        nc.navigationController.navigationBar.titleTextAttributes = navbarTitleTextAttributes;
+//        nc.navigationController.navigationBar.tintAdjustmentMode = UIViewTintAdjustmentModeDimmed;
+//        [nc setNeedsStatusBarAppearanceUpdate];
+//    }
+//    @catch (NSException *exception) {
+//        NSLog(@"%@",[exception description]);
+//    }
+//    @finally {
+//        
+//    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle

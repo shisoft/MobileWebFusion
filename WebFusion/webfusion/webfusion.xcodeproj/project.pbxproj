@@ -375,8 +375,8 @@
 		F5CEC51E1782206E00A6450E /* SWFTopicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CEC51C1782206D00A6450E /* SWFTopicsViewController.m */; };
 		F5CEC51F1782206E00A6450E /* SWFTopicsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5CEC51D1782206E00A6450E /* SWFTopicsViewController.xib */; };
 		F5D366FA19DE99800062B013 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D366F919DE99800062B013 /* SwipeView.m */; };
-		F5D3670219DEA2670062B013 /* SWFSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D3670019DEA2670062B013 /* SWFSwipeViewController.m */; };
-		F5D3670319DEA2670062B013 /* SWFSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D3670119DEA2670062B013 /* SWFSwipeViewController.xib */; };
+		F5D3670219DEA2670062B013 /* SWFNewsSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D3670019DEA2670062B013 /* SWFNewsSwipeViewController.m */; };
+		F5D3670319DEA2670062B013 /* SWFNewsSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D3670119DEA2670062B013 /* SWFNewsSwipeViewController.xib */; };
 		F5D53B9A177DFE3200F86AD8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D53B99177DFE3200F86AD8 /* QuartzCore.framework */; };
 		F5E2C6B21824EE5900385EE5 /* SWFNewThreadCountPoll.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E2C6B11824EE5900385EE5 /* SWFNewThreadCountPoll.m */; };
 		F5E2C6B41824F63000385EE5 /* newMsg.aif in Resources */ = {isa = PBXBuildFile; fileRef = F5E2C6B31824F63000385EE5 /* newMsg.aif */; };
@@ -1035,9 +1035,9 @@
 		F5CEC51D1782206E00A6450E /* SWFTopicsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWFTopicsViewController.xib; sourceTree = "<group>"; };
 		F5D366F819DE99800062B013 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
 		F5D366F919DE99800062B013 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
-		F5D366FF19DEA2670062B013 /* SWFSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFSwipeViewController.h; sourceTree = "<group>"; };
-		F5D3670019DEA2670062B013 /* SWFSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFSwipeViewController.m; sourceTree = "<group>"; };
-		F5D3670119DEA2670062B013 /* SWFSwipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWFSwipeViewController.xib; sourceTree = "<group>"; };
+		F5D366FF19DEA2670062B013 /* SWFNewsSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFNewsSwipeViewController.h; sourceTree = "<group>"; };
+		F5D3670019DEA2670062B013 /* SWFNewsSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFNewsSwipeViewController.m; sourceTree = "<group>"; };
+		F5D3670119DEA2670062B013 /* SWFNewsSwipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWFNewsSwipeViewController.xib; sourceTree = "<group>"; };
 		F5D53B99177DFE3200F86AD8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F5E2C6B01824EE5900385EE5 /* SWFNewThreadCountPoll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWFNewThreadCountPoll.h; path = SWFCore/SWFNewThreadCountPoll.h; sourceTree = "<group>"; };
 		F5E2C6B11824EE5900385EE5 /* SWFNewThreadCountPoll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWFNewThreadCountPoll.m; path = SWFCore/SWFNewThreadCountPoll.m; sourceTree = "<group>"; };
@@ -2351,9 +2351,9 @@
 		F5D366FB19DE9FF60062B013 /* SwipeViews */ = {
 			isa = PBXGroup;
 			children = (
-				F5D366FF19DEA2670062B013 /* SWFSwipeViewController.h */,
-				F5D3670019DEA2670062B013 /* SWFSwipeViewController.m */,
-				F5D3670119DEA2670062B013 /* SWFSwipeViewController.xib */,
+				F5D366FF19DEA2670062B013 /* SWFNewsSwipeViewController.h */,
+				F5D3670019DEA2670062B013 /* SWFNewsSwipeViewController.m */,
+				F5D3670119DEA2670062B013 /* SWFNewsSwipeViewController.xib */,
 			);
 			name = SwipeViews;
 			sourceTree = "<group>";
@@ -3029,7 +3029,7 @@
 				F57E51E417A2BFBB00B2F264 /* wavegrid_@2X.png in Resources */,
 				F57E51E517A2BFBB00B2F264 /* wavegrid.png in Resources */,
 				F57E51EA17A32B7500B2F264 /* SWFNewsTrendViewController.xib in Resources */,
-				F5D3670319DEA2670062B013 /* SWFSwipeViewController.xib in Resources */,
+				F5D3670319DEA2670062B013 /* SWFNewsSwipeViewController.xib in Resources */,
 				F5B11FB617E7699000AF9674 /* SWFRecordAnimatedViewController.xib in Resources */,
 				F57E51F917A3C47600B2F264 /* trendIcon_tool.png in Resources */,
 				F57E51FA17A3C47600B2F264 /* trendIcon_tool@2x.png in Resources */,
@@ -3314,7 +3314,7 @@
 				F55070D017D788A00038CBED /* SWFLoadingHUD.m in Sources */,
 				F57749CD181E90D1003CD833 /* SWFAliveUserViewController.m in Sources */,
 				F5F8D73519DD7CF300ECB5E6 /* UIView+Toast.m in Sources */,
-				F5D3670219DEA2670062B013 /* SWFSwipeViewController.m in Sources */,
+				F5D3670219DEA2670062B013 /* SWFNewsSwipeViewController.m in Sources */,
 				F56A37C117D9046C00E9DCBC /* SWFRegDevicePNSRequest.m in Sources */,
 				F587F6FA17D9354D0015E34A /* SWFPopNewPostsRequest.m in Sources */,
 			);

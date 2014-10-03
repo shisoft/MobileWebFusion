@@ -188,7 +188,7 @@ AVAudioPlayer *audioPlayer;
 //    if ([SWFAppDelegate getCenterViewController:@"SWFPreferencesViewController"] == nil) {
 //        [SWFAppDelegate putCenterViewController:@"SWFPreferencesViewController" controller:  [SWFAppDelegate wrapCenterView:[[SWFPreferencesViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"preferences-lite"]]]];
 //    }
-    [SWFAppDelegate generateCenterView:[SWFPreferencesViewController class] name:@"SWFPreferencesViewController"];
+    //[SWFAppDelegate generateCenterView:[SWFPreferencesViewController class] name:@"SWFPreferencesViewController"];
 }
 
 - (void)onDiscover:(QLabelElement *)buttonElement {

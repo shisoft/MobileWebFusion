@@ -150,7 +150,7 @@ BOOL logging = YES;
     
     UIViewController* contactView = [SWFAppDelegate generateCenterView:[SWFContactsViewController class] name:@"SWFContactsViewController"];
     
-    UIViewController* myView = [SWFAppDelegate generateCenterView:[SWFPreferencesViewController class] name:@"SWFPreferencesViewController"];
+    UIViewController* myView = [SWFAppDelegate wrapCenterView:[[SWFPreferencesViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"preferences-lite"]]];
     
     swfad.rootViewController.viewControllers = [NSArray arrayWithObjects:newsSwipeView,
                                                 topicView,

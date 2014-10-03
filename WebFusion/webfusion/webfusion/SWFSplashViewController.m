@@ -152,7 +152,22 @@ BOOL logging = YES;
     
     UIViewController* myView = [SWFAppDelegate generateCenterView:[SWFPreferencesViewController class] name:@"SWFPreferencesViewController"];
     
-    UIViewController* centerController = [SWFAppDelegate wrapCenterView:[[SWFNewsViewController alloc] initWithNibName:@"SWFNewsViewController" bundle:nil]];
+    swfad.rootViewController.viewControllers = [NSArray arrayWithObjects:newsSwipeView,
+                                                topicView,
+                                                contactView,
+                                                myView, nil];
+    
+    NSArray* tabButtons = swfad.rootViewController.tabBar.items;
+    
+    UITabBarItem* newsTabButton = [tabButtons objectAtIndex:0];
+    UITabBarItem* topicTabButton = [tabButtons objectAtIndex:1];
+    UITabBarItem* contactTabButton = [tabButtons objectAtIndex:2];
+    UITabBarItem* myTabButton = [tabButtons objectAtIndex:3];
+
+    [newsTabButton setImage:[UIImage imageNamed:@"thin-010_newspaper_reading_news"]];
+    [topicTabButton setImage:[UIImage imageNamed:@"thin-038_comment_chat_message"]];
+    [contactTabButton setImage:[UIImage imageNamed:@"thin-326_phone_book_number_contact_profiles"]];
+    [myTabButton setImage:[UIImage imageNamed:@"thin-191_user_profile_avatar"]];
 
     [swfad.window.rootViewController removeFromParentViewController];
     swfad.window.rootViewController = swfad.rootViewController;

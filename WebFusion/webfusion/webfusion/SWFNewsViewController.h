@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SWFNavedCenterViewController.h"
+#import "SWFTrackedViewController.h"
 #import "SWFNews.h"
 #import "SWFNewsDelegates.h"
 #import "SWFPoll.h"
 
-@interface SWFNewsViewController : SWFNavedCenterViewController <SWFPollDelegate>
+@interface SWFNewsViewController : SWFTrackedViewController <SWFPollDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWebView *newsWebView;
 @property int unread;

@@ -14,7 +14,6 @@
 #import "SWFWebBrowserViewController.h"
 #import "SWFNewsDelegates.h"
 #import "SWFNewsPoll.h"
-#import "SWFLeftSideMenuViewController.h"
 
 @interface SWFNewsViewController ()
 

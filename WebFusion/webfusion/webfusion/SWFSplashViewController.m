@@ -138,13 +138,16 @@ BOOL logging = YES;
     SWFAppDelegate *swfad = [SWFAppDelegate getDefaultInstance];
     swfad.rootViewController = [[UITabBarController alloc] init];
     
-    SWFSwipeViewController* newsSwipeView = [[SWFSwipeViewController alloc] initWithViewControllersToSwap:
-                                             [NSArray arrayWithObjects:
-                                              [SWFAppDelegate generateCenterView:[SWFNewsViewController class] name:@"SWFNewsViewController"],
-                                              [SWFAppDelegate generateCenterView:[SWFDiscoverViewController class] name:@"SWFDiscoverViewController"],
-                                              [SWFAppDelegate generateCenterView:[SWFSearchNewsViewController class] name:@"SWFSearchNewsViewController"],
-                                              [SWFAppDelegate generateCenterView:[SWFNewsTrendViewController class] name:@"SWFNewsTrendViewController"],
-                                              nil]];
+   
+    UIViewController* newsSwipeView = [[SWFSwipeViewController alloc] initWithViewControllersToSwap:
+                                       [NSArray arrayWithObjects:
+                                        [[SWFNewsViewController alloc] initWithNibName:@"SWFNewsViewController" bundle:nil],
+                                        [[SWFDiscoverViewController alloc] initWithNibName:@"SWFDiscoverViewController" bundle:nil],
+                                        [[SWFSearchNewsViewController alloc] initWithNibName:@"SWFSearchNewsViewController" bundle:nil],
+                                        [[SWFNewsTrendViewController alloc] initWithNibName:@"SWFNewsTrendViewController" bundle:nil],
+                                        nil]];
+    
+    UIViewController* newsView = [SWFAppDelegate wrapCenterView:newsSwipeView];
     
     UIViewController* topicView = [SWFAppDelegate generateCenterView:[SWFTopicsViewController class] name:@"SWFTopicsViewController"];
     
@@ -152,10 +155,12 @@ BOOL logging = YES;
     
     UIViewController* myView = [SWFAppDelegate wrapCenterView:[[SWFPreferencesViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"preferences-lite"]]];
     
-    swfad.rootViewController.viewControllers = [NSArray arrayWithObjects:newsSwipeView,
+    swfad.rootViewController.viewControllers = [NSArray arrayWithObjects:
+                                                newsView,
                                                 topicView,
                                                 contactView,
-                                                myView, nil];
+                                                myView,
+                                                nil];
     
     NSArray* tabButtons = swfad.rootViewController.tabBar.items;
     
@@ -173,6 +178,8 @@ BOOL logging = YES;
     [topicTabButton setTitle:NSLocalizedString(@"ui.tab.topic", nil)];
     [contactTabButton setTitle:NSLocalizedString(@"ui.tab.contact", nil)];
     [myTabButton setTitle:NSLocalizedString(@"ui.tab.my", nil)];
+    
+    [newsSwipeView setTitle:NSLocalizedString(@"ui.tab.news", nil)];
 
     [swfad.window.rootViewController removeFromParentViewController];
     swfad.window.rootViewController = swfad.rootViewController;

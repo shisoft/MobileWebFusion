@@ -12,13 +12,24 @@
 #import "SWFNewsViewController.h"
 #import "SWFSplashViewController.h"
 #import "SWFLoginViewController.h"
-#import "IIViewDeckController.h"
 #import "SWFLoginRequest.h"
 #import "SWFWrapper.h"
 #import "SWFPoll.h"
 #import "CHKeychain.h"
 #import "UIAlertView+MKBlockAdditions.h"
 #import "SWFAliveUserViewController.h"
+#import "SWFSwipeViewController.h"
+
+#import "SWFLeftSideMenuViewController.h"
+#import "SWFTopicsViewController.h"
+#import "SWFNewsViewController.h"
+#import "SWFPlacesViewController.h"
+#import "SWFContactsViewController.h"
+#import "SWFPreferencesViewController.h"
+#import "SWFBookmarkViewController.h"
+#import "SWFDiscoverViewController.h"
+#import "SWFSearchNewsViewController.h"
+#import "SWFNewsTrendViewController.h"
 
 @implementation SWFSplashViewController
 
@@ -84,7 +95,7 @@ BOOL logging = YES;
     logging = YES;
     [self rotateLogoDown1];
     [[SWFAppDelegate getDefaultInstance] login:^{
-        [self gotoMainView];
+        [self constructureMainView];
     } onWrong:^{
         [self gotoLoginView];
     } onFailed:^{
@@ -122,30 +133,52 @@ BOOL logging = YES;
 }
 
 - (void)gotoRegisterView{}
-- (void)gotoMainView{
+
+- (void)constructureMainView{
     SWFAppDelegate *swfad = [SWFAppDelegate getDefaultInstance];
-    UIViewController* centerController = [SWFAppDelegate wrapCenterView:[[SWFNewsViewController alloc] initWithNibName:@"SWFNewsViewController" bundle:nil]];
-    SWFLeftSideMenuViewController* leftController = [[SWFLeftSideMenuViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"leftsidebar"]];
-    UINavigationController *lnc = [[UINavigationController alloc] initWithRootViewController:leftController];
+    swfad.rootViewController = [[UITabBarController alloc] init];
     
-    swfad.leftSidebar = leftController;
+    SWFSwipeViewController* newsSwipeView = [[SWFSwipeViewController alloc] initWithViewControllersToSwap:
+                                             [NSArray arrayWithObjects:
+                                              [SWFAppDelegate generateCenterView:[SWFNewsViewController class] name:@"SWFNewsViewController"],
+                                              [SWFAppDelegate generateCenterView:[SWFDiscoverViewController class] name:@"SWFDiscoverViewController"],
+                                              [SWFAppDelegate generateCenterView:[SWFSearchNewsViewController class] name:@"SWFSearchNewsViewController"],
+                                              [SWFAppDelegate generateCenterView:[SWFNewsTrendViewController class] name:@"SWFNewsTrendViewController"],
+                                              nil]];
     
-    SWFAliveUserViewController *auvc = [[SWFAliveUserViewController alloc] init];
-    UINavigationController *rnc = [[UINavigationController alloc] initWithRootViewController:auvc];
+    UIViewController* topicView = [SWFAppDelegate generateCenterView:[SWFTopicsViewController class] name:@"SWFTopicsViewController"];
     
-    IIViewDeckController* deckController = [[IIViewDeckController alloc] initWithCenterViewController:centerController
-                                                                                   leftViewController:lnc
-                                                                                  rightViewController:rnc];
-    deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToClose;
-    deckController.delegateMode = IIViewDeckDelegateAndSubControllers;
-    swfad.deckViewController = deckController;
+    UIViewController* contactView = [SWFAppDelegate generateCenterView:[SWFContactsViewController class] name:@"SWFContactsViewController"];
+    
+    UIViewController* myView = [SWFAppDelegate wrapCenterView:[[SWFPreferencesViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"preferences-lite"]]];
+    
+    swfad.rootViewController.viewControllers = [NSArray arrayWithObjects:newsSwipeView,
+                                                topicView,
+                                                contactView,
+                                                myView, nil];
+    
+    NSArray* tabButtons = swfad.rootViewController.tabBar.items;
+    
+    UITabBarItem* newsTabButton = [tabButtons objectAtIndex:0];
+    UITabBarItem* topicTabButton = [tabButtons objectAtIndex:1];
+    UITabBarItem* contactTabButton = [tabButtons objectAtIndex:2];
+    UITabBarItem* myTabButton = [tabButtons objectAtIndex:3];
+
+    [newsTabButton setImage:[UIImage imageNamed:@"thin-010_newspaper_reading_news"]];
+    [topicTabButton setImage:[UIImage imageNamed:@"thin-038_comment_chat_message"]];
+    [contactTabButton setImage:[UIImage imageNamed:@"thin-326_phone_book_number_contact_profiles"]];
+    [myTabButton setImage:[UIImage imageNamed:@"thin-191_user_profile_avatar"]];
+    
+    [newsTabButton setTitle:NSLocalizedString(@"ui.tab.news", nil)];
+    [topicTabButton setTitle:NSLocalizedString(@"ui.tab.topic", nil)];
+    [contactTabButton setTitle:NSLocalizedString(@"ui.tab.contact", nil)];
+    [myTabButton setTitle:NSLocalizedString(@"ui.tab.my", nil)];
+
     [swfad.window.rootViewController removeFromParentViewController];
-    swfad.window.rootViewController = deckController;
+    swfad.window.rootViewController = swfad.rootViewController;
     [self dismissViewControllerAnimated:NO completion:nil];
     [self.view removeFromSuperview];
     [self removeFromParentViewController];
-    [deckController previewBounceView:IIViewDeckLeftSide];
-    [SWFAppDelegate putCenterViewController:@"SWFNewsViewController" controller:centerController];
 }
 
 BOOL ani = YES;

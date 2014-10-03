@@ -17,6 +17,10 @@
 "Dismiss" = "確定";
 
 
+"ui.tab.news" = "新鮮事";
+"ui.tab.topic" = "主題";
+"ui.tab.contact" = "聯繫人";
+"ui.tab.my" = "我的";
 "ui.ok" = "確定";
 "ui.messages-no" = "條消息";
 "ui.cancel" = "取消";

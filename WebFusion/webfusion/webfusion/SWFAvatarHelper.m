@@ -74,10 +74,10 @@ dispatch_queue_t SWFDispatchQueueForHost(NSString *host)
         SWFAvatarQueues = [NSMutableDictionary dictionary];
     
     if (!SWFAvatarQueues[host])
-        SWFAvatarQueues[host] = (__bridge id)(dispatch_queue_create([[NSString stringWithFormat:@"net.shisoft.webfusion.avatar.%@",
+        SWFAvatarQueues[host] = (dispatch_queue_create([[NSString stringWithFormat:@"net.shisoft.webfusion.avatar.%@",
                                                        host] cStringUsingEncoding:NSUTF8StringEncoding], 0));
     
-    return (__bridge dispatch_queue_t)(SWFAvatarQueues[host]);
+    return (SWFAvatarQueues[host]);
 }
 
 @end

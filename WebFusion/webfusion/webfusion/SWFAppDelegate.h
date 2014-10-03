@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IIWrapController.h"
-#import "IIViewDeckController.h"
 #import "SWFLeftSideMenuViewController.h"
 
 extern NSString *const SWFUserNameKeychainItemName;
@@ -25,21 +23,16 @@ extern dispatch_group_t SWFBackgroundTasks;
 
 + (instancetype) getDefaultInstance;
 + (UINavigationController*)wrapCenterView:(UIViewController*) viewController;
-+ (void)switchCenterView:(Class) class name:(NSString*)name;
-+ (UINavigationController*)getCenterViewController:(NSString*)name;
-+ (void) putCenterViewController:(NSString*)name controller:(UIViewController*)controller;
++ (UIViewController*)generateCenterView:(Class) class name:(NSString*)name;
 
 @property BOOL connected;
-@property (nonatomic,strong) IIWrapController *rootViewController;
+@property (nonatomic,strong) UITabBarController *rootViewController;
 @property  (nonatomic) dispatch_group_t SWFBackgroundTasks;
-@property  (nonatomic,strong)IIViewDeckController *deckViewController;
 @property  (nonatomic,strong) NSString *currentUser;
 
 @property NSMutableDictionary *userFeatures;
 
 @property BOOL networkWatcherActiviated;
-
-@property SWFLeftSideMenuViewController *leftSidebar;
 
 - (BOOL) hasFeature:(NSString*)feature;
 - (BOOL) hasFeature:(NSString*)feature ucid:(id)ucid;

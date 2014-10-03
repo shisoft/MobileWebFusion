@@ -9,6 +9,12 @@
 "appName"             = "WebFusion";
 
 /* UI elements */
+
+
+"ui.tab.news" = "News";
+"ui.tab.topic" = "Topics";
+"ui.tab.contact" = "Contacts";
+"ui.tab.my" = "My";
 "ui.ok"             = "OK";
 "ui.messages-no"    = "New Messages";
 "ui.cancel"         = "Cancel";

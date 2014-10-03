@@ -13,7 +13,6 @@
 #import "SWFAliveContactItem.h"
 #import "SWFUniversalContact.h"
 #import "SWFTopicMessageViewController.h"
-#import "IIViewDeckController.h"
 #import "SWFAliveContactPoll.h"
 
 @interface SWFAliveUserViewController ()
@@ -191,31 +190,31 @@ static NSString *SWFTableCellLoadingIdentifer = @"CellTableLoadingIdentifier";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UINavigationController *vc = [SWFAppDelegate getCenterViewController:@"SWFUserContactPrivateConversationViewController"];
-        if (vc == nil) {
-            vc = [SWFAppDelegate wrapCenterView:[[SWFTopicMessageViewController alloc] init]];
-            [SWFAppDelegate putCenterViewController:@"SWFUserContactPrivateConversationViewController" controller: vc];
-        }
-        SWFTopicMessageViewController *ucpcvc = vc.viewControllers[0];
-        IIViewDeckController *vdc = [SWFAppDelegate getDefaultInstance].deckViewController;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*0.2),dispatch_get_main_queue(), ^{
-            [vdc closeRightViewBouncing:^(IIViewDeckController *controller) {
-                vdc.centerController = vc;
-                SWFAliveContactItem *aci = nil;
-                if (self.searchResult) {
-                    aci = [self.searchResult objectAtIndex:indexPath.row];
-                }else{
-                    aci = [self.aliveContacts objectAtIndex:indexPath.row];
-                }
-                ucpcvc.title = aci.uc.name;
-                [ucpcvc.txMessage becomeFirstResponder];
-                [ucpcvc.webView loadHTMLString:@"" baseURL:nil];
-                [ucpcvc loadUserContactPrivateConversation:aci.uc];
-            }];
-        });
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    });
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        UINavigationController *vc = [SWFAppDelegate getCenterViewController:@"SWFUserContactPrivateConversationViewController"];
+//        if (vc == nil) {
+//            vc = [SWFAppDelegate wrapCenterView:[[SWFTopicMessageViewController alloc] init]];
+//            [SWFAppDelegate putCenterViewController:@"SWFUserContactPrivateConversationViewController" controller: vc];
+//        }
+//        SWFTopicMessageViewController *ucpcvc = vc.viewControllers[0];
+//        IIViewDeckController *vdc = [SWFAppDelegate getDefaultInstance].deckViewController;
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*0.2),dispatch_get_main_queue(), ^{
+//            [vdc closeRightViewBouncing:^(IIViewDeckController *controller) {
+//                vdc.centerController = vc;
+//                SWFAliveContactItem *aci = nil;
+//                if (self.searchResult) {
+//                    aci = [self.searchResult objectAtIndex:indexPath.row];
+//                }else{
+//                    aci = [self.aliveContacts objectAtIndex:indexPath.row];
+//                }
+//                ucpcvc.title = aci.uc.name;
+//                [ucpcvc.txMessage becomeFirstResponder];
+//                [ucpcvc.webView loadHTMLString:@"" baseURL:nil];
+//                [ucpcvc loadUserContactPrivateConversation:aci.uc];
+//            }];
+//        });
+//        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    });
 }
 
 - (id)poll:(SWFPoll *)poll objectForKey:(NSString *)key

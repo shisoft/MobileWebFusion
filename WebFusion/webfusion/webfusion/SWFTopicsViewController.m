@@ -139,8 +139,8 @@ static NSString *SWFTableCellLoadingIdentifer = @"CellTableLoadingIdentifier";
             cells = [NSMutableArray arrayWithCapacity:[topicsResponse count]];
             topics = [NSMutableArray arrayWithCapacity:[topicsResponse count]];
             [[[SWFPopNewPostsRequest alloc] init] popNewPosts];
-            [SWFAppDelegate getDefaultInstance].leftSidebar.threadBadge.badge = nil;
-            [[SWFAppDelegate getDefaultInstance].leftSidebar reloadList];
+//            [SWFAppDelegate getDefaultInstance].leftSidebar.threadBadge.badge = nil;
+//            [[SWFAppDelegate getDefaultInstance].leftSidebar reloadList];
         }
         for (SWFPost *p in topicsResponse){
             [cells addObject:[[SWFTopicCellViewController alloc] initWithPost:p UIVC:self]];

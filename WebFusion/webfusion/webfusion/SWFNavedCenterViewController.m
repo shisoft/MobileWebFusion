@@ -14,8 +14,6 @@
 
 @implementation SWFNavedCenterViewController
 
-@synthesize deckController;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,8 +26,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    deckController = [SWFAppDelegate getDefaultInstance].deckViewController;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"items_tool"] style:UIBarButtonItemStylePlain target:self action:@selector(toggleLeftView)];
     if (!self.barTintColor) {
         [self changeNavBarColor:[[UIColor alloc] initWithRed:0 green:68 / 255.0 blue:95 / 225.0 alpha:1.0]];
     }
@@ -80,10 +76,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (BOOL)toggleLeftView {
-    return [deckController toggleLeftViewAnimated:YES];
 }
 
 @end

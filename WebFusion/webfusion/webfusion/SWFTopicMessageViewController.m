@@ -124,16 +124,12 @@
     });
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
         self.txMessage.placeholder = [NSString stringWithFormat: NSLocalizedString(@"ui.sendToReceiver", @""), uc.name];
-        [[SWFAppDelegate getDefaultInstance].leftSidebar.quickDialogTableView reloadData];
+        //[[SWFAppDelegate getDefaultInstance].leftSidebar.quickDialogTableView reloadData];
         if(self.navigationItem.rightBarButtonItem == nil){
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(toUCBar)];
         }
     });
     [self startPoll];
-}
-
-- (void) toUCBar{
-    [[SWFAppDelegate getDefaultInstance].deckViewController openRightViewAnimated:YES];
 }
 
 - (void) refreshLoadNews:(NSArray*) array{

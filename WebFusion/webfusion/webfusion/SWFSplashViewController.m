@@ -95,7 +95,9 @@ BOOL logging = YES;
     logging = YES;
     [self rotateLogoDown1];
     [[SWFAppDelegate getDefaultInstance] login:^{
-        [self constructureMainView];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [self constructureMainView];
+        });
     } onWrong:^{
         [self gotoLoginView];
     } onFailed:^{

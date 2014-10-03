@@ -168,6 +168,11 @@ BOOL logging = YES;
     [topicTabButton setImage:[UIImage imageNamed:@"thin-038_comment_chat_message"]];
     [contactTabButton setImage:[UIImage imageNamed:@"thin-326_phone_book_number_contact_profiles"]];
     [myTabButton setImage:[UIImage imageNamed:@"thin-191_user_profile_avatar"]];
+    
+    [newsTabButton setTitle:NSLocalizedString(@"ui.tab.news", nil)];
+    [topicTabButton setTitle:NSLocalizedString(@"ui.tab.topic", nil)];
+    [contactTabButton setTitle:NSLocalizedString(@"ui.tab.contact", nil)];
+    [myTabButton setTitle:NSLocalizedString(@"ui.tab.my", nil)];
 
     [swfad.window.rootViewController removeFromParentViewController];
     swfad.window.rootViewController = swfad.rootViewController;

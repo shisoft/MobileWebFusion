@@ -16,7 +16,10 @@
 "Done"              = "完成";
 "Dismiss"           = "确定";
 
-
+"ui.tab.news"       = "新鲜事";
+"ui.tab.topic"      = "主题";
+"ui.tab.contact"    = "联系人";
+"ui.tab.my"         = "我的";
 "ui.ok"             = "确定";
 "ui.messages-no"    = "条消息";
 "ui.cancel"         = "取消";

@@ -22,6 +22,7 @@
 @implementation SWFNewsViewController
 
 @synthesize newsWebView;
+@synthesize navItem;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,8 +38,6 @@
 {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"func.news", @"");
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]  initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(compose)];
-    self.navigationItem.rightBarButtonItem.enabled = NO;
     self.delegates = [[SWFNewsDelegates alloc] initWithWebView:self.newsWebView ViewController:self getNews:^{
         SWFNewsRequest *newsRequest = [[SWFNewsRequest alloc] init];
         newsRequest.count = SWFItemFetchCount;
@@ -53,16 +52,18 @@
         [this refreshBadge];
         [[SWFPoll defaultPoll] repoll];
     };
+    [self.delegates manualInsets];
     [self.delegates loadNews];
-        // Do any additional setup after loading the view from its nib.
+            // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.navItem.rightBarButtonItem = [[UIBarButtonItem alloc]  initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(compose)];
+    self.navItem.rightBarButtonItem.enabled = NO;
     dispatch_group_async([SWFAppDelegate getDefaultInstance].SWFBackgroundTasks, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
         bool canSend = [[SWFAppDelegate getDefaultInstance] hasFeature:@"CanBoradcast,CanBoradcastImage,CanBoradcastBlog"];
         dispatch_async(dispatch_get_main_queue(),^{
-            self.navigationItem.rightBarButtonItem.enabled = canSend;
+            self.navItem.rightBarButtonItem.enabled = canSend;
         });
     });
 }

@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Shisoft Corporation. All rights reserved.
 //
 
-#import "SWFSwipeViewController.h"
+#import "SWFNewsSwipeViewController.h"
 
-@interface SWFSwipeViewController ()
+@interface SWFNewsSwipeViewController ()
 
 @end
 
-@implementation SWFSwipeViewController
+@implementation SWFNewsSwipeViewController
 
--(SWFSwipeViewController*) initWithViewControllersToSwap:(NSArray *)vcs{
-    self = [self initWithNibName:@"SWFSwipeViewController" bundle:nil];
+-(SWFNewsSwipeViewController*) initWithViewControllersToSwap:(NSArray *)vcs{
+    self = [self initWithNibName:@"SWFNewsSwipeViewController" bundle:nil];
     self.views = vcs;
     _swipeView.alignment = SwipeViewAlignmentEdge;
     _swipeView.pagingEnabled = true;

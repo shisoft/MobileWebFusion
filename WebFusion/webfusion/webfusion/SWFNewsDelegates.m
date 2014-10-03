@@ -36,6 +36,15 @@
     return self;
 }
 
+- (void)manualInsets{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        UIEdgeInsets insets = UIEdgeInsetsMake(48, 0, 65, 0);
+        self.newsWebView.scrollView.contentOffset = CGPointMake(_newsWebView.frame.origin.x, _newsWebView.frame.origin.y - 54);
+        self.newsWebView.scrollView.scrollIndicatorInsets = insets;
+        self.newsWebView.scrollView.contentInset = insets;
+    });
+}
+
 - (void)displayAd:(UIWebView*)webView{
     if(self.adDelegates){
         return;

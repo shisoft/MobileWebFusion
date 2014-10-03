@@ -18,7 +18,7 @@
 #import "CHKeychain.h"
 #import "UIAlertView+MKBlockAdditions.h"
 #import "SWFAliveUserViewController.h"
-#import "SWFSwipeViewController.h"
+#import "SWFNewsSwipeViewController.h"
 
 #import "SWFLeftSideMenuViewController.h"
 #import "SWFTopicsViewController.h"
@@ -138,16 +138,21 @@ BOOL logging = YES;
     SWFAppDelegate *swfad = [SWFAppDelegate getDefaultInstance];
     swfad.rootViewController = [[UITabBarController alloc] init];
     
+    
+    SWFNewsViewController* newsVC = [[SWFNewsViewController alloc] initWithNibName:@"SWFNewsViewController" bundle:nil];
+    SWFDiscoverViewController* discoverVC = [[SWFDiscoverViewController alloc] initWithNibName:@"SWFDiscoverViewController" bundle:nil];
+    SWFSearchNewsViewController* searchVC = [[SWFSearchNewsViewController alloc] initWithNibName:@"SWFSearchNewsViewController" bundle:nil];
+    SWFNewsTrendViewController* trendVC = [[SWFNewsTrendViewController alloc] initWithNibName:@"SWFNewsTrendViewController" bundle:nil];
    
-    UIViewController* newsSwipeView = [[SWFSwipeViewController alloc] initWithViewControllersToSwap:
+    UIViewController* newsSwipeView = [[SWFNewsSwipeViewController alloc] initWithViewControllersToSwap:
                                        [NSArray arrayWithObjects:
-                                        [[SWFNewsViewController alloc] initWithNibName:@"SWFNewsViewController" bundle:nil],
-                                        [[SWFDiscoverViewController alloc] initWithNibName:@"SWFDiscoverViewController" bundle:nil],
-                                        [[SWFSearchNewsViewController alloc] initWithNibName:@"SWFSearchNewsViewController" bundle:nil],
-                                        [[SWFNewsTrendViewController alloc] initWithNibName:@"SWFNewsTrendViewController" bundle:nil],
+                                        newsVC,
+                                        discoverVC,
+                                        searchVC,
+                                        trendVC,
                                         nil]];
     
-    UIViewController* newsView = [SWFAppDelegate wrapCenterView:newsSwipeView];
+    UINavigationController* newsView = [SWFAppDelegate wrapCenterView:newsSwipeView];
     
     UIViewController* topicView = [SWFAppDelegate generateCenterView:[SWFTopicsViewController class] name:@"SWFTopicsViewController"];
     
@@ -155,12 +160,15 @@ BOOL logging = YES;
     
     UIViewController* myView = [SWFAppDelegate wrapCenterView:[[SWFPreferencesViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"preferences-lite"]]];
     
+    newsVC.navItem = newsSwipeView.navigationItem;
+    
     swfad.rootViewController.viewControllers = [NSArray arrayWithObjects:
                                                 newsView,
                                                 topicView,
                                                 contactView,
                                                 myView,
                                                 nil];
+
     
     NSArray* tabButtons = swfad.rootViewController.tabBar.items;
     

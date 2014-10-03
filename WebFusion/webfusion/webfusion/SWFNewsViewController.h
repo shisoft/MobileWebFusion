@@ -18,5 +18,6 @@
 @property int unread;
 
 @property SWFNewsDelegates *delegates;
+@property UINavigationItem* navItem;
 
 @end

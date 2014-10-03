@@ -374,6 +374,9 @@
 		F5CEC51A178219E700A6450E /* SWFNavedCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CEC519178219E700A6450E /* SWFNavedCenterViewController.m */; };
 		F5CEC51E1782206E00A6450E /* SWFTopicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CEC51C1782206D00A6450E /* SWFTopicsViewController.m */; };
 		F5CEC51F1782206E00A6450E /* SWFTopicsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5CEC51D1782206E00A6450E /* SWFTopicsViewController.xib */; };
+		F5D366FA19DE99800062B013 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D366F919DE99800062B013 /* SwipeView.m */; };
+		F5D3670219DEA2670062B013 /* SWFSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D3670019DEA2670062B013 /* SWFSwipeViewController.m */; };
+		F5D3670319DEA2670062B013 /* SWFSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D3670119DEA2670062B013 /* SWFSwipeViewController.xib */; };
 		F5D53B9A177DFE3200F86AD8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D53B99177DFE3200F86AD8 /* QuartzCore.framework */; };
 		F5E2C6B21824EE5900385EE5 /* SWFNewThreadCountPoll.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E2C6B11824EE5900385EE5 /* SWFNewThreadCountPoll.m */; };
 		F5E2C6B41824F63000385EE5 /* newMsg.aif in Resources */ = {isa = PBXBuildFile; fileRef = F5E2C6B31824F63000385EE5 /* newMsg.aif */; };
@@ -514,12 +517,10 @@
 		F5F8D84B19DD857E00ECB5E6 /* QuickDialogTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F8D80F19DD857E00ECB5E6 /* QuickDialogTableView.m */; };
 		F5F8D84C19DD857E00ECB5E6 /* QuickDialogWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F8D81119DD857E00ECB5E6 /* QuickDialogWebController.m */; };
 		F5F8D85219DD866200ECB5E6 /* TITokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F8D85019DD866200ECB5E6 /* TITokenField.m */; };
-		F5F8D85919DD869600ECB5E6 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F8D85419DD869600ECB5E6 /* IISideController.m */; };
-		F5F8D85A19DD869600ECB5E6 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F8D85619DD869600ECB5E6 /* IIViewDeckController.m */; };
-		F5F8D85B19DD869600ECB5E6 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F8D85819DD869600ECB5E6 /* IIWrapController.m */; };
 		F5F8D86019DD89C600ECB5E6 /* QDateInlineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F8D85F19DD89C600ECB5E6 /* QDateInlineTableViewCell.m */; };
 		F5F8D86219DDEA9600ECB5E6 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F8D86119DDEA9600ECB5E6 /* libGoogleAnalyticsServices.a */; };
 		F5F8D86A19DDEAEF00ECB5E6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F8D86919DDEAEF00ECB5E6 /* libsqlite3.dylib */; };
+		F5F8D88119DE0B6100ECB5E6 /* MainTabController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5F8D88019DE0B6100ECB5E6 /* MainTabController.xib */; };
 		F5F9263B178BF85600F5CEF9 /* SWFUITopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F9263A178BF85600F5CEF9 /* SWFUITopicCell.m */; };
 		F5F9263D178BF8AA00F5CEF9 /* SWFUITopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5F9263C178BF8AA00F5CEF9 /* SWFUITopicCell.xib */; };
 		F5F92647178C7CCF00F5CEF9 /* SWFPost.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F92646178C7CCE00F5CEF9 /* SWFPost.m */; };
@@ -1032,6 +1033,11 @@
 		F5CEC51B1782206D00A6450E /* SWFTopicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFTopicsViewController.h; sourceTree = "<group>"; };
 		F5CEC51C1782206D00A6450E /* SWFTopicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFTopicsViewController.m; sourceTree = "<group>"; };
 		F5CEC51D1782206E00A6450E /* SWFTopicsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWFTopicsViewController.xib; sourceTree = "<group>"; };
+		F5D366F819DE99800062B013 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
+		F5D366F919DE99800062B013 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
+		F5D366FF19DEA2670062B013 /* SWFSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFSwipeViewController.h; sourceTree = "<group>"; };
+		F5D3670019DEA2670062B013 /* SWFSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFSwipeViewController.m; sourceTree = "<group>"; };
+		F5D3670119DEA2670062B013 /* SWFSwipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWFSwipeViewController.xib; sourceTree = "<group>"; };
 		F5D53B99177DFE3200F86AD8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F5E2C6B01824EE5900385EE5 /* SWFNewThreadCountPoll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWFNewThreadCountPoll.h; path = SWFCore/SWFNewThreadCountPoll.h; sourceTree = "<group>"; };
 		F5E2C6B11824EE5900385EE5 /* SWFNewThreadCountPoll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWFNewThreadCountPoll.m; path = SWFCore/SWFNewThreadCountPoll.m; sourceTree = "<group>"; };
@@ -1341,12 +1347,6 @@
 		F5F8D81119DD857E00ECB5E6 /* QuickDialogWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickDialogWebController.m; sourceTree = "<group>"; };
 		F5F8D84F19DD866200ECB5E6 /* TITokenField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TITokenField.h; sourceTree = "<group>"; };
 		F5F8D85019DD866200ECB5E6 /* TITokenField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TITokenField.m; sourceTree = "<group>"; };
-		F5F8D85319DD869600ECB5E6 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
-		F5F8D85419DD869600ECB5E6 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
-		F5F8D85519DD869600ECB5E6 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
-		F5F8D85619DD869600ECB5E6 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
-		F5F8D85719DD869600ECB5E6 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
-		F5F8D85819DD869600ECB5E6 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
 		F5F8D85C19DD878300ECB5E6 /* QuickDialogDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickDialogDelegate.h; sourceTree = "<group>"; };
 		F5F8D85D19DD897E00ECB5E6 /* AppiraterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppiraterDelegate.h; sourceTree = "<group>"; };
 		F5F8D85E19DD89C600ECB5E6 /* QDateInlineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDateInlineTableViewCell.h; sourceTree = "<group>"; };
@@ -1359,6 +1359,7 @@
 		F5F8D86719DDEAA900ECB5E6 /* GAITrackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
 		F5F8D86819DDEAA900ECB5E6 /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
 		F5F8D86919DDEAEF00ECB5E6 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		F5F8D88019DE0B6100ECB5E6 /* MainTabController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTabController.xib; sourceTree = "<group>"; };
 		F5F92639178BF85600F5CEF9 /* SWFUITopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFUITopicCell.h; sourceTree = "<group>"; };
 		F5F9263A178BF85600F5CEF9 /* SWFUITopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFUITopicCell.m; sourceTree = "<group>"; };
 		F5F9263C178BF8AA00F5CEF9 /* SWFUITopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWFUITopicCell.xib; sourceTree = "<group>"; };
@@ -1499,6 +1500,7 @@
 		F503FB1C17939177003C6F3C /* Compments */ = {
 			isa = PBXGroup;
 			children = (
+				F5D366F719DE995C0062B013 /* SwipeView */,
 				F583D64D18220B6200215222 /* MSUIAdditions */,
 				F516D83E181BF86000633FBB /* ADBanner */,
 				F51906C317F5EE96008B1921 /* Google Analytics */,
@@ -1510,7 +1512,6 @@
 				F59F1F89177F8F160025FB9E /* QuickDialog */,
 				F503FB1B17939167003C6F3C /* JPSThumbnailAnnotation */,
 				F53D410A17925C440016C71E /* TITokenField */,
-				F5D53B9B177E010D00F86AD8 /* ViewDeck */,
 			);
 			name = Compments;
 			sourceTree = "<group>";
@@ -1917,6 +1918,7 @@
 				F5CEC51D1782206E00A6450E /* SWFTopicsViewController.xib */,
 				F500ABF6179BF228005AE49B /* SWFUserContactPickerViewController.xib */,
 				F5A57A2C17891FA700E628FC /* SWFWebBrowserViewController.xib */,
+				F5F8D88019DE0B6100ECB5E6 /* MainTabController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1924,6 +1926,7 @@
 		F59F1E9D177E12950025FB9E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F5D366FB19DE9FF60062B013 /* SwipeViews */,
 				F5848307179F121100F52F59 /* SWFAddAuthServiceDispatchViewController.h */,
 				F5848308179F121100F52F59 /* SWFAddAuthServiceDispatchViewController.m */,
 				F500ABDE1799A773005AE49B /* SWFAddContactViewController.h */,
@@ -2336,18 +2339,23 @@
 			path = js;
 			sourceTree = "<group>";
 		};
-		F5D53B9B177E010D00F86AD8 /* ViewDeck */ = {
+		F5D366F719DE995C0062B013 /* SwipeView */ = {
 			isa = PBXGroup;
 			children = (
-				F5F8D85319DD869600ECB5E6 /* IISideController.h */,
-				F5F8D85419DD869600ECB5E6 /* IISideController.m */,
-				F5F8D85519DD869600ECB5E6 /* IIViewDeckController.h */,
-				F5F8D85619DD869600ECB5E6 /* IIViewDeckController.m */,
-				F5F8D85719DD869600ECB5E6 /* IIWrapController.h */,
-				F5F8D85819DD869600ECB5E6 /* IIWrapController.m */,
+				F5D366F819DE99800062B013 /* SwipeView.h */,
+				F5D366F919DE99800062B013 /* SwipeView.m */,
 			);
-			name = ViewDeck;
-			path = ..;
+			name = SwipeView;
+			sourceTree = "<group>";
+		};
+		F5D366FB19DE9FF60062B013 /* SwipeViews */ = {
+			isa = PBXGroup;
+			children = (
+				F5D366FF19DEA2670062B013 /* SWFSwipeViewController.h */,
+				F5D3670019DEA2670062B013 /* SWFSwipeViewController.m */,
+				F5D3670119DEA2670062B013 /* SWFSwipeViewController.xib */,
+			);
+			name = SwipeViews;
 			sourceTree = "<group>";
 		};
 		F5EC9EBE177A0C140077E797 = {
@@ -2931,6 +2939,7 @@
 				F500AB9F179942E1005AE49B /* discuz.png in Resources */,
 				F500ABA0179942E1005AE49B /* douban.png in Resources */,
 				F500ABA1179942E1005AE49B /* dummy.png in Resources */,
+				F5F8D88119DE0B6100ECB5E6 /* MainTabController.xib in Resources */,
 				F500ABA2179942E1005AE49B /* facebook.png in Resources */,
 				F500ABA3179942E1005AE49B /* feed.png in Resources */,
 				F500ABA4179942E1005AE49B /* fetion.png in Resources */,
@@ -3020,6 +3029,7 @@
 				F57E51E417A2BFBB00B2F264 /* wavegrid_@2X.png in Resources */,
 				F57E51E517A2BFBB00B2F264 /* wavegrid.png in Resources */,
 				F57E51EA17A32B7500B2F264 /* SWFNewsTrendViewController.xib in Resources */,
+				F5D3670319DEA2670062B013 /* SWFSwipeViewController.xib in Resources */,
 				F5B11FB617E7699000AF9674 /* SWFRecordAnimatedViewController.xib in Resources */,
 				F57E51F917A3C47600B2F264 /* trendIcon_tool.png in Resources */,
 				F57E51FA17A3C47600B2F264 /* trendIcon_tool@2x.png in Resources */,
@@ -3055,7 +3065,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run c0502879ef3f1c26e0486675b716ae3a510bb103";
+			shellScript = "./Crashlytics.framework/run c0502879ef3f1c26e0486675b716ae3a510bb103 f5ec4830d0740f9b7d34f70e21de555d84ffce5ea5f031ee38bf16f35c5c6f3e";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3065,6 +3075,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5F8D84019DD857E00ECB5E6 /* QSortingSection.m in Sources */,
+				F5D366FA19DE99800062B013 /* SwipeView.m in Sources */,
 				F5EC9ED7177A0C140077E797 /* main.m in Sources */,
 				F5EC9EDB177A0C140077E797 /* SWFAppDelegate.m in Sources */,
 				F5F8D75C19DD7D2000ECB5E6 /* MBCheckMarkView.m in Sources */,
@@ -3087,7 +3098,6 @@
 				F5EC9F71177A0CDA0077E797 /* SWFMedia.m in Sources */,
 				F5F8D81419DD857E00ECB5E6 /* NSMutableArray+IMSExtensions.m in Sources */,
 				F5F8D82719DD857E00ECB5E6 /* QElement.m in Sources */,
-				F5F8D85B19DD869600ECB5E6 /* IIWrapController.m in Sources */,
 				F5F8D82519DD857E00ECB5E6 /* QDecimalTableViewCell.m in Sources */,
 				F5EC9F72177A0CDA0077E797 /* SWFNews.m in Sources */,
 				F5F8D81D19DD857E00ECB5E6 /* QBooleanElement.m in Sources */,
@@ -3198,7 +3208,6 @@
 				F5F8D81319DD857E00ECB5E6 /* DOAutocompleteTextField.m in Sources */,
 				F500ABC3179948C3005AE49B /* SWFUserContactDetails.m in Sources */,
 				F516D93C181C06B700633FBB /* SWFADBannerDelagates.m in Sources */,
-				F5F8D85919DD869600ECB5E6 /* IISideController.m in Sources */,
 				F5F8D82619DD857E00ECB5E6 /* QDynamicDataSection.m in Sources */,
 				F500ABC617994AE4005AE49B /* SWFUserContactGroup.m in Sources */,
 				F5F8D83119DD857E00ECB5E6 /* QLabelElement.m in Sources */,
@@ -3243,7 +3252,6 @@
 				F58482E9179EE9A600F52F59 /* SWFGateInfo.m in Sources */,
 				F5848303179F0AE100F52F59 /* SWFStartServiceAuthRequest.m in Sources */,
 				F5F8D60E19DD72AF00ECB5E6 /* MSRoundedRectButton.m in Sources */,
-				F5F8D85A19DD869600ECB5E6 /* IIViewDeckController.m in Sources */,
 				F5848306179F0B4B00F52F59 /* SWFOAuthURL.m in Sources */,
 				F584830A179F121200F52F59 /* SWFAddAuthServiceDispatchViewController.m in Sources */,
 				F5F8D83E19DD857E00ECB5E6 /* QSelectItemElement.m in Sources */,
@@ -3306,6 +3314,7 @@
 				F55070D017D788A00038CBED /* SWFLoadingHUD.m in Sources */,
 				F57749CD181E90D1003CD833 /* SWFAliveUserViewController.m in Sources */,
 				F5F8D73519DD7CF300ECB5E6 /* UIView+Toast.m in Sources */,
+				F5D3670219DEA2670062B013 /* SWFSwipeViewController.m in Sources */,
 				F56A37C117D9046C00E9DCBC /* SWFRegDevicePNSRequest.m in Sources */,
 				F587F6FA17D9354D0015E34A /* SWFPopNewPostsRequest.m in Sources */,
 			);
@@ -3405,7 +3414,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "webfusion/webfusion-Prefix.pch";
 				INFOPLIST_FILE = "webfusion/webfusion-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/shisoft/Downloads/GoogleAnalyticsServicesiOS_3.01,
@@ -3448,7 +3457,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "webfusion/webfusion-Prefix.pch";
 				INFOPLIST_FILE = "webfusion/webfusion-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/shisoft/Downloads/GoogleAnalyticsServicesiOS_3.01,

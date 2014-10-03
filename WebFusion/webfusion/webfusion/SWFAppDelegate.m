@@ -15,7 +15,6 @@
 #import "SWFPoll.h"
 #import "SWFSplashViewController.h"
 #import "SWFRootViewController.h"
-#import "IIWrapController.h"
 #import "SWFGetFeaturedUserServicesRequest.h"
 #import "UIAlertView+MKBlockAdditions.h"
 #import "CHKeychain.h"
@@ -32,15 +31,12 @@ NSString *const SWFUserPasswordKeychainItemName = @"net.shisoft.webfusion.keycha
 NSString *const SWFUserPasswordKeychainContainerName = @"net.shisoft.webfusion.keychainUserPasswordContainer";
 NSString *const SWFKeychainIdentifier = @"net.shisoft.webfusion.keychainIdentifier";
 NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
-NSMutableDictionary static *SWFCenterViewControllers;
-UIViewController *centerRootViewController = nil;
 
 
 @implementation SWFAppDelegate
 
 @synthesize rootViewController;
 @synthesize SWFBackgroundTasks;
-@synthesize deckViewController;
 @synthesize currentUser;
 
 
@@ -49,23 +45,10 @@ UIViewController *centerRootViewController = nil;
     return [UIApplication sharedApplication].delegate;
 }
 
-
-+ (void)switchCenterView:(Class) class name:(NSString*)name{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIViewController *vc = [self getCenterViewController:name];
-        if (vc == nil) {
-            vc = [self wrapCenterView: [[class alloc] initWithNibName:name bundle:nil]];
-            [self putCenterViewController:name controller:vc];
-        }
-        centerRootViewController = vc;
-        IIViewDeckController *vdc = [SWFAppDelegate getDefaultInstance].deckViewController;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*0.2),dispatch_get_main_queue(), ^{
-            [vdc closeLeftViewBouncing:^(IIViewDeckController *controller) {
-                vdc.centerController = vc;
-            }];
-        });
-    });
++ (UIViewController*) generateCenterView:(Class) class name:(NSString*)name{
+    return [self wrapCenterView: [[class alloc] initWithNibName:name bundle:nil]];
 }
+
 + (void)logout{
     [UIAlertView alertViewWithTitle:NSLocalizedString(@"func.logout", @"") message:NSLocalizedString(@"ui.confirmLogout", @"") cancelButtonTitle:NSLocalizedString(@"ui.cancel", @"") otherButtonTitles:[[NSArray alloc] initWithObjects:NSLocalizedString(@"ui.ok", @""), nil] onDismiss:^(int buttonIndex)
      {
@@ -86,25 +69,9 @@ UIViewController *centerRootViewController = nil;
          SWFAppDelegate *delegate = [SWFAppDelegate getDefaultInstance];
          SWFSplashViewController *splashViewController = [[SWFSplashViewController alloc] initWithNibName:@"SWFSplashViewController" bundle:nil];
          delegate.window.rootViewController = splashViewController;
-         [self purgeCenterViews];
     } onCancel:^{
         
     }];
-}
-+ (void)purgeCenterViews{
-    [SWFCenterViewControllers enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        UIViewController *vc = obj;
-        [vc removeFromParentViewController];
-    }];
-    [SWFCenterViewControllers removeAllObjects];
-}
-
-+ (UINavigationController*)getCenterViewController:(NSString*)name{
-    return [SWFCenterViewControllers objectForKey:name];
-}
-
-+ (void) putCenterViewController:(NSString*)name controller:(UIViewController*)controller{
-    [SWFCenterViewControllers setObject:controller forKey:name];
 }
 
 + (UINavigationController*)wrapCenterView:(UIViewController*) viewController{
@@ -126,7 +93,6 @@ UIViewController *centerRootViewController = nil;
                                     repeats:YES];
     [self loadAppirater];
     self.userFeatures = [[NSMutableDictionary alloc] init];
-    SWFCenterViewControllers = [[NSMutableDictionary alloc] init];
     [self initializeClient];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     SWFSplashViewController *splashViewController = [[SWFSplashViewController alloc] initWithNibName:@"SWFSplashViewController" bundle:nil];

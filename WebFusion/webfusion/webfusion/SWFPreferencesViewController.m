@@ -133,10 +133,6 @@
     }
 }
 
-- (BOOL)toggleLeftView {
-    return [[SWFAppDelegate getDefaultInstance].deckViewController toggleLeftViewAnimated:YES];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

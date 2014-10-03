@@ -106,14 +106,14 @@
 
 - (void)refreshBadge{
     dispatch_async(dispatch_get_main_queue(), ^{
-        SWFLeftSideMenuViewController *sideBar = [SWFAppDelegate getDefaultInstance].leftSidebar;
-        if (self.unread > 0)
-        {
-            sideBar.newsBadge.badge = [NSString stringWithFormat:@"%d", self.unread];
-        }else{
-            sideBar.newsBadge.badge = nil;
-        }
-        [sideBar reloadList];
+//        SWFLeftSideMenuViewController *sideBar = [SWFAppDelegate getDefaultInstance].leftSidebar;
+//        if (self.unread > 0)
+//        {
+//            sideBar.newsBadge.badge = [NSString stringWithFormat:@"%d", self.unread];
+//        }else{
+//            sideBar.newsBadge.badge = nil;
+//        }
+//        [sideBar reloadList];
     });
 }
 

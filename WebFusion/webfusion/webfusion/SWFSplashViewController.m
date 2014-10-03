@@ -12,13 +12,24 @@
 #import "SWFNewsViewController.h"
 #import "SWFSplashViewController.h"
 #import "SWFLoginViewController.h"
-#import "IIViewDeckController.h"
 #import "SWFLoginRequest.h"
 #import "SWFWrapper.h"
 #import "SWFPoll.h"
 #import "CHKeychain.h"
 #import "UIAlertView+MKBlockAdditions.h"
 #import "SWFAliveUserViewController.h"
+#import "SWFSwipeViewController.h"
+
+#import "SWFLeftSideMenuViewController.h"
+#import "SWFTopicsViewController.h"
+#import "SWFNewsViewController.h"
+#import "SWFPlacesViewController.h"
+#import "SWFContactsViewController.h"
+#import "SWFPreferencesViewController.h"
+#import "SWFBookmarkViewController.h"
+#import "SWFDiscoverViewController.h"
+#import "SWFSearchNewsViewController.h"
+#import "SWFNewsTrendViewController.h"
 
 @implementation SWFSplashViewController
 
@@ -84,7 +95,7 @@ BOOL logging = YES;
     logging = YES;
     [self rotateLogoDown1];
     [[SWFAppDelegate getDefaultInstance] login:^{
-        [self gotoMainView];
+        [self constructureMainView];
     } onWrong:^{
         [self gotoLoginView];
     } onFailed:^{
@@ -122,30 +133,32 @@ BOOL logging = YES;
 }
 
 - (void)gotoRegisterView{}
-- (void)gotoMainView{
+
+- (void)constructureMainView{
     SWFAppDelegate *swfad = [SWFAppDelegate getDefaultInstance];
+    swfad.rootViewController = [[UITabBarController alloc] init];
+    
+    SWFSwipeViewController* newsSwipeView = [[SWFSwipeViewController alloc] initWithViewControllersToSwap:
+                                             [NSArray arrayWithObjects:
+                                              [SWFAppDelegate generateCenterView:[SWFNewsViewController class] name:@"SWFNewsViewController"],
+                                              [SWFAppDelegate generateCenterView:[SWFDiscoverViewController class] name:@"SWFDiscoverViewController"],
+                                              [SWFAppDelegate generateCenterView:[SWFSearchNewsViewController class] name:@"SWFSearchNewsViewController"],
+                                              [SWFAppDelegate generateCenterView:[SWFNewsTrendViewController class] name:@"SWFNewsTrendViewController"],
+                                              nil]];
+    
+    UIViewController* topicView = [SWFAppDelegate generateCenterView:[SWFTopicsViewController class] name:@"SWFTopicsViewController"];
+    
+    UIViewController* contactView = [SWFAppDelegate generateCenterView:[SWFContactsViewController class] name:@"SWFContactsViewController"];
+    
+    UIViewController* myView = [SWFAppDelegate generateCenterView:[SWFPreferencesViewController class] name:@"SWFPreferencesViewController"];
+    
     UIViewController* centerController = [SWFAppDelegate wrapCenterView:[[SWFNewsViewController alloc] initWithNibName:@"SWFNewsViewController" bundle:nil]];
-    SWFLeftSideMenuViewController* leftController = [[SWFLeftSideMenuViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"leftsidebar"]];
-    UINavigationController *lnc = [[UINavigationController alloc] initWithRootViewController:leftController];
-    
-    swfad.leftSidebar = leftController;
-    
-    SWFAliveUserViewController *auvc = [[SWFAliveUserViewController alloc] init];
-    UINavigationController *rnc = [[UINavigationController alloc] initWithRootViewController:auvc];
-    
-    IIViewDeckController* deckController = [[IIViewDeckController alloc] initWithCenterViewController:centerController
-                                                                                   leftViewController:lnc
-                                                                                  rightViewController:rnc];
-    deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToClose;
-    deckController.delegateMode = IIViewDeckDelegateAndSubControllers;
-    swfad.deckViewController = deckController;
+
     [swfad.window.rootViewController removeFromParentViewController];
-    swfad.window.rootViewController = deckController;
+    swfad.window.rootViewController = swfad.rootViewController;
     [self dismissViewControllerAnimated:NO completion:nil];
     [self.view removeFromSuperview];
     [self removeFromParentViewController];
-    [deckController previewBounceView:IIViewDeckLeftSide];
-    [SWFAppDelegate putCenterViewController:@"SWFNewsViewController" controller:centerController];
 }
 
 BOOL ani = YES;

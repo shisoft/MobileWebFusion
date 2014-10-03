@@ -90,12 +90,6 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-
-- (BOOL)toggleLeftView {
-    [self.searchBar resignFirstResponder];
-    return [super toggleLeftView];
-}
-
 -(void)handleRefresh:(UIRefreshControl *)refresh {
     [self reloadNews];
 }

@@ -94,24 +94,25 @@ BOOL logging = YES;
 - (void) login{
     logging = YES;
     [self rotateLogoDown1];
-    [[SWFAppDelegate getDefaultInstance] login:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            [self constructureMainView];
-        });
-    } onWrong:^{
-        [self gotoLoginView];
-    } onFailed:^{
-        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"appName", @"")
-                                    message:NSLocalizedString(@"err.no-server", @"")
-                                   delegate:nil
-                          cancelButtonTitle:NSLocalizedString(@"ui.ok", @"")
-                          otherButtonTitles:nil] show];
-        logging = NO;
-        [self hideLogging];
-    } onEmpty:^{
-        logging = NO;
-        [self hideLogging];
-    }];
+    [[SWFAppDelegate getDefaultInstance]
+     login:^{
+         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+             [self constructureMainView];
+         });
+     } onWrong:^{
+         [self gotoLoginView];
+     } onFailed:^{
+         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"appName", @"")
+                                     message:NSLocalizedString(@"err.no-server", @"")
+                                    delegate:nil
+                           cancelButtonTitle:NSLocalizedString(@"ui.ok", @"")
+                           otherButtonTitles:nil] show];
+         logging = NO;
+         [self hideLogging];
+     } onEmpty:^{
+         logging = NO;
+         [self hideLogging];
+     }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

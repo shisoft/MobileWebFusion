@@ -38,6 +38,7 @@ extern dispatch_group_t SWFBackgroundTasks;
 - (BOOL) hasFeature:(NSString*)feature ucid:(id)ucid;
 + (void)logout;
 + (void)initializePNS;
++ (void) checkAndLoadAccount;
 
 - (void) login:(void(^)())succeed onWrong:(void(^)())wrong onFailed:(void(^)())failed onEmpty:(void(^)())empty;
 

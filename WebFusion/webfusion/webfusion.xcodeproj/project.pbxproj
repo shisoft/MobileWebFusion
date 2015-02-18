@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7AE23D1DF0690BF3B78E41F7 /* YZSwipeBetweenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE23E34FEE173651B4ED041 /* YZSwipeBetweenViewController.m */; };
 		F500AB6C1797B5AA005AE49B /* combineContact_tool.png in Resources */ = {isa = PBXBuildFile; fileRef = F500AB681797B5AA005AE49B /* combineContact_tool.png */; };
 		F500AB6D1797B5AA005AE49B /* combineContact_tool@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F500AB691797B5AA005AE49B /* combineContact_tool@2x.png */; };
 		F500AB6E1797B5AA005AE49B /* combineContact.png in Resources */ = {isa = PBXBuildFile; fileRef = F500AB6A1797B5AA005AE49B /* combineContact.png */; };
@@ -332,8 +333,6 @@
 		F59AAA8F17B91BFD002DF10D /* SWFContactNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59AAA8D17B91BFD002DF10D /* SWFContactNewsViewController.m */; };
 		F59AAA9017B91BFD002DF10D /* SWFContactNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F59AAA8E17B91BFD002DF10D /* SWFContactNewsViewController.xib */; };
 		F59AAA9317B91D80002DF10D /* SWFGetUserContactWhatzNewRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F59AAA9217B91D80002DF10D /* SWFGetUserContactWhatzNewRequest.m */; };
-		F59F1E99177E0C950025FB9E /* SWFSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59F1E98177E0C950025FB9E /* SWFSplashViewController.m */; };
-		F59F1E9B177E0D1E0025FB9E /* SWFSplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F59F1E9A177E0D1E0025FB9E /* SWFSplashViewController.xib */; };
 		F59F1EB2177E1F510025FB9E /* SWFRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59F1EB0177E1F510025FB9E /* SWFRootViewController.m */; };
 		F59F1EB3177E1F510025FB9E /* SWFRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F59F1EB1177E1F510025FB9E /* SWFRootViewController.xib */; };
 		F59F1F82177F15200025FB9E /* SWFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59F1F80177F151F0025FB9E /* SWFLoginViewController.m */; };
@@ -374,10 +373,11 @@
 		F5CEC51A178219E700A6450E /* SWFNavedCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CEC519178219E700A6450E /* SWFNavedCenterViewController.m */; };
 		F5CEC51E1782206E00A6450E /* SWFTopicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CEC51C1782206D00A6450E /* SWFTopicsViewController.m */; };
 		F5CEC51F1782206E00A6450E /* SWFTopicsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5CEC51D1782206E00A6450E /* SWFTopicsViewController.xib */; };
-		F5D366FA19DE99800062B013 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D366F919DE99800062B013 /* SwipeView.m */; };
-		F5D3670219DEA2670062B013 /* SWFNewsSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D3670019DEA2670062B013 /* SWFNewsSwipeViewController.m */; };
-		F5D3670319DEA2670062B013 /* SWFNewsSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D3670119DEA2670062B013 /* SWFNewsSwipeViewController.xib */; };
 		F5D53B9A177DFE3200F86AD8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D53B99177DFE3200F86AD8 /* QuartzCore.framework */; };
+		F5D6701A1A94A66C00F542D4 /* SWFAppMainViewConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D670191A94A66C00F542D4 /* SWFAppMainViewConstructor.m */; };
+		F5D6701E1A95146A00F542D4 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D6701D1A95146A00F542D4 /* SwipeView.m */; };
+		F5D670221A95150600F542D4 /* SWFNewsSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D670201A95150600F542D4 /* SWFNewsSwipeViewController.m */; };
+		F5D670251A9523D100F542D4 /* SWFNewsSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D670241A9523D100F542D4 /* SWFNewsSwipeViewController.xib */; };
 		F5E2C6B21824EE5900385EE5 /* SWFNewThreadCountPoll.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E2C6B11824EE5900385EE5 /* SWFNewThreadCountPoll.m */; };
 		F5E2C6B41824F63000385EE5 /* newMsg.aif in Resources */ = {isa = PBXBuildFile; fileRef = F5E2C6B31824F63000385EE5 /* newMsg.aif */; };
 		F5E2C6B71826129600385EE5 /* SWFThreadReplyPoll.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E2C6B61826129600385EE5 /* SWFThreadReplyPoll.m */; };
@@ -529,6 +529,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7AE23C0CF20154FC21BB9825 /* YZSwipeBetweenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZSwipeBetweenViewController.h; sourceTree = "<group>"; };
+		7AE23E34FEE173651B4ED041 /* YZSwipeBetweenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZSwipeBetweenViewController.m; sourceTree = "<group>"; };
 		F500AB681797B5AA005AE49B /* combineContact_tool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = combineContact_tool.png; path = icons/combineContact_tool.png; sourceTree = "<group>"; };
 		F500AB691797B5AA005AE49B /* combineContact_tool@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "combineContact_tool@2x.png"; path = "icons/combineContact_tool@2x.png"; sourceTree = "<group>"; };
 		F500AB6A1797B5AA005AE49B /* combineContact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = combineContact.png; path = icons/combineContact.png; sourceTree = "<group>"; };
@@ -979,9 +981,6 @@
 		F59AAA8E17B91BFD002DF10D /* SWFContactNewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWFContactNewsViewController.xib; sourceTree = "<group>"; };
 		F59AAA9117B91D80002DF10D /* SWFGetUserContactWhatzNewRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWFGetUserContactWhatzNewRequest.h; path = SWFCore/SWFGetUserContactWhatzNewRequest.h; sourceTree = "<group>"; };
 		F59AAA9217B91D80002DF10D /* SWFGetUserContactWhatzNewRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWFGetUserContactWhatzNewRequest.m; path = SWFCore/SWFGetUserContactWhatzNewRequest.m; sourceTree = "<group>"; };
-		F59F1E97177E0C950025FB9E /* SWFSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFSplashViewController.h; sourceTree = "<group>"; };
-		F59F1E98177E0C950025FB9E /* SWFSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFSplashViewController.m; sourceTree = "<group>"; };
-		F59F1E9A177E0D1E0025FB9E /* SWFSplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWFSplashViewController.xib; sourceTree = "<group>"; };
 		F59F1EAF177E1F510025FB9E /* SWFRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFRootViewController.h; sourceTree = "<group>"; };
 		F59F1EB0177E1F510025FB9E /* SWFRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFRootViewController.m; sourceTree = "<group>"; };
 		F59F1EB1177E1F510025FB9E /* SWFRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWFRootViewController.xib; sourceTree = "<group>"; };
@@ -1033,12 +1032,14 @@
 		F5CEC51B1782206D00A6450E /* SWFTopicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFTopicsViewController.h; sourceTree = "<group>"; };
 		F5CEC51C1782206D00A6450E /* SWFTopicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFTopicsViewController.m; sourceTree = "<group>"; };
 		F5CEC51D1782206E00A6450E /* SWFTopicsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWFTopicsViewController.xib; sourceTree = "<group>"; };
-		F5D366F819DE99800062B013 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
-		F5D366F919DE99800062B013 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
-		F5D366FF19DEA2670062B013 /* SWFNewsSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFNewsSwipeViewController.h; sourceTree = "<group>"; };
-		F5D3670019DEA2670062B013 /* SWFNewsSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFNewsSwipeViewController.m; sourceTree = "<group>"; };
-		F5D3670119DEA2670062B013 /* SWFNewsSwipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWFNewsSwipeViewController.xib; sourceTree = "<group>"; };
 		F5D53B99177DFE3200F86AD8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F5D670181A94A66C00F542D4 /* SWFAppMainViewConstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFAppMainViewConstructor.h; sourceTree = "<group>"; };
+		F5D670191A94A66C00F542D4 /* SWFAppMainViewConstructor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFAppMainViewConstructor.m; sourceTree = "<group>"; };
+		F5D6701C1A95146A00F542D4 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
+		F5D6701D1A95146A00F542D4 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
+		F5D6701F1A95150600F542D4 /* SWFNewsSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFNewsSwipeViewController.h; sourceTree = "<group>"; };
+		F5D670201A95150600F542D4 /* SWFNewsSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFNewsSwipeViewController.m; sourceTree = "<group>"; };
+		F5D670241A9523D100F542D4 /* SWFNewsSwipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWFNewsSwipeViewController.xib; sourceTree = "<group>"; };
 		F5E2C6B01824EE5900385EE5 /* SWFNewThreadCountPoll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWFNewThreadCountPoll.h; path = SWFCore/SWFNewThreadCountPoll.h; sourceTree = "<group>"; };
 		F5E2C6B11824EE5900385EE5 /* SWFNewThreadCountPoll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWFNewThreadCountPoll.m; path = SWFCore/SWFNewThreadCountPoll.m; sourceTree = "<group>"; };
 		F5E2C6B31824F63000385EE5 /* newMsg.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = newMsg.aif; sourceTree = SOURCE_ROOT; };
@@ -1411,6 +1412,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7AE23CFD37B3B59603968D22 /* YZSwipeBetweenViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7AE23C0CF20154FC21BB9825 /* YZSwipeBetweenViewController.h */,
+				7AE23E34FEE173651B4ED041 /* YZSwipeBetweenViewController.m */,
+			);
+			name = YZSwipeBetweenViewController;
+			sourceTree = "<group>";
+		};
 		F500AB74179942C4005AE49B /* svr-icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -1500,7 +1510,7 @@
 		F503FB1C17939177003C6F3C /* Compments */ = {
 			isa = PBXGroup;
 			children = (
-				F5D366F719DE995C0062B013 /* SwipeView */,
+				F5D6701B1A95144C00F542D4 /* SwipeView */,
 				F583D64D18220B6200215222 /* MSUIAdditions */,
 				F516D83E181BF86000633FBB /* ADBanner */,
 				F51906C317F5EE96008B1921 /* Google Analytics */,
@@ -1512,6 +1522,7 @@
 				F59F1F89177F8F160025FB9E /* QuickDialog */,
 				F503FB1B17939167003C6F3C /* JPSThumbnailAnnotation */,
 				F53D410A17925C440016C71E /* TITokenField */,
+				7AE23CFD37B3B59603968D22 /* YZSwipeBetweenViewController */,
 			);
 			name = Compments;
 			sourceTree = "<group>";
@@ -1889,17 +1900,16 @@
 		F59F1E9C177E12870025FB9E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F5D670241A9523D100F542D4 /* SWFNewsSwipeViewController.xib */,
 				F59F2051178040950025FB9E /* json */,
-				F57749DD18217AD2003CD833 /* SWFTopicMessageViewController.xib */,
-				F5B11FB417E7699000AF9674 /* SWFRecordAnimatedViewController.xib */,
-				F5137D5017CCF626005D3076 /* SWFPickLocalPOIViewController.xib */,
-				F59AAA8E17B91BFD002DF10D /* SWFContactNewsViewController.xib */,
+				F5F8D88019DE0B6100ECB5E6 /* MainTabController.xib */,
 				F5848309179F121200F52F59 /* SWFAddAuthServiceDispatchViewController.xib */,
 				F500ABE01799A774005AE49B /* SWFAddContactViewController.xib */,
 				F58482B5179E734000F52F59 /* SWFAddServiceViewController.xib */,
 				F535F8F617A0D3270042F0A9 /* SWFBookmarkViewController.xib */,
 				F56BA38F178684680088088E /* SWFComposeNewsViewController.xib */,
 				F51B5A661797AEEA00AF7DBE /* SWFContactDetailsViewController.xib */,
+				F59AAA8E17B91BFD002DF10D /* SWFContactNewsViewController.xib */,
 				F51B5A5917951B3B00AF7DBE /* SWFContactsViewController.xib */,
 				F535F92717A199090042F0A9 /* SWFDiscoverCategoriesViewController.xib */,
 				F535F91F17A18E190042F0A9 /* SWFDiscoverViewController.xib */,
@@ -1908,17 +1918,18 @@
 				F563BD241787CDED00A0318B /* SWFMapPickerViewController.xib */,
 				F57E51E817A32B7500B2F264 /* SWFNewsTrendViewController.xib */,
 				F57F93561780EF17007A90CD /* SWFNewsViewController.xib */,
+				F5137D5017CCF626005D3076 /* SWFPickLocalPOIViewController.xib */,
 				F503FB18179387ED003C6F3C /* SWFPlacesViewController.xib */,
 				F51630A0178D447A00E23629 /* SWFPostDetailsViewController.xib */,
+				F5B11FB417E7699000AF9674 /* SWFRecordAnimatedViewController.xib */,
 				F59F1EB1177E1F510025FB9E /* SWFRootViewController.xib */,
 				F535F92C17A251130042F0A9 /* SWFSearchNewsViewController.xib */,
 				F58482B0179E6BC000F52F59 /* SWFServicesViewController.xib */,
 				F51B5A531794760F00AF7DBE /* SWFSingleNewsViewController.xib */,
-				F59F1E9A177E0D1E0025FB9E /* SWFSplashViewController.xib */,
+				F57749DD18217AD2003CD833 /* SWFTopicMessageViewController.xib */,
 				F5CEC51D1782206E00A6450E /* SWFTopicsViewController.xib */,
 				F500ABF6179BF228005AE49B /* SWFUserContactPickerViewController.xib */,
 				F5A57A2C17891FA700E628FC /* SWFWebBrowserViewController.xib */,
-				F5F8D88019DE0B6100ECB5E6 /* MainTabController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1926,7 +1937,8 @@
 		F59F1E9D177E12950025FB9E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F5D366FB19DE9FF60062B013 /* SwipeViews */,
+				F5D6701F1A95150600F542D4 /* SWFNewsSwipeViewController.h */,
+				F5D670201A95150600F542D4 /* SWFNewsSwipeViewController.m */,
 				F5848307179F121100F52F59 /* SWFAddAuthServiceDispatchViewController.h */,
 				F5848308179F121100F52F59 /* SWFAddAuthServiceDispatchViewController.m */,
 				F500ABDE1799A773005AE49B /* SWFAddContactViewController.h */,
@@ -1991,8 +2003,6 @@
 				F58482AF179E6BBF00F52F59 /* SWFServicesViewController.m */,
 				F51B5A511794760F00AF7DBE /* SWFSingleNewsViewController.h */,
 				F51B5A521794760F00AF7DBE /* SWFSingleNewsViewController.m */,
-				F59F1E97177E0C950025FB9E /* SWFSplashViewController.h */,
-				F59F1E98177E0C950025FB9E /* SWFSplashViewController.m */,
 				F57749DB18217AD2003CD833 /* SWFTopicMessageViewController.h */,
 				F57749DC18217AD2003CD833 /* SWFTopicMessageViewController.m */,
 				F5CEC51B1782206D00A6450E /* SWFTopicsViewController.h */,
@@ -2339,23 +2349,22 @@
 			path = js;
 			sourceTree = "<group>";
 		};
-		F5D366F719DE995C0062B013 /* SwipeView */ = {
+		F5D670141A94A51100F542D4 /* Application Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F5D366F819DE99800062B013 /* SwipeView.h */,
-				F5D366F919DE99800062B013 /* SwipeView.m */,
+				F5D670181A94A66C00F542D4 /* SWFAppMainViewConstructor.h */,
+				F5D670191A94A66C00F542D4 /* SWFAppMainViewConstructor.m */,
 			);
-			name = SwipeView;
+			name = "Application Controller";
 			sourceTree = "<group>";
 		};
-		F5D366FB19DE9FF60062B013 /* SwipeViews */ = {
+		F5D6701B1A95144C00F542D4 /* SwipeView */ = {
 			isa = PBXGroup;
 			children = (
-				F5D366FF19DEA2670062B013 /* SWFNewsSwipeViewController.h */,
-				F5D3670019DEA2670062B013 /* SWFNewsSwipeViewController.m */,
-				F5D3670119DEA2670062B013 /* SWFNewsSwipeViewController.xib */,
+				F5D6701C1A95146A00F542D4 /* SwipeView.h */,
+				F5D6701D1A95146A00F542D4 /* SwipeView.m */,
 			);
-			name = SwipeViews;
+			name = SwipeView;
 			sourceTree = "<group>";
 		};
 		F5EC9EBE177A0C140077E797 = {
@@ -2433,6 +2442,7 @@
 		F5EC9ED0177A0C140077E797 /* MobileWebFusion */ = {
 			isa = PBXGroup;
 			children = (
+				F5D670141A94A51100F542D4 /* Application Controller */,
 				F5EC9ED9177A0C140077E797 /* SWFAppDelegate.h */,
 				F5EC9EDA177A0C140077E797 /* SWFAppDelegate.m */,
 				F54EA370181D7DA3009DA999 /* Utils */,
@@ -2823,7 +2833,6 @@
 				F5CB635A17F4228300545F62 /* bootstrap-theme.css in Resources */,
 				F5CB636117F4228300545F62 /* glyphicons-halflings-regular.woff in Resources */,
 				F5EC9F87177A0CDA0077E797 /* zh-Hans.lproj in Resources */,
-				F59F1E9B177E0D1E0025FB9E /* SWFSplashViewController.xib in Resources */,
 				F59F1EB3177E1F510025FB9E /* SWFRootViewController.xib in Resources */,
 				F59F2053178040CE0025FB9E /* login.json in Resources */,
 				F57F93521780D7F9007A90CD /* splashLogo.png in Resources */,
@@ -2974,6 +2983,7 @@
 				F5CB636017F4228300545F62 /* glyphicons-halflings-regular.ttf in Resources */,
 				F500ABBA179942E1005AE49B /* user.png in Resources */,
 				F500ABBC179942E1005AE49B /* weibodm.png in Resources */,
+				F5D670251A9523D100F542D4 /* SWFNewsSwipeViewController.xib in Resources */,
 				F500ABBD179942E1005AE49B /* wordpress.png in Resources */,
 				F500ABBE179942E1005AE49B /* xmpp.png in Resources */,
 				F500ABBF179942E1005AE49B /* yahoo.png in Resources */,
@@ -3034,7 +3044,6 @@
 				F57E51E417A2BFBB00B2F264 /* wavegrid_@2X.png in Resources */,
 				F57E51E517A2BFBB00B2F264 /* wavegrid.png in Resources */,
 				F57E51EA17A32B7500B2F264 /* SWFNewsTrendViewController.xib in Resources */,
-				F5D3670319DEA2670062B013 /* SWFNewsSwipeViewController.xib in Resources */,
 				F5B11FB617E7699000AF9674 /* SWFRecordAnimatedViewController.xib in Resources */,
 				F57E51F917A3C47600B2F264 /* trendIcon_tool.png in Resources */,
 				F57E51FA17A3C47600B2F264 /* trendIcon_tool@2x.png in Resources */,
@@ -3080,12 +3089,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5F8D84019DD857E00ECB5E6 /* QSortingSection.m in Sources */,
-				F5D366FA19DE99800062B013 /* SwipeView.m in Sources */,
 				F5EC9ED7177A0C140077E797 /* main.m in Sources */,
 				F5EC9EDB177A0C140077E797 /* SWFAppDelegate.m in Sources */,
 				F5F8D75C19DD7D2000ECB5E6 /* MBCheckMarkView.m in Sources */,
 				F5EC9F67177A0CDA0077E797 /* CLLocation+CGIPersistance.m in Sources */,
 				F54CAD601809A59F00AD5B6B /* SWFLeftSideBarAppeal.m in Sources */,
+				F5D6701E1A95146A00F542D4 /* SwipeView.m in Sources */,
 				F5EC9F68177A0CDA0077E797 /* SWFAddBookmarkRequest.m in Sources */,
 				F5EC9F69177A0CDA0077E797 /* SWFChangeNicknameRequest.m in Sources */,
 				F5EC9F6A177A0CDA0077E797 /* SWFDiscoveryPoll.m in Sources */,
@@ -3139,7 +3148,6 @@
 				F5B11FB517E7699000AF9674 /* SWFRecordAnimatedViewController.m in Sources */,
 				F5F8D75E19DD7D2000ECB5E6 /* MBSpinningCircle.m in Sources */,
 				F5F8D82419DD857E00ECB5E6 /* QDecimalElement.m in Sources */,
-				F59F1E99177E0C950025FB9E /* SWFSplashViewController.m in Sources */,
 				F57749D0181ED9D7003CD833 /* SWFAliveContactCell.m in Sources */,
 				F59F1EB2177E1F510025FB9E /* SWFRootViewController.m in Sources */,
 				F59F1F82177F15200025FB9E /* SWFLoginViewController.m in Sources */,
@@ -3279,6 +3287,7 @@
 				F535F92D17A251130042F0A9 /* SWFSearchNewsViewController.m in Sources */,
 				F5F8D83C19DD857E00ECB5E6 /* QSection.m in Sources */,
 				F535F93117A25CA50042F0A9 /* SWFSearchNewsRequest.m in Sources */,
+				F5D6701A1A94A66C00F542D4 /* SWFAppMainViewConstructor.m in Sources */,
 				F583D6531822210E00215222 /* SWFGetPostsByRootRequest.m in Sources */,
 				F57E51E917A32B7500B2F264 /* SWFNewsTrendViewController.m in Sources */,
 				F5F8D76619DD7D2000ECB5E6 /* MBAlertViewItem.m in Sources */,
@@ -3290,6 +3299,7 @@
 				F5EBD60D17AAD4DB0002F15C /* SWFChangePasswordRequest.m in Sources */,
 				F5F8D81F19DD857E00ECB5E6 /* QClassicAppearance.m in Sources */,
 				F5EBD61617AAF2D90002F15C /* SWFRegisterViewController.m in Sources */,
+				F5D670221A95150600F542D4 /* SWFNewsSwipeViewController.m in Sources */,
 				F5F8D84C19DD857E00ECB5E6 /* QuickDialogWebController.m in Sources */,
 				F5F8D83919DD857E00ECB5E6 /* QRootBuilder.m in Sources */,
 				F5F8D83719DD857E00ECB5E6 /* QRadioItemElement.m in Sources */,
@@ -3319,9 +3329,9 @@
 				F55070D017D788A00038CBED /* SWFLoadingHUD.m in Sources */,
 				F57749CD181E90D1003CD833 /* SWFAliveUserViewController.m in Sources */,
 				F5F8D73519DD7CF300ECB5E6 /* UIView+Toast.m in Sources */,
-				F5D3670219DEA2670062B013 /* SWFNewsSwipeViewController.m in Sources */,
 				F56A37C117D9046C00E9DCBC /* SWFRegDevicePNSRequest.m in Sources */,
 				F587F6FA17D9354D0015E34A /* SWFPopNewPostsRequest.m in Sources */,
+				7AE23D1DF0690BF3B78E41F7 /* YZSwipeBetweenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3405,6 +3415,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = webfusion/webfusion.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -3448,6 +3459,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = webfusion/webfusion.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

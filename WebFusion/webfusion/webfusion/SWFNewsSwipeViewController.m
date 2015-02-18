@@ -14,13 +14,15 @@
 
 @implementation SWFNewsSwipeViewController
 
+@synthesize swipeView;
+
 -(SWFNewsSwipeViewController*) initWithViewControllersToSwap:(NSArray *)vcs{
     self = [self initWithNibName:@"SWFNewsSwipeViewController" bundle:nil];
     self.views = vcs;
-    _swipeView.alignment = SwipeViewAlignmentEdge;
-    _swipeView.pagingEnabled = true;
-    _swipeView.itemsPerPage = 1;
-    _swipeView.truncateFinalPage = YES;
+    swipeView.alignment = SwipeViewAlignmentEdge;
+    swipeView.frame = [SWFAppDelegate getDefaultInstance].window.frame;//    _swipeView.pagingEnabled = true;
+//    _swipeView.itemsPerPage = 1;
+//    _swipeView.truncateFinalPage = YES;
     return self;
 }
 
@@ -41,7 +43,14 @@
 
 - (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
-    return [[_views objectAtIndex:index] view];
+    CGRect mainScreenBounds = [[UIScreen mainScreen] bounds];
+    CGFloat currentOriginX = 0;
+    UIView *v = [[_views objectAtIndex:index] view];
+    CGRect frame = v.frame;
+    frame.origin.x = currentOriginX;
+    v.frame = frame;
+    currentOriginX += mainScreenBounds.size.width;
+    return v;
 }
 
 /*

@@ -13,7 +13,6 @@
 #import "SWFLoginRequest.h"
 #import "SWFWrapper.h"
 #import "SWFPoll.h"
-#import "SWFSplashViewController.h"
 #import "SWFRootViewController.h"
 #import "SWFGetFeaturedUserServicesRequest.h"
 #import "UIAlertView+MKBlockAdditions.h"
@@ -24,6 +23,7 @@
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <netdb.h>
 #import "GAI.h"
+#import "SWFAppMainViewConstructor.h"
 
 
 NSString *const SWFUserNameKeychainItemName = @"net.shisoft.webfusion.keychainUserName";
@@ -65,9 +65,7 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
          });
          [[SWFPoll defaultPoll] stop];
          [CHKeychain delete:SWFUserPasswordKeychainContainerName];
-         SWFAppDelegate *delegate = [SWFAppDelegate getDefaultInstance];
-         SWFSplashViewController *splashViewController = [[SWFSplashViewController alloc] initWithNibName:@"SWFSplashViewController" bundle:nil];
-         delegate.window.rootViewController = splashViewController;
+         [SWFAppDelegate checkAndLoadAccount];
     } onCancel:^{
         
     }];
@@ -77,6 +75,27 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
     return [[UINavigationController alloc] initWithRootViewController:viewController];
 }
 
+
++ (void) checkAndLoadAccount {
+    if ([CHKeychain load:SWFUserPasswordKeychainContainerName] != nil) {
+        [SWFAppMainViewConstructor constructureMainView];
+        [[self getDefaultInstance] login:^{
+        } onWrong:^{
+            [SWFAppMainViewConstructor constructureLoginView];
+        } onFailed:^{
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"appName", @"")
+                                        message:NSLocalizedString(@"err.no-server", @"")
+                                       delegate:nil
+                              cancelButtonTitle:NSLocalizedString(@"ui.ok", @"")
+                              otherButtonTitles:nil] show];
+            [SWFAppMainViewConstructor constructureLoginView];
+        } onEmpty:^{
+            [SWFAppMainViewConstructor constructureLoginView];
+        }];
+    } else {
+        [SWFAppMainViewConstructor constructureLoginView];
+    }
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -94,11 +113,9 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
     self.userFeatures = [[NSMutableDictionary alloc] init];
     [self initializeClient];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    SWFSplashViewController *splashViewController = [[SWFSplashViewController alloc] initWithNibName:@"SWFSplashViewController" bundle:nil];
-    self.window.rootViewController = splashViewController;
     rootViewController = self.rootViewController;
     [self.window makeKeyAndVisible];
-    
+    [SWFAppDelegate checkAndLoadAccount];
     [[NSURLCache sharedURLCache] setMemoryCapacity:10*1024*1024];
     [[NSURLCache sharedURLCache] setDiskCapacity:100*1024*1024];
     
@@ -224,16 +241,6 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     NSLog(@"%@", userInfo);
-    /*
-     {
-     aps =     {
-     alert = "Samuel Yuan (Google+): Samuel Yuan\U5728 Google+ \U4e0a\U5206\U4eab\U4e86\U4e00\U6761\U4fe1\U606f";
-     badge = 1;
-     };
-     author = 52208938d66a02b1d679371a;
-     idpath = 5232dacfe4b02c48005496d8;
-     }
-    */
 }
 
 - (void) initializeClient

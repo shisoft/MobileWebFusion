@@ -36,6 +36,17 @@
     return self;
 }
 
+- (void)manualBottomInsets{
+    int tabBarHeight = 49;
+    UIEdgeInsets scrollBarInsets = self.newsWebView.scrollView.scrollIndicatorInsets;
+    UIEdgeInsets scrollBarInsetsCorrection = UIEdgeInsetsMake(scrollBarInsets.top, scrollBarInsets.left, tabBarHeight, scrollBarInsets.right);
+    self.newsWebView.scrollView.scrollIndicatorInsets = scrollBarInsetsCorrection;
+    
+    UIEdgeInsets contentInsets = self.newsWebView.scrollView.contentInset;
+    UIEdgeInsets contentInsetsCorrection = UIEdgeInsetsMake(contentInsets.top, contentInsets.left, tabBarHeight, contentInsets.right);
+    self.newsWebView.scrollView.contentInset = contentInsetsCorrection;
+}
+
 - (void)displayAd:(UIWebView*)webView{
 //    if(self.adDelegates){
 //        return;

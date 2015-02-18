@@ -56,6 +56,8 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]  initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(compose)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
     [self.delegates loadNews];
+    [self.delegates manualBottomInsets];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{

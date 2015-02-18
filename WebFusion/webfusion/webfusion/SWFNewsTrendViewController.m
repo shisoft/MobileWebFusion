@@ -86,6 +86,7 @@
             }
         });
     };
+    [self.delegates manualBottomInsets];
 }
 
 -(void)handleRefresh:(UIRefreshControl *)refresh {

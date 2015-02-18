@@ -70,8 +70,8 @@
             }
             NSString *value = [nameAndValue objectAtIndex:1];
             value = [value stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            [self.asvc setAuthCode:value query:strParameters];
             [self.navigationController popViewControllerAnimated:YES];
+            [self.asvc setAuthCode:value query:strParameters];
             return NO;
         }
         [self.navigationController popViewControllerAnimated:YES];

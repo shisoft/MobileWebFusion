@@ -29,11 +29,6 @@
                               $("#divAddConfig").html(data.addServiceHTML).trigger("create");
                               $("input").width("");
                               $("html, body").animate({ scrollTop: 0 }, "slow");
-                          //$("input").keydown(function(event){
-                          //                   if(event.keyCode==13){
-                          //                      ok();
-                          //                   }
-                          //                   });
                     });
                 }
                 
@@ -54,7 +49,7 @@
                                            OpenLoginPage(r.url);
                                            });
                     $("#aFinish").click(function(){
-                                        FinishAuth("{'pin':'"+e($("#txPIN").val())+"','token':'"+e(r.token)+"','scret':'"+e(r.scret)+"','raw':'"+e(PinRaw)+"'}");
+                                            FinishAuth("{'pin':'"+e($("#txPIN").val())+"','token':'"+e(r.token)+"','scret':'"+e(r.scret)+"','raw':'"+e(PinRaw)+"'}");
                                         });
                 }
                 function e(str) {
@@ -96,7 +91,7 @@
                               });
                 }
                 function FinishAuth(feedback){
-                    window.location = "swf://" + feedback;
+                    window.location = "swf:--" + feedback;
                 }
                 function authSuccess(path){
                     $.getJSON("file:///" + path,function(data,status){

@@ -13,7 +13,9 @@
 -(SWFADBannerDelagates*) initWithRootViewController:(UIViewController*)rootViewController View:(UIView*)view{
     self.rootViewController = rootViewController;
     if (!self.banner) {
-        self.banner = [[GADBannerView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+        self.banner = [[GADBannerView alloc] initWithFrame:CGRectMake(0, 0,
+                                                                      rootViewController.view.frame.size.width
+                                                                      , 50)];
         self.banner.delegate = self;
         self.banner.adUnitID = @"a1526bbe4009ea6";
         dispatch_async(dispatch_get_main_queue(), ^{

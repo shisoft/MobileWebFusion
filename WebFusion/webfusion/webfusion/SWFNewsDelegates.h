@@ -33,6 +33,5 @@ typedef void (^loadCompletedBlock)(void);
 
 - (void)loadNews;
 - (void)resetParameteres;
-- (void)manualInsets;
 
 @end

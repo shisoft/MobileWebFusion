@@ -53,11 +53,8 @@
         [[SWFPoll defaultPoll] repoll];
     };
     
-    self.navItem.rightBarButtonItem = [[UIBarButtonItem alloc]  initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(compose)];
-    self.navItem.rightBarButtonItem.enabled = NO;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [self.delegates manualInsets];
-    });
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]  initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(compose)];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
     [self.delegates loadNews];
 }
 

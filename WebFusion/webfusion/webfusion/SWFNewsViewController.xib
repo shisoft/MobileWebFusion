@@ -7,31 +7,29 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SWFNewsViewController">
             <connections>
-                <outlet property="newsWebView" destination="17" id="22"/>
+                <outlet property="newsWebView" destination="NFM-fx-fMw" id="Pex-Ke-zSd"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="604" height="560"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="17">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="23"/>
-                    </connections>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NFM-fx-fMw">
+                    <rect key="frame" x="0.0" y="0.0" width="604" height="560"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="17" secondAttribute="bottom" id="So0-8N-2UA"/>
-                <constraint firstItem="17" firstAttribute="top" secondItem="1" secondAttribute="top" id="aJO-yb-mTo"/>
-                <constraint firstAttribute="trailing" secondItem="17" secondAttribute="trailing" id="hsY-Lf-6EA"/>
-                <constraint firstItem="17" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="ify-Fd-Ooj"/>
+                <constraint firstItem="NFM-fx-fMw" firstAttribute="top" secondItem="1" secondAttribute="top" id="1P3-mJ-cnc"/>
+                <constraint firstAttribute="trailing" secondItem="NFM-fx-fMw" secondAttribute="trailing" id="4mR-kG-DoV"/>
+                <constraint firstAttribute="bottom" secondItem="NFM-fx-fMw" secondAttribute="bottom" id="GAS-bO-7Ed"/>
+                <constraint firstItem="NFM-fx-fMw" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="cnh-s0-Xep"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="359" y="362"/>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

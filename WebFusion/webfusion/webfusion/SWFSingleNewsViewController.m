@@ -46,7 +46,7 @@
         }else{
             return [[NSArray alloc] initWithObjects:self.news, nil];
         }
-    }];
+    } name:nil];
     __block SWFSingleNewsViewController *this = self;
     self.delegates.loadCompleted = ^{
         [this.webView stringByEvaluatingJavaScriptFromString:@"stopLoading()"];

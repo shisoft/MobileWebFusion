@@ -34,7 +34,7 @@
         newsRequest.lastT = self.delegates.pageLastNewsDate;
         newsRequest.ID = self.uc.ID;
         return [newsRequest getUserContactWhatzNew];
-    }];
+    } name:[@"ucNews" stringByAppendingString:[[NSString alloc] initWithCoder:self.uc.ID]]];
     [self.delegates loadNews];
     self.title = self.uc.name;
     // Do any additional setup after loading the view from its nib.

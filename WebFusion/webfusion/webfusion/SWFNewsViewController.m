@@ -43,7 +43,7 @@
         newsRequest.count = SWFItemFetchCount;
         newsRequest.lastT = self.delegates.pageLastNewsDate;
         return [newsRequest getWhatzNew];
-    }];
+    } name:@"news"];
     [[SWFPoll defaultPoll] addDelegate:self
                                 forKey:@"newsc"];
     __block SWFNewsViewController *this = self;

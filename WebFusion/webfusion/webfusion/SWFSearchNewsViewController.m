@@ -39,7 +39,7 @@
         snr.kw = self.kw;
         snr.page = self.delegates.currentPage;
         return [snr searchNews];
-    }];
+    } name:nil];
     __block SWFSearchNewsViewController *this = self;
     self.delegates.loadCompleted = ^(void){
         [this.searchBar resignFirstResponder];

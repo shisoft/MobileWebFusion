@@ -96,7 +96,7 @@
     _scrollEnabled = YES;
     _pagingEnabled = YES;
     _delaysContentTouches = YES;
-    _bounces = YES;
+    _bounces = NO;
     _wrapEnabled = NO;
     _itemsPerPage = 1;
     _truncateFinalPage = NO;

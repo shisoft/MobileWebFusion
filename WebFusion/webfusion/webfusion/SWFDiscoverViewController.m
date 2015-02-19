@@ -50,7 +50,7 @@ UIActionSheet *actionSheet;
         discovery.threshold = SWFStreamDiscoverThreshold;
         discovery.topics = self.selectedCatrgories;
         return [discovery streamDiscover];
-    }];
+    } name:@"discoverNews"];
     [self.delegates loadNews];
     [self.delegates manualBottomInsets];
     //[super changeNavBarColor:[[UIColor alloc] initWithRed:137 / 255.0 green:64 / 255.0 blue:131 / 255.0 alpha:1.0]];

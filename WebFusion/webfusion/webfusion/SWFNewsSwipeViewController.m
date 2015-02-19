@@ -20,7 +20,9 @@
     self = [self initWithNibName:@"SWFNewsSwipeViewController" bundle:nil];
     self.views = vcs;
     swipeView.alignment = SwipeViewAlignmentEdge;
-    swipeView.frame = [SWFAppDelegate getDefaultInstance].window.frame;//    _swipeView.pagingEnabled = true;
+    swipeView.frame = [SWFAppDelegate getDefaultInstance].window.frame;
+    swipeView.bounces = NO;
+//    _swipeView.pagingEnabled = true;
 //    _swipeView.itemsPerPage = 1;
 //    _swipeView.truncateFinalPage = YES;
     return self;

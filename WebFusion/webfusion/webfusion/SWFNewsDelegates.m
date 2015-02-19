@@ -14,7 +14,9 @@
 
 @implementation SWFNewsDelegates
 
--(SWFNewsDelegates*) initWithWebView:(UIWebView*)newsWebView ViewController:(UIViewController*)vc getNews:(getNewsBlock)getNews{
+-(SWFNewsDelegates*) initWithWebView:(UIWebView*)newsWebView ViewController:(UIViewController*)vc getNews:(getNewsBlock)getNews name:(NSString*)name{
+    self.delegateName = name;
+    self.isFirstTime = YES;
     self.isEmpty = YES;
     self.busy = NO;
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -31,6 +33,12 @@
     for (UIView *view in [[[newsWebView subviews] objectAtIndex:0] subviews]) {
         if ([view isKindOfClass:[UIImageView class]]) view.hidden = YES;
     }
+    
+    if (self.delegateName != nil){
+        NSArray *cachePaths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        self.cachedFile = [[cachePaths objectAtIndex:0] stringByAppendingString:self.delegateName];
+    }
+    
     newsWebView.backgroundColor = [[UIColor alloc] initWithRed:211 /255.0 green:211 / 255.0 blue:211 / 255.0 alpha:1.0];
     [newsWebView setOpaque:NO];
     return self;
@@ -69,6 +77,8 @@
 }
 
 - (void)loadNews{
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSURL *baseURL = [NSURL fileURLWithPath:path];
     if (self.busy == YES || self.toTail) {
         [self.refreshControl endRefreshing];
         return;
@@ -79,12 +89,19 @@
         [self.newsWebView.scrollView setContentOffset:CGPointMake(0, -self.refreshControl.frame.size.height) animated:YES];
         [self.refreshControl beginRefreshing];
     }
+    if (_isFirstTime){
+        if (_delegateName != nil){
+            NSString *cachedNewsHTML = [NSKeyedUnarchiver unarchiveObjectWithFile:self.cachedFile];
+            if (cachedNewsHTML != nil){
+                [self.newsWebView loadHTMLString:cachedNewsHTML baseURL:baseURL];
+            }
+        }
+        _isFirstTime = NO;
+    }
     if(self.currentPage!=0){
         [self.newsWebView stringByEvaluatingJavaScriptFromString:@"loading()"];
     }
     dispatch_group_async([SWFAppDelegate getDefaultInstance].SWFBackgroundTasks, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *path = [[NSBundle mainBundle] bundlePath];
-        NSURL *baseURL = [NSURL fileURLWithPath:path];
         NSArray *newsResponse = self.getNews();
         if((![newsResponse isKindOfClass:[NSArray class]])?YES:[newsResponse count]<=0){
             self.busy = NO;
@@ -103,8 +120,12 @@
             }
             if(self.currentPage==0){
                 self.isEmpty = NO;
-                [self.newsWebView loadHTMLString:[SWFCodeGenerator generateForNewsArray:newsResponse] baseURL:baseURL];
+                NSString *newsHTML = [SWFCodeGenerator generateForNewsArray:newsResponse];
+                [self.newsWebView loadHTMLString:newsHTML baseURL:baseURL];
                 [self.adDelegates refreshAd];
+                if (_delegateName != nil){
+                    [NSKeyedArchiver archiveRootObject:newsHTML toFile:self.cachedFile];
+                }
             }else{
                 NSMutableString *items = [NSMutableString stringWithString:@""];
                 for (SWFNews *newsItem in newsResponse)

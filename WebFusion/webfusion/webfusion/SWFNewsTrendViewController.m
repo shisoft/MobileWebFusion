@@ -60,7 +60,7 @@
         snr.page = self.delegates.currentPage;
         snr.publish = [NSString stringWithFormat:@"[%lld TO %lld]",[self getTimeStart], [self getTimeEnd]];
         return [snr searchNews];
-    }];
+    } name:nil];
     __block SWFNewsTrendViewController *this = self;
     self.delegates.loadCompleted = ^(void){
         [this.searchBar resignFirstResponder];

@@ -94,6 +94,7 @@
             NSString *cachedNewsHTML = [NSKeyedUnarchiver unarchiveObjectWithFile:self.cachedFile];
             if (cachedNewsHTML != nil){
                 [self.newsWebView loadHTMLString:cachedNewsHTML baseURL:baseURL];
+                self.cachedContent = cachedNewsHTML;
             }
         }
         _isFirstTime = NO;
@@ -121,10 +122,15 @@
             if(self.currentPage==0){
                 self.isEmpty = NO;
                 NSString *newsHTML = [SWFCodeGenerator generateForNewsArray:newsResponse];
-                [self.newsWebView loadHTMLString:newsHTML baseURL:baseURL];
-                [self.adDelegates refreshAd];
-                if (_delegateName != nil){
-                    [NSKeyedArchiver archiveRootObject:newsHTML toFile:self.cachedFile];
+                if (![newsHTML isEqualToString:self.cachedContent]){
+                    [self.newsWebView loadHTMLString:newsHTML baseURL:baseURL];
+                    [self.adDelegates refreshAd];
+                    if (_delegateName != nil){
+                        [NSKeyedArchiver archiveRootObject:newsHTML toFile:self.cachedFile];
+                    }
+                } else {
+                    [self.refreshControl endRefreshing];
+                    [self.newsWebView stringByEvaluatingJavaScriptFromString:@"stopLoading()"];
                 }
             }else{
                 NSMutableString *items = [NSMutableString stringWithString:@""];

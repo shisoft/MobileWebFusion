@@ -31,6 +31,7 @@ typedef void (^loadCompletedBlock)(void);
 @property SWFADBannerDelagates* adDelegates;
 @property NSString* delegateName;
 @property NSString* cachedFile;
+@property NSString* cachedContent;
 
 -(SWFNewsDelegates*) initWithWebView:(UIWebView*)newsWebView ViewController:(UIViewController*)vc getNews:(getNewsBlock)getNews name:(NSString*)name;
 

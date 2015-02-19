@@ -85,16 +85,6 @@
         [self.newsWebView.scrollView setContentOffset:CGPointMake(0, -self.refreshControl.frame.size.height) animated:YES];
         [self.refreshControl beginRefreshing];
     }
-    if (_isFirstLoad){
-        if (_delegateName != nil){
-            NSString *cachedNewsHTML = [SWFCachePolicy cacheOutWithFileName:_delegateName];
-            if (cachedNewsHTML != nil){
-                [self.newsWebView loadHTMLString:cachedNewsHTML baseURL:baseURL];
-                self.cachedContent = cachedNewsHTML;
-            }
-        }
-        _isFirstLoad = NO;
-    }
     if(self.currentPage!=0){
         [self.newsWebView stringByEvaluatingJavaScriptFromString:@"loading()"];
     }
@@ -122,7 +112,7 @@
                     [self.newsWebView loadHTMLString:newsHTML baseURL:baseURL];
                     [self.adDelegates refreshAd];
                     if (_delegateName != nil){
-                        [SWFCachePolicy cacheInWithData:newsHTML fileName:_delegateName];
+                        [SWFCachePolicy cacheInWithData:newsResponse fileName:_delegateName];
                     }
                 } else {
                     [self.refreshControl endRefreshing];
@@ -146,6 +136,18 @@
         });
 
     });
+    if (_isFirstLoad){
+        if (_delegateName != nil){
+            NSArray *cachedNews = [SWFCachePolicy cacheOutWithFileName:_delegateName];
+            NSString *cachedNewsHTML = [SWFCodeGenerator generateForNewsArray:cachedNews];
+            if (cachedNewsHTML != nil){
+                [self.newsWebView loadHTMLString:cachedNewsHTML baseURL:baseURL];
+                self.cachedContent = cachedNewsHTML;
+            }
+            self.pageLastNewsDate = [[cachedNews lastObject] publishTime];
+        }
+        _isFirstLoad = NO;
+    }
 }
 
 -(void)handleRefresh:(UIRefreshControl *)refresh {

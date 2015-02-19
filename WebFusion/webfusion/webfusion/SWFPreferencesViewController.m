@@ -121,7 +121,9 @@ static NSString *SWFUserNumberOfServiceCacheFileName = @"userNumberOfService";
         });
         dispatch_async(dispatch_get_main_queue(),^{
             [self.quickDialogTableView reloadData];
-            [self loading:NO];
+            if (cachedNickName == nil){
+                [self loading:NO];
+            }
         });
     });
 }

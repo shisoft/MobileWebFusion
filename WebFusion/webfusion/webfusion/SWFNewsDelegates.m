@@ -192,7 +192,6 @@
                     [self.newsWebView stringByEvaluatingJavaScriptFromString:@"reserveForAd(50)"];
                 }
             }
-            [self.refreshControl endRefreshing];
         }
     }else{
         if (navigationType == UIWebViewNavigationTypeLinkClicked) {
@@ -202,6 +201,10 @@
         }
     }
     return NO;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [self.refreshControl endRefreshing];
 }
 
 - (void)presentInputAction:(int)action Id:(NSString*)newsId{

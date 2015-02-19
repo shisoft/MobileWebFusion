@@ -14,7 +14,7 @@ typedef void (^loadCompletedBlock)(void);
 
 @interface SWFNewsDelegates : NSObject <UIWebViewDelegate, UIActionSheetDelegate>
 
-@property BOOL isFirstTime;
+@property BOOL isFirstLoad;
 @property UIViewController *viewController;
 @property UIRefreshControl *refreshControl;
 @property NSString* activeNewsId;

@@ -6,6 +6,7 @@
 //  Copyright (c) 2013年 Shisoft Corporation. All rights reserved.
 //
 
+#import <CGIJSONObject/CGICommon.h>
 #import "SWFTopicsViewController.h"
 #import "SWFPost.h"
 #import "SWFGetPostListRequest.h"
@@ -14,6 +15,7 @@
 #import "SWFComposeTopicViewController.h"
 #import "SWFPopNewPostsRequest.h"
 #import "SWFLeftSideMenuViewController.h"
+#import "SWFCachePolicy.h"
 
 @interface SWFTopicsViewController ()
 
@@ -30,6 +32,7 @@
 
 static NSString *SWFTopicTableCellIdentifer = @"TopicCellTableIdentifier";
 static NSString *SWFTableCellLoadingIdentifer = @"CellTableLoadingIdentifier";
+static NSString *SWFUserTopicCacheFileName = @"userTopics";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,12 +46,15 @@ static NSString *SWFTableCellLoadingIdentifer = @"CellTableLoadingIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.isFirstLoad = YES;
     self.busy = NO;
     self.isEmpty = YES;
     self.toTail = NO;
     self.currentPage = 0;
     self.title = NSLocalizedString(@"func.topics", @"");
     self.refreshControl = [[UIRefreshControl alloc] init];
+    self.cells = [NSMutableArray array];
+    self.topics = [NSMutableArray array];
     [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl]; //<- this is point to use. Add "scrollView" property.
     // Do any additional setup after loading the view from its nib.
@@ -124,6 +130,14 @@ static NSString *SWFTableCellLoadingIdentifer = @"CellTableLoadingIdentifier";
     }else{
         busy = YES;
     }
+    if (_isFirstLoad){
+        NSArray *cachedTopics = [SWFCachePolicy cacheOutWithFileName:SWFUserTopicCacheFileName];
+        if (cachedTopics != nil){
+            [self loadTopicsToMemFrom:cachedTopics];
+            [self.tableView reloadData];
+        }
+        _isFirstLoad = NO;
+    }
     dispatch_group_async([SWFAppDelegate getDefaultInstance].SWFBackgroundTasks, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         SWFGetPostListRequest *r = [[SWFGetPostListRequest alloc] init];
         r.type = @"tjoined";
@@ -136,16 +150,12 @@ static NSString *SWFTableCellLoadingIdentifer = @"CellTableLoadingIdentifier";
             return;
         }
         if(currentPage==0){
-            cells = [NSMutableArray arrayWithCapacity:[topicsResponse count]];
-            topics = [NSMutableArray arrayWithCapacity:[topicsResponse count]];
+            cells = [NSMutableArray array];
+            topics = [NSMutableArray array];
             [[[SWFPopNewPostsRequest alloc] init] popNewPosts];
-//            [SWFAppDelegate getDefaultInstance].leftSidebar.threadBadge.badge = nil;
-//            [[SWFAppDelegate getDefaultInstance].leftSidebar reloadList];
+            [SWFCachePolicy cacheInWithData:topicsResponse fileName:SWFUserTopicCacheFileName];
         }
-        for (SWFPost *p in topicsResponse){
-            [cells addObject:[[SWFTopicCellViewController alloc] initWithPost:p UIVC:self]];
-            [topics addObject:p];
-        }
+        [self loadTopicsToMemFrom:topicsResponse];
         if ([topicsResponse count] < 20) {
             self.toTail = YES;
         }
@@ -157,6 +167,13 @@ static NSString *SWFTableCellLoadingIdentifer = @"CellTableLoadingIdentifier";
             [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
         });
     });
+}
+
+- (void)loadTopicsToMemFrom:(NSArray *)news{
+    for (SWFPost *p in news){
+        [cells addObject:[[SWFTopicCellViewController alloc] initWithPost:p UIVC:self]];
+        [topics addObject:p];
+    }
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{

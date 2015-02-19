@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7AE230EB0A5692AA92DF380D /* SWFCachePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE23FD59A92CCE3893FE968 /* SWFCachePolicy.m */; };
 		7AE23D1DF0690BF3B78E41F7 /* YZSwipeBetweenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE23E34FEE173651B4ED041 /* YZSwipeBetweenViewController.m */; };
 		F500AB6C1797B5AA005AE49B /* combineContact_tool.png in Resources */ = {isa = PBXBuildFile; fileRef = F500AB681797B5AA005AE49B /* combineContact_tool.png */; };
 		F500AB6D1797B5AA005AE49B /* combineContact_tool@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F500AB691797B5AA005AE49B /* combineContact_tool@2x.png */; };
@@ -529,8 +530,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7AE23BC642282603389F4066 /* SWFCachePolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFCachePolicy.h; sourceTree = "<group>"; };
 		7AE23C0CF20154FC21BB9825 /* YZSwipeBetweenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZSwipeBetweenViewController.h; sourceTree = "<group>"; };
 		7AE23E34FEE173651B4ED041 /* YZSwipeBetweenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZSwipeBetweenViewController.m; sourceTree = "<group>"; };
+		7AE23FD59A92CCE3893FE968 /* SWFCachePolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFCachePolicy.m; sourceTree = "<group>"; };
 		F500AB681797B5AA005AE49B /* combineContact_tool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = combineContact_tool.png; path = icons/combineContact_tool.png; sourceTree = "<group>"; };
 		F500AB691797B5AA005AE49B /* combineContact_tool@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "combineContact_tool@2x.png"; path = "icons/combineContact_tool@2x.png"; sourceTree = "<group>"; };
 		F500AB6A1797B5AA005AE49B /* combineContact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = combineContact.png; path = icons/combineContact.png; sourceTree = "<group>"; };
@@ -2354,6 +2357,8 @@
 			children = (
 				F5D670181A94A66C00F542D4 /* SWFAppMainViewConstructor.h */,
 				F5D670191A94A66C00F542D4 /* SWFAppMainViewConstructor.m */,
+				7AE23FD59A92CCE3893FE968 /* SWFCachePolicy.m */,
+				7AE23BC642282603389F4066 /* SWFCachePolicy.h */,
 			);
 			name = "Application Controller";
 			sourceTree = "<group>";
@@ -3332,6 +3337,7 @@
 				F56A37C117D9046C00E9DCBC /* SWFRegDevicePNSRequest.m in Sources */,
 				F587F6FA17D9354D0015E34A /* SWFPopNewPostsRequest.m in Sources */,
 				7AE23D1DF0690BF3B78E41F7 /* YZSwipeBetweenViewController.m in Sources */,
+				7AE230EB0A5692AA92DF380D /* SWFCachePolicy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,12 +11,13 @@
 #import "SWFInputActionViewController.h"
 #import "SWFCodeGenerator.h"
 #import "SWFReportAbuseViewController.h"
+#import "SWFCachePolicy.h"
 
 @implementation SWFNewsDelegates
 
 -(SWFNewsDelegates*) initWithWebView:(UIWebView*)newsWebView ViewController:(UIViewController*)vc getNews:(getNewsBlock)getNews name:(NSString*)name{
     self.delegateName = name;
-    self.isFirstTime = YES;
+    self.isFirstLoad = YES;
     self.isEmpty = YES;
     self.busy = NO;
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -32,11 +33,6 @@
     self.newsWebView.dataDetectorTypes = UIDataDetectorTypeLink;
     for (UIView *view in [[[newsWebView subviews] objectAtIndex:0] subviews]) {
         if ([view isKindOfClass:[UIImageView class]]) view.hidden = YES;
-    }
-    
-    if (self.delegateName != nil){
-        NSArray *cachePaths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-        self.cachedFile = [[cachePaths objectAtIndex:0] stringByAppendingString:self.delegateName];
     }
     
     newsWebView.backgroundColor = [[UIColor alloc] initWithRed:211 /255.0 green:211 / 255.0 blue:211 / 255.0 alpha:1.0];
@@ -89,15 +85,15 @@
         [self.newsWebView.scrollView setContentOffset:CGPointMake(0, -self.refreshControl.frame.size.height) animated:YES];
         [self.refreshControl beginRefreshing];
     }
-    if (_isFirstTime){
+    if (_isFirstLoad){
         if (_delegateName != nil){
-            NSString *cachedNewsHTML = [NSKeyedUnarchiver unarchiveObjectWithFile:self.cachedFile];
+            NSString *cachedNewsHTML = [SWFCachePolicy cacheOutWithFileName:_delegateName];
             if (cachedNewsHTML != nil){
                 [self.newsWebView loadHTMLString:cachedNewsHTML baseURL:baseURL];
                 self.cachedContent = cachedNewsHTML;
             }
         }
-        _isFirstTime = NO;
+        _isFirstLoad = NO;
     }
     if(self.currentPage!=0){
         [self.newsWebView stringByEvaluatingJavaScriptFromString:@"loading()"];
@@ -126,12 +122,13 @@
                     [self.newsWebView loadHTMLString:newsHTML baseURL:baseURL];
                     [self.adDelegates refreshAd];
                     if (_delegateName != nil){
-                        [NSKeyedArchiver archiveRootObject:newsHTML toFile:self.cachedFile];
+                        [SWFCachePolicy cacheInWithData:newsHTML fileName:_delegateName];
                     }
                 } else {
                     [self.refreshControl endRefreshing];
                     [self.newsWebView stringByEvaluatingJavaScriptFromString:@"stopLoading()"];
                 }
+                self.cachedContent = nil;
             }else{
                 NSMutableString *items = [NSMutableString stringWithString:@""];
                 for (SWFNews *newsItem in newsResponse)

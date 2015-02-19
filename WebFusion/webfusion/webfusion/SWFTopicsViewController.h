@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CGIJSONObject/CGICommon.h>
 #import "SWFNavedCenterViewController.h"
 
 
@@ -22,6 +23,9 @@
 @property NSMutableArray *topics;
 @property BOOL toTail;
 @property NSTimer *ticker;
+
+@property BOOL isFirstLoad;
+@property NSString *cachedFile;
 
 - (void) refresh;
 

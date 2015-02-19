@@ -6,6 +6,7 @@
 //  Copyright (c) 2013年 Shisoft Corporation. All rights reserved.
 //
 
+#import <CGIJSONObject/CGICommon.h>
 #import "SWFContactsViewController.h"
 #import "SWFUniversalContact.h"
 #import "SWFAvatarHelper.h"
@@ -13,6 +14,7 @@
 #import "SWFUserContactRequest.h"
 #import "SWFContactDetailsViewController.h"
 #import "SWFAddContactViewController.h"
+#import "SWFCachePolicy.h"
 
 @interface SWFContactsViewController ()
 
@@ -21,6 +23,7 @@
 @implementation SWFContactsViewController
 
 static NSString *SWFTableCellLoadingIdentifer = @"CellTableLoadingIdentifier";
+static NSString *SWFUserContactsCacheFileName = @"UserContacts";
 static int SWFDefaultContactCount = 30;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -35,6 +38,7 @@ static int SWFDefaultContactCount = 30;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.isFirstLoad = YES;
     self.busy = NO;
     self.isEmpty = YES;
     self.isSearchEmpty = YES;
@@ -43,6 +47,7 @@ static int SWFDefaultContactCount = 30;
     self.currentPage = 0;
     self.title = NSLocalizedString(@"func.contacts", @"");
     self.refreshControl = [[UIRefreshControl alloc] init];
+    self.contacts = [NSMutableArray array];
     [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl]; //<- this is point to use. Add "scrollView" property.
     // Do any additional setup after loading the view from its nib.
@@ -94,6 +99,14 @@ static int SWFDefaultContactCount = 30;
     }else{
         self.busy = YES;
     }
+    if (self.isFirstLoad){
+        NSArray *cachedContacts = [SWFCachePolicy cacheOutWithFileName:SWFUserContactsCacheFileName];
+        if (cachedContacts != nil){
+            self.contacts = cachedContacts;
+            [self.tableView reloadData];
+        }
+        self.isFirstLoad = NO;
+    }
     dispatch_group_async([SWFAppDelegate getDefaultInstance].SWFBackgroundTasks, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         SWFUserContactRequest *r = [[SWFUserContactRequest alloc] init];
         r.query = @"";
@@ -121,7 +134,8 @@ static int SWFDefaultContactCount = 30;
             self.isSearchEmpty = NO;
         } else{
             if(self.currentPage==0){
-                self.contacts = [NSMutableArray arrayWithCapacity:[contactResponse count]];
+                self.contacts = [NSMutableArray array];
+                [SWFCachePolicy cacheInWithData:contactResponse fileName:SWFUserContactsCacheFileName];
             }
             for (SWFUserContact *uc in contactResponse){
                 [self.contacts addObject:uc];

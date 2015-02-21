@@ -203,9 +203,6 @@ static NSString *SWFUserNumberOfServiceCacheFileName = @"userNumberOfService";
         [mailer setToRecipients:toRecipients];
         [self presentViewController:mailer animated:YES completion:nil];
     }
-    else
-    {
-    }
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error

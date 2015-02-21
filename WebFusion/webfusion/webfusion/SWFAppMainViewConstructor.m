@@ -21,6 +21,7 @@
 #import "SWFLoginViewController.h"
 #import "SwipeView.h"
 #import "SWFNewsSwipeViewController.h"
+#import "SWFPoll.h"
 
 @implementation SWFAppMainViewConstructor
 
@@ -87,9 +88,14 @@
     [contactTabButton setTitle:NSLocalizedString(@"ui.tab.contact", nil)];
     [myTabButton setTitle:NSLocalizedString(@"ui.tab.my", nil)];
 
-    
     [swfad.window.rootViewController removeFromParentViewController];
     swfad.window.rootViewController = swfad.rootViewController;
+    
+    [self initializePoll];
+}
+
++ (void) initializePoll{
+    [[SWFPoll defaultPoll] start];
 }
 
 

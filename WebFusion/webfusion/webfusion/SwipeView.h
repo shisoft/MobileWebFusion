@@ -126,4 +126,3 @@ typedef NS_ENUM(NSUInteger, SwipeViewAlignment)
 
 
 #pragma GCC diagnostic pop
-

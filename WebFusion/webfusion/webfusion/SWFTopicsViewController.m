@@ -14,8 +14,8 @@
 #import "SWFPostDetailsViewController.h"
 #import "SWFComposeTopicViewController.h"
 #import "SWFPopNewPostsRequest.h"
-#import "SWFLeftSideMenuViewController.h"
 #import "SWFCachePolicy.h"
+#import "SWFNewThreadCountPoll.h"
 
 @interface SWFTopicsViewController ()
 
@@ -38,7 +38,8 @@ static NSString *SWFUserTopicCacheFileName = @"userTopics";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [[SWFPoll defaultPoll] addDelegate:self forKey:@"thc"];
+        [[SWFPoll defaultPoll] repoll];
     }
     return self;
 }
@@ -229,5 +230,32 @@ static NSString *SWFUserTopicCacheFileName = @"userTopics";
     }
 }
 
+- (id)poll:(SWFPoll *)poll objectForKey:(NSString *)key
+{
+    if(YES){
+        SWFNewThreadCountPoll *poll = [[SWFNewThreadCountPoll alloc] init];
+        poll.thvt = self.badgeNum;
+        return poll;
+    }else{
+        return nil;
+    }
+}
+
+- (void)poll:(SWFPoll *)poll receivedObject:(id)object forKey:(NSString *)key
+{
+    if ([object respondsToSelector:@selector(integerValue)])
+    {
+        int thc = [object integerValue];
+        if(thc != self.badgeNum){
+            self.badgeNum = thc;
+            if(thc > 0){
+                self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", self.badgeNum];
+            }else{
+                self.badgeNum = nil;
+            }
+        }
+        [[SWFPoll defaultPoll] repoll];
+    }
+}
 
 @end

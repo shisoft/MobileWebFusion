@@ -247,7 +247,7 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
 {
     // Set up default connection.
     CGIRemoteConnection *connection = [[CGIRemoteConnection alloc] initWithServerRoot:@"https://www.shisoft.net/ajax/%@"];
-    //CGIRemoteConnection *connection = [[CGIRemoteConnection alloc] initWithServerRoot:@"http://10.0.1.35:8080/ajax/%@"];
+    //CGIRemoteConnection *connection = [[CGIRemoteConnection alloc] initWithServerRoot:@"http://10.0.0.130:8080/ajax/%@"];
     [connection makeDefaultServerRoot];
     connection.timeoutSeconds = [[NSNumber alloc] initWithDouble:20.0];
     connection.customUserAgent = @"Shisoft WebFusion iOS Client";
@@ -279,18 +279,14 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
             if ([rv isKindOfClass:[SWFWrapper class]])
             {
                 [SWFAppDelegate getDefaultInstance].connected = [rv boolValue];
-                if ([SWFAppDelegate getDefaultInstance].connected)
-                    [[SWFPoll defaultPoll] start];
                 dispatch_async(dispatch_get_main_queue(),^{
                     if ([SWFAppDelegate getDefaultInstance].connected)
                     {
                         [SWFAppDelegate getDefaultInstance].currentUser = login.user;
                         succeed();
-                        //[self gotoMainView];
                     }else{
                         [UIAlertView alertViewWithTitle:nil message:NSLocalizedString(@"err.wrongPassword", @"")  cancelButtonTitle:NSLocalizedString(@"ui.ok", @"") otherButtonTitles:nil onDismiss:nil onCancel:^{
                             wrong();
-                            //[self gotoLoginView];
                         }];
                     }
                 });
@@ -300,8 +296,6 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
             {
                 dispatch_async(dispatch_get_main_queue(),^{
                     failed();
-                    //logging = NO;
-                    //[self hideLogging];
                 });
                 [SWFAppDelegate getDefaultInstance].connected = NO;
             }
@@ -310,8 +304,6 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
         {
             dispatch_async(dispatch_get_main_queue(),^{
                 empty();
-                //logging = NO;
-                //[self hideLogging];
             });
         }
     });

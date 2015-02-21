@@ -208,35 +208,7 @@ AVAudioPlayer *audioPlayer;
 }
 
 
-- (id)poll:(SWFPoll *)poll objectForKey:(NSString *)key
-{
-    if(YES){
-        SWFNewThreadCountPoll *poll = [[SWFNewThreadCountPoll alloc] init];
-        poll.thvt = self.newThreadCount;
-        return poll;
-    }else{
-        return nil;
-    }
-}
 
-- (void)poll:(SWFPoll *)poll receivedObject:(id)object forKey:(NSString *)key
-{
-    if ([object respondsToSelector:@selector(integerValue)])
-    {
-        int thc = [object integerValue];
-        if(thc != self.newThreadCount){
-            self.newThreadCount = thc;
-            if(thc > 0){
-                self.threadBadge.badge = [NSString stringWithFormat:@"%d", self.newThreadCount];
-                [audioPlayer play];
-            }else{
-                self.threadBadge.badge = nil;
-            }
-        }
-        [self reloadList];
-        [[SWFPoll defaultPoll] repoll];
-    }
-}
 
 
 @end

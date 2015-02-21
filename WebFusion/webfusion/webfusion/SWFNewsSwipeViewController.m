@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Shisoft Corporation. All rights reserved.
 //
 
+#import <CGIJSONObject/CGICommon.h>
 #import "SWFNewsSwipeViewController.h"
+#import "SWFNewsViewController.h"
 
 @interface SWFNewsSwipeViewController ()
 
@@ -19,6 +21,16 @@
 -(SWFNewsSwipeViewController*) initWithViewControllersToSwap:(NSArray *)vcs{
     self = [self initWithNibName:@"SWFNewsSwipeViewController" bundle:nil];
     self.views = vcs;
+    for (int i = 0; i < [self.views count]; ++i) {
+        id view = [[self.views objectAtIndex:i] viewControllers].firstObject;
+        if ([view  respondsToSelector:@selector(setRefBadge:)]){
+            [view setRefBadge:^{
+                if (self.swipeView.currentItemIndex == i){
+                    [self refreshTabBadgeForCurrentView];
+                }
+            }];
+        }
+    }
     swipeView.alignment = SwipeViewAlignmentEdge;
     swipeView.frame = [SWFAppDelegate getDefaultInstance].window.frame;
     swipeView.bounces = NO;
@@ -53,6 +65,24 @@
     v.frame = frame;
     currentOriginX += mainScreenBounds.size.width;
     return v;
+}
+
+- (void)swipeViewCurrentItemIndexDidChange:(SwipeView *)swipeView{
+    [self refreshTabBadgeForCurrentView];
+}
+
+- (void) refreshTabBadgeForCurrentView{
+    id view = [[self.views objectAtIndex:self.swipeView.currentItemIndex] viewControllers].firstObject;
+    self.title = [view title];
+    NSInteger badgeNum = nil;
+    if ([view respondsToSelector:@selector(getBadgeNum)]) {
+        badgeNum = [view badgeNum];
+    }
+    NSString *badgeDisp = nil;
+    if (badgeNum && badgeNum > 1){
+        badgeDisp = [NSString stringWithFormat:@"%d", badgeNum];
+    }
+    self.tabBarItem.badgeValue = badgeDisp;
 }
 
 /*

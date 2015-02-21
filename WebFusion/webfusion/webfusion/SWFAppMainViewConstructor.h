@@ -10,6 +10,7 @@
 
 @interface SWFAppMainViewConstructor : NSObject
 
+
 + (void)constructureMainView;
 + (void) constructureLoginView;
 

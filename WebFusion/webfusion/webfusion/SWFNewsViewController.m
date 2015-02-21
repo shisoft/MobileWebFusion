@@ -29,14 +29,6 @@
     if (self) {
         self.title = NSLocalizedString(@"func.news", @"");
         [[SWFPoll defaultPoll] addDelegate:self forKey:@"newsc"];
-        __block SWFNewsViewController *this = self;
-        self.delegates.loadCompleted = ^{
-            this.badgeNum = 0;
-            if (this.refBadge != nil){
-                this.refBadge();
-            }
-            [[SWFPoll defaultPoll] repoll];
-        };
     }
     return self;
 }
@@ -54,6 +46,14 @@
     } name:@"news"];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]  initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(compose)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
+    __block SWFNewsViewController *this = self;
+    self.delegates.loadCompleted = ^{
+        this.badgeNum = 0;
+        if (this.refBadge != nil){
+            this.refBadge();
+        }
+        [[SWFPoll defaultPoll] repoll];
+    };
     [self.delegates loadNews];
     [self.delegates manualBottomInsets];
     

@@ -57,7 +57,6 @@ static NSString *SWFTableCellLoadingIdentifer = @"CellTableLoadingIdentifier";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"ui.edit", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(edit)];
     [self loadBookmarks];
     [super changeNavBarColor:[[UIColor alloc] initWithRed:193 / 255.0 green:32 / 255.0 blue:81 / 255.0 alpha:1.0]];
-    [SWFUIModifiers manualBottomTabBarInsetsFor:self.tableView];
     // Do any additional setup after loading the view from its nib.
 }
 

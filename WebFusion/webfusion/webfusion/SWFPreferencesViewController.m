@@ -19,11 +19,6 @@
 #import "Appirater.h"
 #import "SWFNavedCenterViewController.h"
 #import "SWFCachePolicy.h"
-#import <MessageUI/MessageUI.h>
-#import <CGIJSONObject/CGICommon.h>
-#import "QElement+Appearance.h"
-#import "QLabelElement.h"
-#import "SWFUIModifiers.h"
 
         @interface SWFPreferencesViewController ()
 
@@ -52,7 +47,6 @@ static NSString *SWFUserNumberOfServiceCacheFileName = @"userNumberOfService";
     QAppearance *qa = [self.nickname.appearance copy];
     qa.entryAlignment = NSTextAlignmentRight;
     self.nickname.appearance = qa;
-    [SWFUIModifiers manualBottomTabBarInsetsFor:self.quickDialogTableView];
 }
 
 - (void)viewDidLoad

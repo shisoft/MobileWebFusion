@@ -59,18 +59,13 @@
        [SWFAppDelegate wrapCenterView:searchVC],
        [SWFAppDelegate wrapCenterView:trendVC]]];
 
-    SWFPreferencesViewController *preferencesView = (SWFPreferencesViewController *) [[SWFPreferencesViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"preferences-lite"]];
-    SWFMyViewController *myView = (SWFMyViewController *) [[SWFMyViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"my"]];
-    SWFMySwipeViewController *mySwipeView = [[SWFMySwipeViewController alloc] initWithViewControllersToSwap:
-    @[[SWFAppDelegate wrapCenterView:myView],
-      [SWFAppDelegate wrapCenterView:preferencesView]]];
-    [myView setSwipeViewController: mySwipeView];
+    UIViewController *myView = [SWFAppDelegate wrapCenterView:[[SWFMyViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"my"]]];
 
     UIViewController* newsView = newsSwipeView;
     UIViewController* topicView = [SWFAppDelegate generateCenterView:[SWFTopicsViewController class] name:@"SWFTopicsViewController"];
     UIViewController* contactView = [SWFAppDelegate generateCenterView:[SWFContactsViewController class] name:@"SWFContactsViewController"];
 
-    swfad.rootViewController.viewControllers = @[newsView, topicView, contactView, mySwipeView];
+    swfad.rootViewController.viewControllers = @[newsView, topicView, contactView, myView];
     
     NSArray* tabButtons = swfad.rootViewController.tabBar.items;
     

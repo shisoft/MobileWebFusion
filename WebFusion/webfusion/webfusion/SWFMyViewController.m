@@ -5,8 +5,8 @@
 
 #import "SWFMyViewController.h"
 #import "SWFBookmarkViewController.h"
-#import "SWFMySwipeViewController.h"
 #import "SWFUIModifiers.h"
+#import "SWFPreferencesViewController.h"
 
 
 @implementation SWFMyViewController {
@@ -15,19 +15,19 @@
 
 @synthesize swipeViewController;
 
-- (void)viewWillAppear:(BOOL)animated {
-    [SWFUIModifiers manualBottomTabBarInsetsFor:self.quickDialogTableView];
-    [super viewWillAppear:animated];
+- (void)viewDidLoad {
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings"] style:UIBarButtonItemStyleBordered target:self action:@selector(onSettings)];
+    [super viewDidLoad];
 }
-
 
 - (void)onFavourites:(QLabelElement *)buttonElement {
     SWFBookmarkViewController *bmvc = [[SWFBookmarkViewController alloc] initWithNibName:@"SWFBookmarkViewController" bundle:nil];
     [self.navigationController pushViewController:bmvc animated:YES];
 }
 
-- (void)onSettings:(QLabelElement *)buttonElement {
-    [[swipeViewController swipeView] scrollToItemAtIndex:1 duration:0.5];
+- (void)onSettings{
+    SWFPreferencesViewController *preferencesView = (SWFPreferencesViewController *) [[SWFPreferencesViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"preferences-lite"]];
+    [self.navigationController pushViewController:preferencesView animated:YES];
 }
 
 

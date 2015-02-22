@@ -12,6 +12,7 @@
 #import "SWFCodeGenerator.h"
 #import "SWFReportAbuseViewController.h"
 #import "SWFCachePolicy.h"
+#import "SWFUIModifiers.h"
 
 @implementation SWFNewsDelegates
 
@@ -41,14 +42,8 @@
 }
 
 - (void)manualBottomInsets{
-    int tabBarHeight = 49;
-    UIEdgeInsets scrollBarInsets = self.newsWebView.scrollView.scrollIndicatorInsets;
-    UIEdgeInsets scrollBarInsetsCorrection = UIEdgeInsetsMake(scrollBarInsets.top, scrollBarInsets.left, tabBarHeight, scrollBarInsets.right);
-    self.newsWebView.scrollView.scrollIndicatorInsets = scrollBarInsetsCorrection;
-    
-    UIEdgeInsets contentInsets = self.newsWebView.scrollView.contentInset;
-    UIEdgeInsets contentInsetsCorrection = UIEdgeInsetsMake(contentInsets.top, contentInsets.left, tabBarHeight, contentInsets.right);
-    self.newsWebView.scrollView.contentInset = contentInsetsCorrection;
+    [SWFUIModifiers manualBottomTabBarInsetsFor:self.newsWebView.scrollView];
+
 }
 
 - (void)displayAd:(UIWebView*)webView{

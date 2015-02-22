@@ -1,0 +1,14 @@
+{
+  "grouped": true,
+  "title": "ui.tab.my",
+  "sections": [
+    {"elements": [
+      { "type":"QLabelElement", "key":"button", "title":"func.favourites","imageNamed":"bookmarks", "controllerAction":"onFavourites:"}
+    ]
+    },
+    {"elements": [
+      { "type":"QLabelElement", "key":"button", "title":"func.preferences","imageNamed":"settings", "controllerAction":"onSettings:"}
+    ]
+    }
+  ]
+}

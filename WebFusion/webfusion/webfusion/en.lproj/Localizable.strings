@@ -261,3 +261,8 @@
 "svr.xmpp"          = "XMPP";
 "svr.yahoo"         = "Yahoo Messenger";
 "svr.yiban"         = "Yiban";
+"Previous" = "Previous";
+"Next" = "Next";
+"Cancel" = "Cancel";
+"Done" = "Done";
+"Dismiss" = "Dismiss";

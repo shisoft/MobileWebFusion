@@ -22,6 +22,9 @@
 #import "SwipeView.h"
 #import "SWFNewsSwipeViewController.h"
 #import "SWFPoll.h"
+#import "SWFMyViewController.h"
+#import "SWFMySwipeViewController.h"
+#import "SWFUIModifiers.h"
 
 @implementation SWFAppMainViewConstructor
 
@@ -55,28 +58,26 @@
        [SWFAppDelegate wrapCenterView:discoverVC],
        [SWFAppDelegate wrapCenterView:searchVC],
        [SWFAppDelegate wrapCenterView:trendVC]]];
-    
+
+    SWFPreferencesViewController *preferencesView = (SWFPreferencesViewController *) [[SWFPreferencesViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"preferences-lite"]];
+    SWFMyViewController *myView = (SWFMyViewController *) [[SWFMyViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"my"]];
+    SWFMySwipeViewController *mySwipeView = [[SWFMySwipeViewController alloc] initWithViewControllersToSwap:
+    @[[SWFAppDelegate wrapCenterView:myView],
+      [SWFAppDelegate wrapCenterView:preferencesView]]];
+    [myView setSwipeViewController: mySwipeView];
+
     UIViewController* newsView = newsSwipeView;
-    
     UIViewController* topicView = [SWFAppDelegate generateCenterView:[SWFTopicsViewController class] name:@"SWFTopicsViewController"];
-    
     UIViewController* contactView = [SWFAppDelegate generateCenterView:[SWFContactsViewController class] name:@"SWFContactsViewController"];
-    
-    UIViewController* myView = [SWFAppDelegate wrapCenterView:[[SWFPreferencesViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"preferences-lite"]]];
-    
-    swfad.rootViewController.viewControllers = [NSArray arrayWithObjects:
-                                                newsView,
-                                                topicView,
-                                                contactView,
-                                                myView,
-                                                nil];
+
+    swfad.rootViewController.viewControllers = @[newsView, topicView, contactView, mySwipeView];
     
     NSArray* tabButtons = swfad.rootViewController.tabBar.items;
     
-    UITabBarItem* newsTabButton = [tabButtons objectAtIndex:0];
-    UITabBarItem* topicTabButton = [tabButtons objectAtIndex:1];
-    UITabBarItem* contactTabButton = [tabButtons objectAtIndex:2];
-    UITabBarItem* myTabButton = [tabButtons objectAtIndex:3];
+    UITabBarItem* newsTabButton = tabButtons[0];
+    UITabBarItem* topicTabButton = tabButtons[1];
+    UITabBarItem* contactTabButton = tabButtons[2];
+    UITabBarItem* myTabButton = tabButtons[3];
     
     [newsTabButton setImage:[UIImage imageNamed:@"thin-010_newspaper_reading_news"]];
     [topicTabButton setImage:[UIImage imageNamed:@"thin-038_comment_chat_message"]];
@@ -90,7 +91,7 @@
 
     [swfad.window.rootViewController removeFromParentViewController];
     swfad.window.rootViewController = swfad.rootViewController;
-    
+
     [self initializePoll];
 }
 

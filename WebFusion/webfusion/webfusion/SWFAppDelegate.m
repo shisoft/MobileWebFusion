@@ -211,6 +211,7 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[SWFPoll defaultPoll] start];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -246,8 +247,8 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
 - (void) initializeClient
 {
     // Set up default connection.
-    CGIRemoteConnection *connection = [[CGIRemoteConnection alloc] initWithServerRoot:@"https://www.shisoft.net/ajax/%@"];
-    //CGIRemoteConnection *connection = [[CGIRemoteConnection alloc] initWithServerRoot:@"http://10.0.0.130:8080/ajax/%@"];
+    //CGIRemoteConnection *connection = [[CGIRemoteConnection alloc] initWithServerRoot:@"https://www.shisoft.net/ajax/%@"];
+    CGIRemoteConnection *connection = [[CGIRemoteConnection alloc] initWithServerRoot:@"http://10.0.0.130:8080/ajax/%@"];
     [connection makeDefaultServerRoot];
     connection.timeoutSeconds = [[NSNumber alloc] initWithDouble:20.0];
     connection.customUserAgent = @"Shisoft WebFusion iOS Client";

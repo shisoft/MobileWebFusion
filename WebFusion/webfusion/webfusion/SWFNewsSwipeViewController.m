@@ -57,13 +57,11 @@
 
 - (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
-    CGRect mainScreenBounds = [[UIScreen mainScreen] bounds];
     CGFloat currentOriginX = 0;
-    UIView *v = [[_views objectAtIndex:index] view];
+    UIView *v = (UIView *) [_views[(NSUInteger) index] view];
     CGRect frame = v.frame;
     frame.origin.x = currentOriginX;
     v.frame = frame;
-    currentOriginX += mainScreenBounds.size.width;
     return v;
 }
 

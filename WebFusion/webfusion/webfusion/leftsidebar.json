@@ -1,38 +1,38 @@
 {
-	"grouped": false,
-	"title": "",
-	"sections":
-    [
-     {
-     "elements":[
-                    { "type":"QLabelElement", "key":"userName", "title":"－","imageNamed":"default-user"}
-                ]
-     },
-     {"title":"ui.general",
+  "grouped": false,
+  "title": "",
+  "sections":
+  [
+    {
       "elements":[
-                 { "type":"QBadgeElement", "key":"newsBadge","title":"func.news","imageNamed":"news", "controllerAction":"onNews:","keepSelected":true},
-                 { "type":"QBadgeElement", "key":"threadBadge", "title":"func.topics","imageNamed":"topics", "controllerAction":"onTopics:","keepSelected":true},
-                { "type":"QLabelElement", "key":"button", "title":"func.map","imageNamed":"maps", "controllerAction":"onMap:","keepSelected":true},
-                 { "type":"QLabelElement", "key":"button", "title":"func.contacts","imageNamed":"addressbook", "controllerAction":"onContacts:","keepSelected":true}
-                ]
-     },
-     {"title":"ui.insight",
+        { "type":"QLabelElement", "key":"userName", "title":"－","imageNamed":"default-user"}
+      ]
+    },
+    {"title":"ui.general",
       "elements":[
-                 { "type":"QLabelElement", "key":"button", "title":"func.favourites","imageNamed":"bookmarks", "controllerAction":"onFavourites:","keepSelected":true},
-                 { "type":"QLabelElement", "key":"button", "title":"func.Discover","imageNamed":"dimoands", "controllerAction":"onDiscover:","keepSelected":true},
-                 { "type":"QLabelElement", "key":"button", "title":"func.SearchNews","imageNamed":"archives", "controllerAction":"onSearch:","keepSelected":true}
-                 ]
-     },
-     {"title":"ui.pro",
-     "elements":[
-                 { "type":"QLabelElement", "key":"button", "title":"func.trend","imageNamed":"trend", "controllerAction":"onTrend:","keepSelected":true}
-                 ]
-     },
-     {"title":"ui.others",
-     "elements":[
-                 { "type":"QLabelElement", "key":"button", "title":"func.preferences","imageNamed":"settings", "controllerAction":"onPreferences:","keepSelected":true},
-                 { "type":"QLabelElement", "key":"button", "title":"func.logout","imageNamed":"logout", "controllerAction":"onLogout:"}
-                 ]
-     }
-    ]
+        { "type":"QBadgeElement", "key":"newsBadge","title":"func.news","imageNamed":"news", "controllerAction":"onNews:","keepSelected":true},
+        { "type":"QBadgeElement", "key":"threadBadge", "title":"func.topics","imageNamed":"topics", "controllerAction":"onTopics:","keepSelected":true},
+        { "type":"QLabelElement", "key":"button", "title":"func.map","imageNamed":"maps", "controllerAction":"onMap:","keepSelected":true},
+        { "type":"QLabelElement", "key":"button", "title":"func.contacts","imageNamed":"addressbook", "controllerAction":"onContacts:","keepSelected":true}
+      ]
+    },
+    {"title":"ui.insight",
+      "elements":[
+        { "type":"QLabelElement", "key":"button", "title":"func.favourites","imageNamed":"bookmarks", "controllerAction":"onFavourites:","keepSelected":true},
+        { "type":"QLabelElement", "key":"button", "title":"func.Discover","imageNamed":"dimoands", "controllerAction":"onDiscover:","keepSelected":true},
+        { "type":"QLabelElement", "key":"button", "title":"func.SearchNews","imageNamed":"archives", "controllerAction":"onSearch:","keepSelected":true}
+      ]
+    },
+    {"title":"ui.pro",
+      "elements":[
+        { "type":"QLabelElement", "key":"button", "title":"func.trend","imageNamed":"trend", "controllerAction":"onTrend:","keepSelected":true}
+      ]
+    },
+    {"title":"ui.others",
+      "elements":[
+        { "type":"QLabelElement", "key":"button", "title":"func.preferences","imageNamed":"settings", "controllerAction":"onPreferences:","keepSelected":true},
+        { "type":"QLabelElement", "key":"button", "title":"func.logout","imageNamed":"logout", "controllerAction":"onLogout:"}
+      ]
+    }
+  ]
 }

@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7AE230EB0A5692AA92DF380D /* SWFCachePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE23FD59A92CCE3893FE968 /* SWFCachePolicy.m */; };
+		7AE235AAC368A946B1E51F76 /* SWFMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE23B7428D4E307720C8A6C /* SWFMyViewController.m */; };
+		7AE23A359388D038A446D0B7 /* SWFUIModifiers.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE2375BD14E6A6E6955892A /* SWFUIModifiers.m */; };
 		7AE23D1DF0690BF3B78E41F7 /* YZSwipeBetweenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE23E34FEE173651B4ED041 /* YZSwipeBetweenViewController.m */; };
+		7AE23F94ECF1DF94B595868A /* my.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AE2309BC42E12260A57165B /* my.json */; };
 		F500AB6C1797B5AA005AE49B /* combineContact_tool.png in Resources */ = {isa = PBXBuildFile; fileRef = F500AB681797B5AA005AE49B /* combineContact_tool.png */; };
 		F500AB6D1797B5AA005AE49B /* combineContact_tool@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F500AB691797B5AA005AE49B /* combineContact_tool@2x.png */; };
 		F500AB6E1797B5AA005AE49B /* combineContact.png in Resources */ = {isa = PBXBuildFile; fileRef = F500AB6A1797B5AA005AE49B /* combineContact.png */; };
@@ -159,8 +162,6 @@
 		F5297B0F1781E3B800FADE35 /* places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5297ADF1781E3B800FADE35 /* places@2x.png */; };
 		F5297B121781E3B800FADE35 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = F5297AE21781E3B800FADE35 /* settings.png */; };
 		F5297B131781E3B800FADE35 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5297AE31781E3B800FADE35 /* settings@2x.png */; };
-		F5297B141781E3B800FADE35 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = F5297AE41781E3B800FADE35 /* star.png */; };
-		F5297B151781E3B800FADE35 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5297AE51781E3B800FADE35 /* star@2x.png */; };
 		F5297B161781E3B800FADE35 /* topics.png in Resources */ = {isa = PBXBuildFile; fileRef = F5297AE61781E3B800FADE35 /* topics.png */; };
 		F5297B171781E3B800FADE35 /* topics@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5297AE71781E3B800FADE35 /* topics@2x.png */; };
 		F5297B181781E3B800FADE35 /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = F5297AE81781E3B800FADE35 /* trash.png */; };
@@ -271,8 +272,6 @@
 		F57E51F617A3495000B2F264 /* SWFNewsTrendWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F57E51F517A3495000B2F264 /* SWFNewsTrendWrapper.m */; };
 		F57E51F917A3C47600B2F264 /* trendIcon_tool.png in Resources */ = {isa = PBXBuildFile; fileRef = F57E51F717A3C47600B2F264 /* trendIcon_tool.png */; };
 		F57E51FA17A3C47600B2F264 /* trendIcon_tool@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F57E51F817A3C47600B2F264 /* trendIcon_tool@2x.png */; };
-		F57F93521780D7F9007A90CD /* splashLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = F57F93501780D7F9007A90CD /* splashLogo.png */; };
-		F57F93531780D7F9007A90CD /* splashLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F57F93511780D7F9007A90CD /* splashLogo@2x.png */; };
 		F57F93571780EF17007A90CD /* SWFNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F57F93551780EF17007A90CD /* SWFNewsViewController.m */; };
 		F57F93581780EF17007A90CD /* SWFNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F57F93561780EF17007A90CD /* SWFNewsViewController.xib */; };
 		F583D6531822210E00215222 /* SWFGetPostsByRootRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F583D6521822210E00215222 /* SWFGetPostsByRootRequest.m */; };
@@ -339,6 +338,8 @@
 		F59F1F82177F15200025FB9E /* SWFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59F1F80177F151F0025FB9E /* SWFLoginViewController.m */; };
 		F59F2050178038CA0025FB9E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F59F204F178038CA0025FB9E /* MapKit.framework */; };
 		F59F2053178040CE0025FB9E /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = F59F2052178040CE0025FB9E /* login.json */; };
+		F59F61B31A9A00F2000139DC /* SWFMySwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59F61B11A9A00F2000139DC /* SWFMySwipeViewController.m */; };
+		F59F61B41A9A00F2000139DC /* SWFMySwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F59F61B21A9A00F2000139DC /* SWFMySwipeViewController.xib */; };
 		F5A57A291788BBD100E628FC /* SWFCustomStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A57A281788BBD100E628FC /* SWFCustomStatusBar.m */; };
 		F5A57A2D17891FA700E628FC /* SWFWebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A57A2B17891FA600E628FC /* SWFWebBrowserViewController.m */; };
 		F5A57A2E17891FA700E628FC /* SWFWebBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5A57A2C17891FA700E628FC /* SWFWebBrowserViewController.xib */; };
@@ -530,9 +531,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7AE2309BC42E12260A57165B /* my.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = my.json; sourceTree = "<group>"; };
+		7AE2372873454E82B2CF7DAA /* SWFUIModifiers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFUIModifiers.h; sourceTree = "<group>"; };
+		7AE2375BD14E6A6E6955892A /* SWFUIModifiers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFUIModifiers.m; sourceTree = "<group>"; };
+		7AE23B7428D4E307720C8A6C /* SWFMyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFMyViewController.m; sourceTree = "<group>"; };
 		7AE23BC642282603389F4066 /* SWFCachePolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFCachePolicy.h; sourceTree = "<group>"; };
 		7AE23C0CF20154FC21BB9825 /* YZSwipeBetweenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZSwipeBetweenViewController.h; sourceTree = "<group>"; };
 		7AE23E34FEE173651B4ED041 /* YZSwipeBetweenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZSwipeBetweenViewController.m; sourceTree = "<group>"; };
+		7AE23FC31DC1525607912AA8 /* SWFMyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFMyViewController.h; sourceTree = "<group>"; };
 		7AE23FD59A92CCE3893FE968 /* SWFCachePolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFCachePolicy.m; sourceTree = "<group>"; };
 		F500AB681797B5AA005AE49B /* combineContact_tool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = combineContact_tool.png; path = icons/combineContact_tool.png; sourceTree = "<group>"; };
 		F500AB691797B5AA005AE49B /* combineContact_tool@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "combineContact_tool@2x.png"; path = "icons/combineContact_tool@2x.png"; sourceTree = "<group>"; };
@@ -729,8 +735,6 @@
 		F5297ADF1781E3B800FADE35 /* places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "places@2x.png"; path = "icons/places@2x.png"; sourceTree = "<group>"; };
 		F5297AE21781E3B800FADE35 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = icons/settings.png; sourceTree = "<group>"; };
 		F5297AE31781E3B800FADE35 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "icons/settings@2x.png"; sourceTree = "<group>"; };
-		F5297AE41781E3B800FADE35 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star.png; path = icons/star.png; sourceTree = "<group>"; };
-		F5297AE51781E3B800FADE35 /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star@2x.png"; path = "icons/star@2x.png"; sourceTree = "<group>"; };
 		F5297AE61781E3B800FADE35 /* topics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = topics.png; path = icons/topics.png; sourceTree = "<group>"; };
 		F5297AE71781E3B800FADE35 /* topics@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "topics@2x.png"; path = "icons/topics@2x.png"; sourceTree = "<group>"; };
 		F5297AE81781E3B800FADE35 /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trash.png; path = icons/trash.png; sourceTree = "<group>"; };
@@ -898,8 +902,6 @@
 		F57E51F517A3495000B2F264 /* SWFNewsTrendWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFNewsTrendWrapper.m; sourceTree = "<group>"; };
 		F57E51F717A3C47600B2F264 /* trendIcon_tool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trendIcon_tool.png; path = icons/trendIcon_tool.png; sourceTree = "<group>"; };
 		F57E51F817A3C47600B2F264 /* trendIcon_tool@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trendIcon_tool@2x.png"; path = "icons/trendIcon_tool@2x.png"; sourceTree = "<group>"; };
-		F57F93501780D7F9007A90CD /* splashLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashLogo.png; sourceTree = "<group>"; };
-		F57F93511780D7F9007A90CD /* splashLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashLogo@2x.png"; sourceTree = "<group>"; };
 		F57F93541780EF17007A90CD /* SWFNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFNewsViewController.h; sourceTree = "<group>"; };
 		F57F93551780EF17007A90CD /* SWFNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFNewsViewController.m; sourceTree = "<group>"; };
 		F57F93561780EF17007A90CD /* SWFNewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWFNewsViewController.xib; sourceTree = "<group>"; };
@@ -991,6 +993,9 @@
 		F59F1F80177F151F0025FB9E /* SWFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFLoginViewController.m; sourceTree = "<group>"; };
 		F59F204F178038CA0025FB9E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F59F2052178040CE0025FB9E /* login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
+		F59F61B01A9A00F2000139DC /* SWFMySwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFMySwipeViewController.h; sourceTree = "<group>"; };
+		F59F61B11A9A00F2000139DC /* SWFMySwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFMySwipeViewController.m; sourceTree = "<group>"; };
+		F59F61B21A9A00F2000139DC /* SWFMySwipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWFMySwipeViewController.xib; sourceTree = "<group>"; };
 		F5A57A271788BBD100E628FC /* SWFCustomStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFCustomStatusBar.h; sourceTree = "<group>"; };
 		F5A57A281788BBD100E628FC /* SWFCustomStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFCustomStatusBar.m; sourceTree = "<group>"; };
 		F5A57A2A17891FA600E628FC /* SWFWebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFWebBrowserViewController.h; sourceTree = "<group>"; };
@@ -1075,9 +1080,6 @@
 		F5EC9ED8177A0C140077E797 /* webfusion-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "webfusion-Prefix.pch"; sourceTree = "<group>"; };
 		F5EC9ED9177A0C140077E797 /* SWFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFAppDelegate.h; sourceTree = "<group>"; };
 		F5EC9EDA177A0C140077E797 /* SWFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFAppDelegate.m; sourceTree = "<group>"; };
-		F5EC9EDC177A0C140077E797 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		F5EC9EDE177A0C140077E797 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		F5EC9EE0177A0C140077E797 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F5EC9F25177A0CDA0077E797 /* SWFPublishBlogRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWFPublishBlogRequest.h; path = SWFCore/SWFPublishBlogRequest.h; sourceTree = "<group>"; };
 		F5EC9F26177A0CDA0077E797 /* CLLocation+CGIPersistance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CLLocation+CGIPersistance.h"; path = "SWFCore/CLLocation+CGIPersistance.h"; sourceTree = "<group>"; };
 		F5EC9F27177A0CDA0077E797 /* CLLocation+CGIPersistance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CLLocation+CGIPersistance.m"; path = "SWFCore/CLLocation+CGIPersistance.m"; sourceTree = "<group>"; };
@@ -1865,8 +1867,6 @@
 			children = (
 				F5EBD61217AAE5F40002F15C /* blankSepraterForRegister.png */,
 				F51B5A621795ABA600AF7DBE /* default-user.png */,
-				F57F93501780D7F9007A90CD /* splashLogo.png */,
-				F57F93511780D7F9007A90CD /* splashLogo@2x.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -1903,8 +1903,8 @@
 		F59F1E9C177E12870025FB9E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F5D670241A9523D100F542D4 /* SWFNewsSwipeViewController.xib */,
 				F59F2051178040950025FB9E /* json */,
+				F5D670241A9523D100F542D4 /* SWFNewsSwipeViewController.xib */,
 				F5F8D88019DE0B6100ECB5E6 /* MainTabController.xib */,
 				F5848309179F121200F52F59 /* SWFAddAuthServiceDispatchViewController.xib */,
 				F500ABE01799A774005AE49B /* SWFAddContactViewController.xib */,
@@ -2016,6 +2016,11 @@
 				F500ABF5179BF226005AE49B /* SWFUserContactPickerViewController.m */,
 				F5A57A2A17891FA600E628FC /* SWFWebBrowserViewController.h */,
 				F5A57A2B17891FA600E628FC /* SWFWebBrowserViewController.m */,
+				7AE23B7428D4E307720C8A6C /* SWFMyViewController.m */,
+				7AE23FC31DC1525607912AA8 /* SWFMyViewController.h */,
+				F59F61B01A9A00F2000139DC /* SWFMySwipeViewController.h */,
+				F59F61B11A9A00F2000139DC /* SWFMySwipeViewController.m */,
+				F59F61B21A9A00F2000139DC /* SWFMySwipeViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -2158,6 +2163,7 @@
 				F58482A6179D468A00F52F59 /* preferences.json */,
 				F5EBD61917AB087B0002F15C /* register.json */,
 				F556AB2817B7AD4C00B94E78 /* reportAbuse.json */,
+				7AE2309BC42E12260A57165B /* my.json */,
 			);
 			name = json;
 			sourceTree = "<group>";
@@ -2245,8 +2251,6 @@
 				F5297AE21781E3B800FADE35 /* settings.png */,
 				F5297AE31781E3B800FADE35 /* settings@2x.png */,
 				F5157E8A1782BF750078CA66 /* share.png */,
-				F5297AE41781E3B800FADE35 /* star.png */,
-				F5297AE51781E3B800FADE35 /* star@2x.png */,
 				F56BA39F17869E340088088E /* tag.png */,
 				F56BA3A017869E340088088E /* tag@2x.png */,
 				F5297AE61781E3B800FADE35 /* topics.png */,
@@ -2359,6 +2363,8 @@
 				F5D670191A94A66C00F542D4 /* SWFAppMainViewConstructor.m */,
 				7AE23FD59A92CCE3893FE968 /* SWFCachePolicy.m */,
 				7AE23BC642282603389F4066 /* SWFCachePolicy.h */,
+				7AE2375BD14E6A6E6955892A /* SWFUIModifiers.m */,
+				7AE2372873454E82B2CF7DAA /* SWFUIModifiers.h */,
 			);
 			name = "Application Controller";
 			sourceTree = "<group>";
@@ -2476,9 +2482,6 @@
 				F5EC9ED2177A0C140077E797 /* webfusion-Info.plist */,
 				F5EC9ED6177A0C140077E797 /* main.m */,
 				F5EC9ED8177A0C140077E797 /* webfusion-Prefix.pch */,
-				F5EC9EDC177A0C140077E797 /* Default.png */,
-				F5EC9EDE177A0C140077E797 /* Default@2x.png */,
-				F5EC9EE0177A0C140077E797 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2840,8 +2843,6 @@
 				F5EC9F87177A0CDA0077E797 /* zh-Hans.lproj in Resources */,
 				F59F1EB3177E1F510025FB9E /* SWFRootViewController.xib in Resources */,
 				F59F2053178040CE0025FB9E /* login.json in Resources */,
-				F57F93521780D7F9007A90CD /* splashLogo.png in Resources */,
-				F57F93531780D7F9007A90CD /* splashLogo@2x.png in Resources */,
 				F57F93581780EF17007A90CD /* SWFNewsViewController.xib in Resources */,
 				F5297A8917819B4300FADE35 /* leftsidebar.json in Resources */,
 				F5297AEE1781E3B800FADE35 /* addressbook.png in Resources */,
@@ -2884,8 +2885,6 @@
 				F5297B0F1781E3B800FADE35 /* places@2x.png in Resources */,
 				F5297B121781E3B800FADE35 /* settings.png in Resources */,
 				F5297B131781E3B800FADE35 /* settings@2x.png in Resources */,
-				F5297B141781E3B800FADE35 /* star.png in Resources */,
-				F5297B151781E3B800FADE35 /* star@2x.png in Resources */,
 				F5297B161781E3B800FADE35 /* topics.png in Resources */,
 				F5297B171781E3B800FADE35 /* topics@2x.png in Resources */,
 				F5297B181781E3B800FADE35 /* trash.png in Resources */,
@@ -2975,6 +2974,7 @@
 				F500ABAF179942E1005AE49B /* list-add.png in Resources */,
 				F500ABB0179942E1005AE49B /* mail.png in Resources */,
 				F500ABB1179942E1005AE49B /* msn.png in Resources */,
+				F59F61B41A9A00F2000139DC /* SWFMySwipeViewController.xib in Resources */,
 				F500ABB2179942E1005AE49B /* phpbb.png in Resources */,
 				F500ABB3179942E1005AE49B /* qq.png in Resources */,
 				F500ABB4179942E1005AE49B /* qweibo.png in Resources */,
@@ -3067,6 +3067,7 @@
 				F52F82C217D5B50A002AC4BA /* aboutMobileWebFusion.html in Resources */,
 				F55E862D17F565A40016F836 /* newsItem.html in Resources */,
 				F5CB635B17F4228300545F62 /* bootstrap-theme.min.css in Resources */,
+				7AE23F94ECF1DF94B595868A /* my.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3225,6 +3226,7 @@
 				F5F8D81919DD857E00ECB5E6 /* QBadgeElement.m in Sources */,
 				F5F8D81319DD857E00ECB5E6 /* DOAutocompleteTextField.m in Sources */,
 				F500ABC3179948C3005AE49B /* SWFUserContactDetails.m in Sources */,
+				F59F61B31A9A00F2000139DC /* SWFMySwipeViewController.m in Sources */,
 				F516D93C181C06B700633FBB /* SWFADBannerDelagates.m in Sources */,
 				F5F8D82619DD857E00ECB5E6 /* QDynamicDataSection.m in Sources */,
 				F500ABC617994AE4005AE49B /* SWFUserContactGroup.m in Sources */,
@@ -3338,6 +3340,8 @@
 				F587F6FA17D9354D0015E34A /* SWFPopNewPostsRequest.m in Sources */,
 				7AE23D1DF0690BF3B78E41F7 /* YZSwipeBetweenViewController.m in Sources */,
 				7AE230EB0A5692AA92DF380D /* SWFCachePolicy.m in Sources */,
+				7AE235AAC368A946B1E51F76 /* SWFMyViewController.m in Sources */,
+				7AE23A359388D038A446D0B7 /* SWFUIModifiers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

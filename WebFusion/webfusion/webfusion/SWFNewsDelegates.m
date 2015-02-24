@@ -32,7 +32,7 @@
     self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"ui.cancel", @"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"ui.repost", @""),NSLocalizedString(@"ui.reply", @""),NSLocalizedString(@"ui.bookmark", @""),NSLocalizedString(@"ui.read-later", @""),NSLocalizedString(@"ui.reportAbuse", @""), nil];
     [self resetParameteres];
     self.newsWebView.dataDetectorTypes = UIDataDetectorTypeLink;
-    for (UIView *view in [[[newsWebView subviews] objectAtIndex:0] subviews]) {
+    for (UIView *view in [[newsWebView subviews][0] subviews]) {
         if ([view isKindOfClass:[UIImageView class]]) view.hidden = YES;
     }
     
@@ -70,13 +70,13 @@
 - (void)loadNews{
     NSString *path = [[NSBundle mainBundle] bundlePath];
     NSURL *baseURL = [NSURL fileURLWithPath:path];
-    if (self.busy == YES || self.toTail) {
+    if (self.busy || self.toTail) {
         [self.refreshControl endRefreshing];
         return;
     }else{
         self.busy = YES;
     }
-    if(self.isEmpty == YES){
+    if(self.isEmpty){
         [self.newsWebView.scrollView setContentOffset:CGPointMake(0, -self.refreshControl.frame.size.height) animated:YES];
         [self.refreshControl beginRefreshing];
     }
@@ -134,12 +134,14 @@
     if (_isFirstLoad){
         if (_delegateName != nil){
             NSArray *cachedNews = [SWFCachePolicy cacheOutWithFileName:_delegateName];
-            NSString *cachedNewsHTML = [SWFCodeGenerator generateForNewsArray:cachedNews];
-            if (cachedNewsHTML != nil){
-                [self.newsWebView loadHTMLString:cachedNewsHTML baseURL:baseURL];
-                self.cachedContent = cachedNewsHTML;
+            if (cachedNews != nil){
+                NSString *cachedNewsHTML = [SWFCodeGenerator generateForNewsArray:cachedNews];
+                if (cachedNewsHTML != nil){
+                    [self.newsWebView loadHTMLString:cachedNewsHTML baseURL:baseURL];
+                    self.cachedContent = cachedNewsHTML;
+                }
+                self.pageLastNewsDate = [[cachedNews lastObject] publishTime];
             }
-            self.pageLastNewsDate = [[cachedNews lastObject] publishTime];
         }
         _isFirstLoad = NO;
     }

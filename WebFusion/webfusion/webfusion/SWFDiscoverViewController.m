@@ -16,6 +16,7 @@
 #import "SWFNewsDelegates.h"
 #import "SWFGetStarCategoriesRequest.h"
 #import "Underscore.h"
+#import "UIView+Toast.h"
 
 @interface SWFDiscoverViewController ()
 
@@ -45,14 +46,19 @@ UIActionSheet *actionSheet;
     self.title = NSLocalizedString(@"func.Discover", @"");
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"ui.discoveryCategory", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(catrgories)];
     self.delegates = [[SWFNewsDelegates alloc] initWithWebView:self.webView ViewController:self getNews:^id{
-        SWFDiscoveryRequest *discovery = [[SWFDiscoveryRequest alloc] init];
-        discovery.before = self.delegates.pageLastNewsDate;
-        discovery.count = SWFStreamDiscoverCount;
-        discovery.cats = [Underscore.array(self.selectedCatrgories).each(^(NSDictionary * d){
-            [d objectForKey:@"id"];
-        }).unwrap componentsJoinedByString:@","];
-        return [discovery streamDiscover];
+        if (self.selectedCatrgories == nil || self.selectedCatrgories.count == 0){
+            return [[NSArray alloc] init];
+        } else {
+            SWFDiscoveryRequest *discovery = [[SWFDiscoveryRequest alloc] init];
+            discovery.before = self.delegates.pageLastNewsDate;
+            discovery.count = (NSUInteger) SWFStreamDiscoverCount;
+            discovery.cats = [Underscore.array(self.selectedCatrgories).each(^(NSDictionary * d){
+                d[@"id"];
+            }).unwrap componentsJoinedByString:@","];
+            return [discovery streamDiscover];
+        }
     } name:@"discoverNews"];
+    [self.webView loadHTMLString:[NSString stringWithFormat:@"<center>%@</center>", NSLocalizedString(@"ui.discover.nothing", @"")] baseURL:[[NSURL alloc] initWithString:@""]];
     [self.delegates manualBottomInsets];
     [self loadStaredCategories];
     //[super changeNavBarColor:[[UIColor alloc] initWithRed:137 / 255.0 green:64 / 255.0 blue:131 / 255.0 alpha:1.0]];
@@ -63,12 +69,19 @@ UIActionSheet *actionSheet;
     dispatch_group_async([SWFAppDelegate getDefaultInstance].SWFBackgroundTasks, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         SWFGetStarCategoriesRequest *gscr = [[SWFGetStarCategoriesRequest  alloc] init];
         self.selectedCatrgories = [gscr getStarCategories];
+        [self reloadNews];
     });
 }
 
 -(void)reloadNews{
-    [self.delegates resetParameteres];
-    [self.delegates loadNews];
+    if (self.selectedCatrgories.count == 0){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[SWFAppDelegate getDefaultInstance].window.viewForBaselineLayout makeToast:NSLocalizedString(@"ui.discovery.empt", @"")];
+        });
+    } else {
+        [self.delegates resetParameteres];
+        [self.delegates loadNews];
+    }
 }
 
 - (void)didWillAppear:(BOOL)animated{

@@ -266,3 +266,5 @@
 "Cancel" = "Cancel";
 "Done" = "Done";
 "Dismiss" = "Dismiss";
+"ui.discovery.empt" = "Please select categories you want to discover";
+"ui.discover.nothing" = "Nothing discoverd";

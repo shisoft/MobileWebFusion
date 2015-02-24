@@ -268,3 +268,5 @@
 "svr.xmpp" = "XMPP";
 "svr.yahoo" = "雅虎通";
 "svr.yiban" = "易班";
+"ui.discovery.empt" = "请选择你希望发现的分类";
+"ui.discover.nothing" = "没有发现任何内容";

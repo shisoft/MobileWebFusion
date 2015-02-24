@@ -14,6 +14,8 @@
 #import "SWFWebBrowserViewController.h"
 #import "SWFDiscoverCategoriesViewController.h"
 #import "SWFNewsDelegates.h"
+#import "SWFGetStarCategoriesRequest.h"
+#import "Underscore.h"
 
 @interface SWFDiscoverViewController ()
 
@@ -44,17 +46,24 @@ UIActionSheet *actionSheet;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"ui.discoveryCategory", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(catrgories)];
     self.delegates = [[SWFNewsDelegates alloc] initWithWebView:self.webView ViewController:self getNews:^id{
         SWFDiscoveryRequest *discovery = [[SWFDiscoveryRequest alloc] init];
-        discovery.beforeT = self.delegates.pageLastNewsDate;
-        discovery.lastT = [NSDate distantPast];
+        discovery.before = self.delegates.pageLastNewsDate;
         discovery.count = SWFStreamDiscoverCount;
-        discovery.threshold = SWFStreamDiscoverThreshold;
-        discovery.topics = self.selectedCatrgories;
+        discovery.cats = [Underscore.array(self.selectedCatrgories).each(^(NSDictionary * d){
+            [d objectForKey:@"id"];
+        }).unwrap componentsJoinedByString:@","];
         return [discovery streamDiscover];
     } name:@"discoverNews"];
-    [self.delegates loadNews];
     [self.delegates manualBottomInsets];
+    [self loadStaredCategories];
     //[super changeNavBarColor:[[UIColor alloc] initWithRed:137 / 255.0 green:64 / 255.0 blue:131 / 255.0 alpha:1.0]];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)loadStaredCategories{
+    dispatch_group_async([SWFAppDelegate getDefaultInstance].SWFBackgroundTasks, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        SWFGetStarCategoriesRequest *gscr = [[SWFGetStarCategoriesRequest  alloc] init];
+        self.selectedCatrgories = [gscr getStarCategories];
+    });
 }
 
 -(void)reloadNews{

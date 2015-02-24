@@ -45,7 +45,7 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
 }
 
 + (UIViewController*) generateCenterView:(Class) class name:(NSString*)name{
-    return [self wrapCenterView: [[class alloc] initWithNibName:name bundle:nil]];
+    return [self wrapCenterView: [(UIViewController *) [class alloc] initWithNibName:name bundle:nil]];
 }
 
 + (void)logout{
@@ -250,7 +250,7 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
     CGIRemoteConnection *connection = [[CGIRemoteConnection alloc] initWithServerRoot:@"https://www.shisoft.net/ajax/%@"];
     //CGIRemoteConnection *connection = [[CGIRemoteConnection alloc] initWithServerRoot:@"http://10.0.0.130:8080/ajax/%@"];
     [connection makeDefaultServerRoot];
-    connection.timeoutSeconds = [[NSNumber alloc] initWithDouble:20.0];
+    connection.timeoutSeconds = [[NSNumber alloc] initWithDouble:30.0];
     connection.customUserAgent = @"Shisoft WebFusion iOS Client";
     connection.onError = ^(NSError* err, NSURLRequest* req){
         if ([[req.URL absoluteString] rangeOfString:@"Login"].location == NSNotFound && err != nil ) {

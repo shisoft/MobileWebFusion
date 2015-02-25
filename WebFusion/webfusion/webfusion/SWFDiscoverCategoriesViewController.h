@@ -10,13 +10,12 @@
 #import "SWFDiscoverViewController.h"
 #import "SWFTrackedViewController.h"
 
-@interface SWFDiscoverCategoriesViewController : SWFTrackedViewController <UITableViewDelegate, UITableViewDataSource>
+@interface SWFDiscoverCategoriesViewController : SWFTrackedViewController <UITableViewDelegate, UITableViewDataSource,
+        UISearchDisplayDelegate, UISearchBarDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property NSArray *categories;
-@property NSDictionary *categoriesMap;
-@property NSMutableArray *userTopDist;
-@property NSMutableArray *userSelectedTopics;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property NSArray *typeaheadCategories;
 @property SWFDiscoverViewController *dvc;
 @property BOOL needCopy;
 

@@ -158,26 +158,26 @@
     NSArray *components = [requestString componentsSeparatedByString:@":"];
     if([requestString hasPrefix:@"file://"] || [requestString hasPrefix:@"about:"]){
         return YES;
-    } else if ([components count] > 1 && [(NSString *)[components objectAtIndex:0] isEqualToString:@"swf"]) {
-        if([(NSString *)[components objectAtIndex:1] isEqualToString:@"nextpage"])
+    } else if ([components count] > 1 && [(NSString *) components[0] isEqualToString:@"swf"]) {
+        if([(NSString *) components[1] isEqualToString:@"nextpage"])
         {
             if(!self.busy){
                 self.currentPage++;
                 [self loadNews];
             }
-        }else if ([(NSString *)[components objectAtIndex:1] isEqualToString:@"action"]){
-            self.activeNewsId = (NSString *)[components objectAtIndex:2];
+        }else if ([(NSString *) components[1] isEqualToString:@"action"]){
+            self.activeNewsId = (NSString *) components[2];
             [self.actionSheet showInView:self.viewController.view];
-        }else if ([(NSString *)[components objectAtIndex:1] isEqualToString:@"repost"]){
-            self.activeNewsId = (NSString *)[components objectAtIndex:2];
+        }else if ([(NSString *) components[1] isEqualToString:@"repost"]){
+            self.activeNewsId = (NSString *) components[2];
             [self presentInputAction:0 Id:self.activeNewsId];
-        }else if ([(NSString *)[components objectAtIndex:1] isEqualToString:@"reply"]){
-            self.activeNewsId = (NSString *)[components objectAtIndex:2];
+        }else if ([(NSString *) components[1] isEqualToString:@"reply"]){
+            self.activeNewsId = (NSString *) components[2];
             [self presentInputAction:1 Id:self.activeNewsId];
-        }else if ([(NSString *)[components objectAtIndex:1] isEqualToString:@"bookmark"]){
-            self.activeNewsId = (NSString *)[components objectAtIndex:2];
+        }else if ([(NSString *) components[1] isEqualToString:@"bookmark"]){
+            self.activeNewsId = (NSString *) components[2];
             [self presentInputAction:2 Id:self.activeNewsId];
-        }else if ([(NSString *)[components objectAtIndex:1] isEqualToString:@"loaded"]){
+        }else if ([(NSString *) components[1] isEqualToString:@"loaded"]){
             if(!self.busy && !self.isEmpty){
                 if (self.loadCompleted != nil) {
                     self.loadCompleted();
@@ -214,7 +214,8 @@
 
 -(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
     if(buttonIndex == 4){
-        SWFReportAbuseViewController *ravc = [[SWFReportAbuseViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"reportAbuse"]];
+        SWFReportAbuseViewController *ravc;
+        ravc = [[SWFReportAbuseViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"reportAbuse"]];
         ravc.type = 0;
         ravc.obj = self.activeNewsId;
         UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:ravc];

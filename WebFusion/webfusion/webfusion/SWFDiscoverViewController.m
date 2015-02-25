@@ -52,9 +52,9 @@ UIActionSheet *actionSheet;
             SWFDiscoveryRequest *discovery = [[SWFDiscoveryRequest alloc] init];
             discovery.before = self.delegates.pageLastNewsDate;
             discovery.count = (NSUInteger) SWFStreamDiscoverCount;
-            discovery.cats = [Underscore.array(self.selectedCatrgories).each(^(NSDictionary * d){
-                d[@"id"];
-            }).unwrap componentsJoinedByString:@","];
+            discovery.cats = [Underscore.arrayMap(self.selectedCatrgories,^(NSDictionary *d){
+                return d[@"id"];
+            }) componentsJoinedByString:@","];
             return [discovery streamDiscover];
         }
     } name:@"discoverNews"];

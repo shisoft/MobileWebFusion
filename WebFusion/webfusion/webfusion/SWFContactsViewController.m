@@ -99,7 +99,7 @@ static int SWFDefaultContactCount = 30;
     }else{
         self.busy = YES;
     }
-    if (self.isFirstLoad){
+    if (self.isFirstLoad && query == nil){
         NSArray *cachedContacts = [SWFCachePolicy cacheOutWithFileName:SWFUserContactsCacheFileName];
         if (cachedContacts != nil){
             self.contacts = cachedContacts;

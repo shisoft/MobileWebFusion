@@ -155,6 +155,7 @@ static NSString *SWFUserTopicCacheFileName = @"userTopics";
             topics = [NSMutableArray array];
             [[[SWFPopNewPostsRequest alloc] init] popNewPosts];
             [SWFCachePolicy cacheInWithData:topicsResponse fileName:SWFUserTopicCacheFileName];
+            self.navigationController.tabBarItem.badgeValue = nil;
         }
         [self loadTopicsToMemFrom:topicsResponse];
         if ([topicsResponse count] < 20) {

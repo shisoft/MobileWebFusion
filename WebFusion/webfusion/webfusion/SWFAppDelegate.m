@@ -7,13 +7,7 @@
 //
 
 #import <Crashlytics/Crashlytics.h>
-#import <QuartzCore/QuartzCore.h>
-#import "SWFAppDelegate.h"
-#import <CGIJSONObject/CGIJSONObject.h>
 #import "SWFLoginRequest.h"
-#import "SWFWrapper.h"
-#import "SWFPoll.h"
-#import "SWFRootViewController.h"
 #import "SWFGetFeaturedUserServicesRequest.h"
 #import "UIAlertView+MKBlockAdditions.h"
 #import "CHKeychain.h"
@@ -247,8 +241,8 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
 - (void) initializeClient
 {
     // Set up default connection.
-    //CGIRemoteConnection *connection = [[CGIRemoteConnection alloc] initWithServerRoot:@"https://www.shisoft.net/ajax/%@"];
-    CGIRemoteConnection *connection = [[CGIRemoteConnection alloc] initWithServerRoot:@"http://10.0.0.130:8080/ajax/%@"];
+    CGIRemoteConnection *connection = [[CGIRemoteConnection alloc] initWithServerRoot:@"https://www.shisoft.net/ajax/%@"];
+    //CGIRemoteConnection *connection = [[CGIRemoteConnection alloc] initWithServerRoot:@"http://10.0.0.130:8080/ajax/%@"];
     [connection makeDefaultServerRoot];
     connection.timeoutSeconds = [[NSNumber alloc] initWithDouble:30.0];
     connection.customUserAgent = @"Shisoft WebFusion iOS Client";
@@ -272,8 +266,8 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
         [[SWFAppDelegate getDefaultInstance].userFeatures removeAllObjects];
         SWFLoginRequest *login = [[SWFLoginRequest alloc] init];
         NSMutableDictionary *usernamepasswordKVPairs = (NSMutableDictionary *)[CHKeychain load:SWFUserPasswordKeychainContainerName];
-        login.user = [usernamepasswordKVPairs objectForKey:SWFUserNameKeychainItemName];
-        login.pass = [usernamepasswordKVPairs objectForKey:SWFUserPasswordKeychainItemName];
+        login.user = usernamepasswordKVPairs[SWFUserNameKeychainItemName];
+        login.pass = usernamepasswordKVPairs[SWFUserPasswordKeychainItemName];
         if ([login.user length] && [login.pass length])
         {
             SWFWrapper *rv = [login login];

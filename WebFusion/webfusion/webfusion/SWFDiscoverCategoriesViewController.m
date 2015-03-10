@@ -8,10 +8,6 @@
 
 #import <CGIJSONObject/CGICommon.h>
 #import "SWFDiscoverCategoriesViewController.h"
-#import "SWFGetTopicExplanationsRequest.h"
-#import "SWFWrapper.h"
-#import "SWFGetUserTopicDistRequest.h"
-#import "SWFDiscoverViewController.h"
 #import "Underscore.h"
 #import "SWFTypeaheadCategoriesRequest.h"
 

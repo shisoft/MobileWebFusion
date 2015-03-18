@@ -17,6 +17,7 @@
 #import "SWFGetStarCategoriesRequest.h"
 #import "Underscore.h"
 #import "UIView+Toast.h"
+#import "SWFCachePolicy.h"
 
 @interface SWFDiscoverViewController ()
 
@@ -66,11 +67,13 @@ UIActionSheet *actionSheet;
 }
 
 - (void)loadStaredCategories{
-    dispatch_group_async([SWFAppDelegate getDefaultInstance].SWFBackgroundTasks, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        SWFGetStarCategoriesRequest *gscr = [[SWFGetStarCategoriesRequest  alloc] init];
-        self.selectedCatrgories = [gscr getStarCategories];
-        [self reloadNews];
-    });
+    self.selectedCatrgories = [SWFCachePolicy cacheOutWithFileName:@"discoverCats"];
+    [self reloadNews];
+//    dispatch_group_async([SWFAppDelegate getDefaultInstance].SWFBackgroundTasks, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        SWFGetStarCategoriesRequest *gscr = [[SWFGetStarCategoriesRequest  alloc] init];
+//        self.selectedCatrgories = [gscr getStarCategories];
+//        [self reloadNews];
+//    });
 }
 
 -(void)reloadNews{
@@ -79,6 +82,7 @@ UIActionSheet *actionSheet;
             [[SWFAppDelegate getDefaultInstance].window.viewForBaselineLayout makeToast:NSLocalizedString(@"ui.discovery.empt", @"")];
         });
     } else {
+        [SWFCachePolicy cacheInWithData:self.selectedCatrgories fileName:@"discoverCats"];
         [self.delegates resetParameteres];
         [self.delegates loadNews];
     }

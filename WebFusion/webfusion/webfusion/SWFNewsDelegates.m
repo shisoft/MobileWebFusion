@@ -6,6 +6,7 @@
 //  Copyright (c) 2013年 Shisoft Corporation. All rights reserved.
 //
 
+#import <CGIJSONObject/CGICommon.h>
 #import "SWFNewsDelegates.h"
 #import "SWFWebBrowserViewController.h"
 #import "SWFInputActionViewController.h"
@@ -85,7 +86,7 @@
     }
     dispatch_group_async([SWFAppDelegate getDefaultInstance].SWFBackgroundTasks, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSArray *newsResponse = self.getNews();
-        if((![newsResponse isKindOfClass:[NSArray class]])?YES:[newsResponse count]<=0){
+        if(![newsResponse isKindOfClass:[NSArray class]]){
             self.busy = NO;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.refreshControl endRefreshing];
@@ -93,43 +94,46 @@
             });
             return;
         }
-        SWFNews *lastNews = [newsResponse lastObject];
-        self.pageLastNewsDate = lastNews.publishTime;
-        self.latestNewsDate = [[newsResponse firstObject] publishTime];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (newsResponse.count <= 0) {
-                self.toTail = YES;
-            }
-            if(self.currentPage==0){
-                self.isEmpty = NO;
-                NSString *newsHTML = [SWFCodeGenerator generateForNewsArray:newsResponse];
-                if (![newsHTML isEqualToString:self.cachedContent]){
-                    [self.newsWebView loadHTMLString:newsHTML baseURL:baseURL];
-                    [self.adDelegates refreshAd];
-                    if (_delegateName != nil){
-                        [SWFCachePolicy cacheInWithData:newsResponse fileName:_delegateName];
+            if([newsResponse count] > 0){
+                SWFNews *lastNews = [newsResponse lastObject];
+                self.pageLastNewsDate = lastNews.publishTime;
+                self.latestNewsDate = [[newsResponse firstObject] publishTime];
+                if (newsResponse.count <= 0) {
+                    self.toTail = YES;
+                }
+                if(self.currentPage==0){
+                    self.isEmpty = NO;
+                    NSString *newsHTML = [SWFCodeGenerator generateForNewsArray:newsResponse];
+                    if (![newsHTML isEqualToString:self.cachedContent]){
+                        [self.newsWebView loadHTMLString:newsHTML baseURL:baseURL];
+                        [self.adDelegates refreshAd];
+                        if (_delegateName != nil){
+                            [SWFCachePolicy cacheInWithData:newsResponse fileName:_delegateName];
+                        }
+                    } else {
+                        [self.refreshControl endRefreshing];
+                        [self.newsWebView stringByEvaluatingJavaScriptFromString:@"stopLoading()"];
                     }
-                } else {
-                    [self.refreshControl endRefreshing];
-                    [self.newsWebView stringByEvaluatingJavaScriptFromString:@"stopLoading()"];
-                }
-                self.cachedContent = nil;
-            }else{
-                NSMutableString *items = [NSMutableString stringWithString:@""];
-                for (SWFNews *newsItem in newsResponse)
-                {
-                    [items appendString:[SWFCodeGenerator generateForNews:newsItem level:0]];
-                    
-                }
-                NSString *tempPath = NSTemporaryDirectory();
-                NSString *path = [tempPath stringByAppendingPathComponent:@"dispNews.txt"];
-                NSError *err;
-                [items writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&err];
-                [self.newsWebView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"append('%@')",path]];
-            }
-            self.busy = NO;
-        });
+                    self.cachedContent = nil;
+                }else{
+                    NSMutableString *items = [NSMutableString stringWithString:@""];
+                    for (SWFNews *newsItem in newsResponse)
+                    {
+                        [items appendString:[SWFCodeGenerator generateForNews:newsItem level:0]];
 
+                    }
+                    NSString *tempPath = NSTemporaryDirectory();
+                    NSString *path = [tempPath stringByAppendingPathComponent:@"dispNews.txt"];
+                    NSError *err;
+                    [items writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&err];
+                    [self.newsWebView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"append('%@')",path]];
+                }
+            } else {
+                [self.newsWebView loadHTMLString:[NSString stringWithFormat:@"<center>%@</center>",NSLocalizedString(@"ui.news.nothing", nil)] baseURL:baseURL];
+            }
+        });
+        self.busy = NO;
     });
     if (_isFirstLoad){
         if (_delegateName != nil){

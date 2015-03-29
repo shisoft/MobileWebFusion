@@ -6,15 +6,12 @@
 //  Copyright (c) 2013年 Shisoft Corporation. All rights reserved.
 //
 
+#import <CGIJSONObject/CGICommon.h>
 #import "SWFDiscoverViewController.h"
 #import "SWFDiscoveryRequest.h"
 #import "NSDate+SWFPersistance.h"
 #import "SWFNews.h"
-#import "SWFCodeGenerator.h"
-#import "SWFWebBrowserViewController.h"
 #import "SWFDiscoverCategoriesViewController.h"
-#import "SWFNewsDelegates.h"
-#import "SWFGetStarCategoriesRequest.h"
 #import "Underscore.h"
 #import "UIView+Toast.h"
 #import "SWFCachePolicy.h"
@@ -25,8 +22,7 @@
 
 @implementation SWFDiscoverViewController
 
-static int SWFStreamDiscoverCount = 20;
-static double SWFStreamDiscoverThreshold = 0.02;
+static int SWFStreamDiscoverCount = 10;
 
 UIActionSheet *actionSheet;
 
@@ -56,7 +52,30 @@ UIActionSheet *actionSheet;
             discovery.cats = [Underscore.arrayMap(self.selectedCatrgories,^(NSDictionary *d){
                 return d[@"id"];
             }) componentsJoinedByString:@","];
-            return [discovery streamDiscover];
+            NSArray *result = [discovery streamDiscover];
+            if ([result isKindOfClass:[NSArray class]]) {
+                result = Underscore.arrayMap(result, ^(SWFNews *news){
+                    if ([news.tag isKindOfClass:[NSArray class]] || [(NSArray *)news.tag count] != 0){
+                        @try{
+                            NSArray *catsNames = [Underscore.arrayMap(news.tag, ^(NSDictionary *catDir) {
+                                return catDir[@"name"];
+                            }) subarrayWithRange:NSMakeRange(0, MIN([(NSArray *)news.tag count], 5))];
+                            NSString *catExp = [catsNames componentsJoinedByString:@","];
+                            if (news.content == nil){
+                                news.content = @"";
+                            }
+                            NSMutableString *newsContentWithCats = [[NSMutableString alloc] initWithString: news.content];
+                            [newsContentWithCats appendFormat:@"<div class='alert-success'><b>%@</b></div>", catExp];
+                            news.content = newsContentWithCats;
+                        }
+                        @catch (NSException *exception){
+                            NSLog((id) exception);
+                        }
+                    }
+                    return news;
+                });
+            }
+            return result;
         }
     } name:@"discoverNews"];
     [self.webView loadHTMLString:[NSString stringWithFormat:@"<center>%@</center>", NSLocalizedString(@"ui.discover.nothing", @"")] baseURL:[[NSURL alloc] initWithString:@""]];

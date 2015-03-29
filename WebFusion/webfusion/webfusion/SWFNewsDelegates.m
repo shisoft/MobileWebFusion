@@ -130,8 +130,11 @@
                     [self.newsWebView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"append('%@')",path]];
                 }
             } else {
-                [self.newsWebView loadHTMLString:[NSString stringWithFormat:@"<center>%@</center>",NSLocalizedString(@"ui.news.nothing", nil)] baseURL:baseURL];
+                if (self.currentPage == 0){
+                    [self.newsWebView loadHTMLString:[NSString stringWithFormat:@"<center>%@</center>",NSLocalizedString(@"ui.news.nothing", nil)] baseURL:baseURL];
+                }
             }
+            [self.refreshControl endRefreshing];
         });
         self.busy = NO;
     });
@@ -205,7 +208,6 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [self.refreshControl endRefreshing];
 }
 
 - (void)presentInputAction:(int)action Id:(NSString*)newsId{

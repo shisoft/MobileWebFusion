@@ -6,10 +6,10 @@
 //  Copyright (c) 2013年 Shisoft Corporation. All rights reserved.
 //
 
-#import "SWFNavedCenterViewController.h"
+#import "SWFTrackedViewController.h"
 #import "SWFNewsDelegates.h"
 
-@interface SWFNewsTrendViewController : SWFNavedCenterViewController <UISearchBarDelegate>
+@interface SWFNewsTrendViewController : SWFTrackedViewController <UISearchBarDelegate>
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;

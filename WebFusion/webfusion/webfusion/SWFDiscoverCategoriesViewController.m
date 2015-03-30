@@ -6,17 +6,18 @@
 //  Copyright (c) 2013年 Shisoft Corporation. All rights reserved.
 //
 
+#import <CGIJSONObject/CGICommon.h>
 #import "SWFDiscoverCategoriesViewController.h"
-#import "SWFGetTopicExplanationsRequest.h"
-#import "SWFWrapper.h"
-#import "SWFGetUserTopicDistRequest.h"
-#import "SWFDiscoverViewController.h"
+#import "Underscore.h"
+#import "SWFTypeaheadCategoriesRequest.h"
 
 @interface SWFDiscoverCategoriesViewController ()
 
 @end
 
 @implementation SWFDiscoverCategoriesViewController
+
+static NSString *SWFTableCellLoadingIdentifer = @"CellTableLoadingIdentifier";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,13 +33,12 @@
     [super viewDidLoad];
     self.title = NSLocalizedString(@"ui.discoveryCategory", @"");
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"ui.myInterest", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(myInterests)];
+    [self.tableView setTableHeaderView:self.searchBar];
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)myInterests{
-    [self.userSelectedTopics removeAllObjects];
-    [self.tableView reloadData];    
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,48 +49,11 @@
 
 - (void)link:(SWFDiscoverViewController*)dvc{
     self.dvc = dvc;
-    self.userSelectedTopics = [[NSMutableArray alloc] initWithArray:dvc.selectedCatrgories];
-    self.needCopy = [self.userSelectedTopics count] <= 0;
-    [self loadCategories];
-    self.navigationItem.rightBarButtonItem.enabled = [self.userSelectedTopics count] > 0;
+    [self loadCategories:nil];
 }
 
 - (void) viewWillDisappear:(BOOL)animated{
-    self.dvc.selectedCatrgories = [[NSArray alloc] initWithArray:self.userSelectedTopics];
     [self.dvc reloadNews];
-}
-
-- (void)loadCategories{
-    dispatch_group_async([SWFAppDelegate getDefaultInstance].SWFBackgroundTasks,dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
-        SWFGetTopicExplanationsRequest *gter = [[SWFGetTopicExplanationsRequest alloc] init];
-        SWFWrapper *w = [gter getTopicExplanations];
-        if (![w isKindOfClass:[SWFWrapper class]]) {
-            return;
-        }
-        self.categoriesMap = w.d;
-        self.categories = [[self.categoriesMap allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-            return [self.categoriesMap[obj1] compare:self.categoriesMap[obj2] options:NSCaseInsensitiveSearch | NSDiacriticInsensitiveSearch];
-        }];
-        SWFGetUserTopicDistRequest *gutdr = [[SWFGetUserTopicDistRequest alloc] init];
-        NSArray *utds = [gutdr getUserTopicDist];
-        double sum = 0.0;
-        for (NSNumber *utd in utds) {
-            sum += ([utd respondsToSelector:@selector(doubleValue)]) ? [utd doubleValue] : 0;
-        }
-        sum /= (double)[utds count];
-        self.userTopDist = [[NSMutableArray alloc] init];
-        for (int i = 0; i< [utds count]; i++) {
-            NSNumber *utd = [utds objectAtIndex:i];
-            double d = ([utd respondsToSelector:@selector(doubleValue)]) ? [utd doubleValue] : 0;
-            NSString *sKey = [NSString stringWithFormat:@"%d",i];
-            if (d - sum > 0.02 && [self.categories containsObject:sKey]) {
-                [self.userTopDist addObject:sKey];
-            }
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
-        });
-    });
 }
 
 #pragma mark - Table view data source
@@ -98,7 +61,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.categories count];
+    if (tableView == self.tableView){
+        return self.dvc.selectedCatrgories.count;
+    } else {
+        return self.typeaheadCategories.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -108,25 +75,20 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    id key = self.categories[indexPath.row];
-    cell.textLabel.text = self.categoriesMap[key];
-    NSMutableArray *source;
-    
-    if ([self.userSelectedTopics count] > 0) {
-        source = self.userSelectedTopics;
-    }else{
-        source = self.userTopDist;
-    }
-    
-    if ([source containsObject:key])
-    {
+
+    NSDictionary *cellDict;
+
+    if (tableView == self.tableView){
+        cellDict = self.dvc.selectedCatrgories[(NSUInteger) indexPath.row];
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-    else
-    {
+    } else {
+        cellDict = self.typeaheadCategories[(NSUInteger) indexPath.row];
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
-    
+
+    cell.textLabel.text = cellDict[@"name"];
+    cell.tag = [cellDict[@"id"] integerValue];
+
     return cell;
 }
 
@@ -137,28 +99,69 @@
     
     self.navigationItem.rightBarButtonItem.enabled = YES;
     
-    id key = self.categories[indexPath.row];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    if ([self.userSelectedTopics count] <= 0 && self.needCopy) {
-        self.userSelectedTopics = [[NSMutableArray alloc] initWithArray:self.userTopDist copyItems:YES];
-        self.needCopy = NO;
+
+    if (tableView == self.tableView){
+        UnderscoreTestBlock isCell = ^BOOL(NSDictionary *catInfo){
+            return [@(cell.tag) isEqualToNumber:catInfo[@"id"]];
+        };
+        BOOL contains = Underscore.any(self.dvc.selectedCatrgories, isCell);
+        if (contains){
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            self.dvc.selectedCatrgories = Underscore.reject(self.dvc.selectedCatrgories, isCell);
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            NSMutableArray *origArr = [NSMutableArray arrayWithArray:self.dvc.selectedCatrgories];
+            [origArr addObject:@{@"id" : @(cell.tag), @"name" : cell.textLabel.text}];
+            self.dvc.selectedCatrgories = origArr;
+        }
+    } else {
+        [self.searchDisplayController setActive:NO animated:YES];
+        NSMutableArray *origArr = [NSMutableArray arrayWithArray:self.dvc.selectedCatrgories];
+        [origArr addObject:@{@"id" : @(cell.tag), @"name" : cell.textLabel.text}];
+        self.dvc.selectedCatrgories = origArr;
+        [self.tableView reloadData];
     }
-    
-    if ([self.userSelectedTopics containsObject:key])
-    {
-        [self.userSelectedTopics removeObject:key];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
-    else
-    {
-        [self.userSelectedTopics addObject:key];
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-    
+
     [tableView selectRowAtIndexPath:nil
                            animated:YES
                      scrollPosition:UITableViewScrollPositionNone];
+}
+
+- (void) loadCategories:(NSString *) query{
+    if (query != nil){
+        dispatch_group_async([SWFAppDelegate getDefaultInstance].SWFBackgroundTasks, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
+            SWFTypeaheadCategoriesRequest *tcr = [[SWFTypeaheadCategoriesRequest  alloc] init];
+            tcr.types = query;
+            NSArray *typeaheads = [tcr typeaheadCategories];
+            if ([typeaheads isKindOfClass:NSArray.class]){
+                self.typeaheadCategories = typeaheads;
+                dispatch_async(dispatch_get_main_queue(),^{
+                    [self.searchDisplayController.searchResultsTableView reloadData];
+                });
+            }
+        });
+    } else {
+        [self.tableView reloadData];
+    }
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController*)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    if (![searchString length]) {
+        return false;
+    }
+    @try {
+        [self.searchDisplayController.searchResultsTableView registerNib:[UINib nibWithNibName:@"SWFUILoadingCell" bundle:nil] forCellReuseIdentifier:SWFTableCellLoadingIdentifer];
+        [self loadCategories:searchString];
+        return YES;
+    }
+    @catch (NSException *exception) {
+        return false;
+    }
+    @finally {
+
+    }
 }
 
 @end

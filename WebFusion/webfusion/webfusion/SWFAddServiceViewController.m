@@ -203,9 +203,9 @@
             });
         } else if ([(NSString *)[components objectAtIndex:1] isEqualToString:@"done"]){
             [self done];
-        } else if ([requestString hasPrefix:@"swf://"]){
+        } else if ([requestString hasPrefix:@"swf:--"]){
             SWFLoadingHUD *lhud = [[SWFLoadingHUD alloc] initWithBody:nil];
-            NSString *json = [self decodeFromPercentEscapeString:[requestString stringByReplacingOccurrencesOfString:@"swf://" withString:@""]];
+            NSString *json = [self decodeFromPercentEscapeString:[requestString stringByReplacingOccurrencesOfString:@"swf:--" withString:@""]];
             dispatch_group_async([SWFAppDelegate getDefaultInstance].SWFBackgroundTasks,dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
                 @try {
                     SWFFinishServiceAuthRequest *fsar = [[SWFFinishServiceAuthRequest alloc] init];

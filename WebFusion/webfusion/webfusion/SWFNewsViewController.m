@@ -14,7 +14,6 @@
 #import "SWFWebBrowserViewController.h"
 #import "SWFNewsDelegates.h"
 #import "SWFNewsPoll.h"
-#import "SWFLeftSideMenuViewController.h"
 
 @interface SWFNewsViewController ()
 
@@ -29,6 +28,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"func.news", @"");
+        [[SWFPoll defaultPoll] addDelegate:self forKey:@"newsc"];
     }
     return self;
 }
@@ -38,28 +38,28 @@
 {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"func.news", @"");
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]  initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(compose)];
-    self.navigationItem.rightBarButtonItem.enabled = NO;
     self.delegates = [[SWFNewsDelegates alloc] initWithWebView:self.newsWebView ViewController:self getNews:^{
         SWFNewsRequest *newsRequest = [[SWFNewsRequest alloc] init];
         newsRequest.count = SWFItemFetchCount;
         newsRequest.lastT = self.delegates.pageLastNewsDate;
         return [newsRequest getWhatzNew];
-    }];
-    [[SWFPoll defaultPoll] addDelegate:self
-                                forKey:@"newsc"];
+    } name:@"news"];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]  initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(compose)];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
     __block SWFNewsViewController *this = self;
     self.delegates.loadCompleted = ^{
-        this.unread = 0;
-        [this refreshBadge];
+        this.badgeNum = 0;
+        if (this.refBadge != nil){
+            this.refBadge();
+        }
         [[SWFPoll defaultPoll] repoll];
     };
     [self.delegates loadNews];
-        // Do any additional setup after loading the view from its nib.
+    [self.delegates manualBottomInsets];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    self.navigationItem.rightBarButtonItem.enabled = NO;
     dispatch_group_async([SWFAppDelegate getDefaultInstance].SWFBackgroundTasks, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
         bool canSend = [[SWFAppDelegate getDefaultInstance] hasFeature:@"CanBoradcast,CanBoradcastImage,CanBoradcastBlog"];
         dispatch_async(dispatch_get_main_queue(),^{
@@ -71,7 +71,7 @@
 - (void)compose{
     SWFComposeNewsViewController *cnvc = [[SWFComposeNewsViewController alloc] initWithNibName:@"SWFComposeNewsViewController" bundle:nil];
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:cnvc];
-    [self presentViewController:nvc animated:YES completion:nil];
+    [[SWFAppDelegate getDefaultInstance].rootViewController presentViewController:nvc animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,7 +85,7 @@
     if (!self.delegates.isEmpty)
     {
         SWFNewsPoll *poll = [[SWFNewsPoll alloc] init];
-        poll.dvt = self.unread;
+        poll.dvt = self.badgeNum;
         poll.lt = self.delegates.latestNewsDate;
         return poll;
     }
@@ -99,22 +99,15 @@
 {
     if ([object respondsToSelector:@selector(integerValue)])
     {
-        self.unread = [object integerValue];
+        self.badgeNum = [object integerValue];
     }
-    [self refreshBadge];
+    if (self.refBadge != nil){
+        self.refBadge();
+    }
 }
 
-- (void)refreshBadge{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        SWFLeftSideMenuViewController *sideBar = [SWFAppDelegate getDefaultInstance].leftSidebar;
-        if (self.unread > 0)
-        {
-            sideBar.newsBadge.badge = [NSString stringWithFormat:@"%d", self.unread];
-        }else{
-            sideBar.newsBadge.badge = nil;
-        }
-        [sideBar reloadList];
-    });
+- (NSInteger) getBadgeNum{
+    return self.badgeNum;
 }
 
 @end

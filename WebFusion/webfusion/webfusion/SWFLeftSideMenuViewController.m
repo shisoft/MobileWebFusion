@@ -165,77 +165,46 @@ AVAudioPlayer *audioPlayer;
 }
 
 - (void)onTopics:(QLabelElement *)buttonElement {
-    [SWFAppDelegate switchCenterView:[SWFTopicsViewController class] name:@"SWFTopicsViewController"];
+    [SWFAppDelegate generateCenterView:[SWFTopicsViewController class] name:@"SWFTopicsViewController"];
 }
 
 - (void)onNews:(QBadgeElement *)buttonElement {
-    [SWFAppDelegate switchCenterView:[SWFNewsViewController class] name:@"SWFNewsViewController"];
+    [SWFAppDelegate generateCenterView:[SWFNewsViewController class] name:@"SWFNewsViewController"];
 }
 
 - (void)onMap:(QLabelElement *)buttonElement {
-    [SWFAppDelegate switchCenterView:[SWFPlacesViewController class] name:@"SWFPlacesViewController"];
+    [SWFAppDelegate generateCenterView:[SWFPlacesViewController class] name:@"SWFPlacesViewController"];
 }
 
 - (void)onContacts:(QLabelElement *)buttonElement {
-    [SWFAppDelegate switchCenterView:[SWFContactsViewController class] name:@"SWFContactsViewController"];
+    [SWFAppDelegate generateCenterView:[SWFContactsViewController class] name:@"SWFContactsViewController"];
 }
 
 - (void)onFavourites:(QLabelElement *)buttonElement {
-    [SWFAppDelegate switchCenterView:[SWFBookmarkViewController class] name:@"SWFBookmarkViewController"];
+    [SWFAppDelegate generateCenterView:[SWFBookmarkViewController class] name:@"SWFBookmarkViewController"];
 }
 
 - (void)onPreferences:(QLabelElement *)buttonElement {
-    if ([SWFAppDelegate getCenterViewController:@"SWFPreferencesViewController"] == nil) {
-        [SWFAppDelegate putCenterViewController:@"SWFPreferencesViewController" controller:  [SWFAppDelegate wrapCenterView:[[SWFPreferencesViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"preferences-lite"]]]];
-    }
-    [SWFAppDelegate switchCenterView:[SWFPreferencesViewController class] name:@"SWFPreferencesViewController"];
+//    if ([SWFAppDelegate getCenterViewController:@"SWFPreferencesViewController"] == nil) {
+//        [SWFAppDelegate putCenterViewController:@"SWFPreferencesViewController" controller:  [SWFAppDelegate wrapCenterView:[[SWFPreferencesViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"preferences-lite"]]]];
+//    }
+    //[SWFAppDelegate generateCenterView:[SWFPreferencesViewController class] name:@"SWFPreferencesViewController"];
 }
 
 - (void)onDiscover:(QLabelElement *)buttonElement {
-    [SWFAppDelegate switchCenterView:[SWFDiscoverViewController class] name:@"SWFDiscoverViewController"];
+    [SWFAppDelegate generateCenterView:[SWFDiscoverViewController class] name:@"SWFDiscoverViewController"];
 }
 
 - (void)onSearch:(QLabelElement *)buttonElement {
-    [SWFAppDelegate switchCenterView:[SWFSearchNewsViewController class] name:@"SWFSearchNewsViewController"];
+    [SWFAppDelegate generateCenterView:[SWFSearchNewsViewController class] name:@"SWFSearchNewsViewController"];
 }
 
 - (void)onTrend:(QLabelElement *)buttonElement {
-    [SWFAppDelegate switchCenterView:[SWFNewsTrendViewController class] name:@"SWFNewsTrendViewController"];
+    [SWFAppDelegate generateCenterView:[SWFNewsTrendViewController class] name:@"SWFNewsTrendViewController"];
 }
 
 - (void)onLogout:(QLabelElement *)buttonElement {
     [SWFAppDelegate logout];
-}
-
-
-- (id)poll:(SWFPoll *)poll objectForKey:(NSString *)key
-{
-    if(YES){
-        SWFNewThreadCountPoll *poll = [[SWFNewThreadCountPoll alloc] init];
-        poll.thvt = self.newThreadCount;
-        return poll;
-    }else{
-        return nil;
-    }
-}
-
-- (void)poll:(SWFPoll *)poll receivedObject:(id)object forKey:(NSString *)key
-{
-    if ([object respondsToSelector:@selector(integerValue)])
-    {
-        int thc = [object integerValue];
-        if(thc != self.newThreadCount){
-            self.newThreadCount = thc;
-            if(thc > 0){
-                self.threadBadge.badge = [NSString stringWithFormat:@"%d", self.newThreadCount];
-                [audioPlayer play];
-            }else{
-                self.threadBadge.badge = nil;
-            }
-        }
-        [self reloadList];
-        [[SWFPoll defaultPoll] repoll];
-    }
 }
 
 

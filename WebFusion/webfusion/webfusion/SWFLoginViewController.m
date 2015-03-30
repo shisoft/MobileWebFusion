@@ -92,8 +92,7 @@
                                                     [usernamepasswordKVPairs setObject:login.user forKey:SWFUserNameKeychainItemName];
                                                     [usernamepasswordKVPairs setObject:login.pass forKey:SWFUserPasswordKeychainItemName];
                                                     [CHKeychain save:SWFUserPasswordKeychainContainerName data:usernamepasswordKVPairs];
-                                                    [self dismissViewControllerAnimated:YES
-                                                                             completion:nil];
+                                                    [SWFAppDelegate checkAndLoadAccount];
                                                 });
                              }
                              else

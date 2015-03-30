@@ -14,6 +14,7 @@ typedef void (^loadCompletedBlock)(void);
 
 @interface SWFNewsDelegates : NSObject <UIWebViewDelegate, UIActionSheetDelegate>
 
+@property BOOL isFirstLoad;
 @property UIViewController *viewController;
 @property UIRefreshControl *refreshControl;
 @property NSString* activeNewsId;
@@ -28,10 +29,14 @@ typedef void (^loadCompletedBlock)(void);
 @property (nonatomic, strong) getNewsBlock getNews;
 @property (nonatomic, strong) loadCompletedBlock loadCompleted;
 @property SWFADBannerDelagates* adDelegates;
+@property NSString* delegateName;
+@property NSString* cachedFile;
+@property NSString* cachedContent;
 
-- (SWFNewsDelegates*) initWithWebView:(UIWebView*)newsWebView ViewController:(UIViewController*)vc getNews:(getNewsBlock)getNews;
+-(SWFNewsDelegates*) initWithWebView:(UIWebView*)newsWebView ViewController:(UIViewController*)vc getNews:(getNewsBlock)getNews name:(NSString*)name;
 
 - (void)loadNews;
 - (void)resetParameteres;
+- (void)manualBottomInsets;
 
 @end

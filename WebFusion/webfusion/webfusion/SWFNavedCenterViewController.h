@@ -7,14 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IIViewDeckController.h"
 #import "SWFTrackedViewController.h"
 
 @interface SWFNavedCenterViewController : SWFTrackedViewController
 
-@property IIViewDeckController* deckController;
 
-- (BOOL)toggleLeftView;
 - (void)changeNavBarColor:(UIColor*)color;
 + (void)changeNavBarColor:(UIColor*)color nc:(UIViewController*)nc;
 @property UIColor* barTintColor;

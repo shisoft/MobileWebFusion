@@ -9,6 +9,12 @@
 "appName"             = "WebFusion";
 
 /* UI elements */
+
+
+"ui.tab.news" = "News";
+"ui.tab.topic" = "Topics";
+"ui.tab.contact" = "Contacts";
+"ui.tab.my" = "My";
 "ui.ok"             = "OK";
 "ui.messages-no"    = "New Messages";
 "ui.cancel"         = "Cancel";
@@ -255,3 +261,11 @@
 "svr.xmpp"          = "XMPP";
 "svr.yahoo"         = "Yahoo Messenger";
 "svr.yiban"         = "Yiban";
+"Previous" = "Previous";
+"Next" = "Next";
+"Cancel" = "Cancel";
+"Done" = "Done";
+"Dismiss" = "Dismiss";
+"ui.discovery.empt" = "Please select categories you want to discover";
+"ui.discover.nothing" = "Nothing discoverd";
+"ui.news.nothing" = "Nothing new meets your needs";

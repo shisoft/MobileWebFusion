@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SWFNavedCenterViewController.h"
+#import "SWFTrackedViewController.h"
 #import "SWFNewsDelegates.h"
 
-@interface SWFSearchNewsViewController : SWFNavedCenterViewController <UISearchBarDelegate>
+@interface SWFSearchNewsViewController : SWFTrackedViewController <UISearchBarDelegate>
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;

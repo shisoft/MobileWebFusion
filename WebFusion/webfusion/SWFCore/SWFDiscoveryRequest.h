@@ -7,14 +7,13 @@
 //
 
 #import <CGIJSONObject/CGIJSONObject.h>
+#import <CGIJSONObject/CGICommon.h>
 
 @interface SWFDiscoveryRequest : CGIRemoteObject
 
-@property NSDate *beforeT;
+@property NSDate *before;
 @property NSUInteger count;
-@property NSDate *lastT;
-@property double threshold;
-@property NSArray *topics;
+@property NSString *cats;
 
 @end
 

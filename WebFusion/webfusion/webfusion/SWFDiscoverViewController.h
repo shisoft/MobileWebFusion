@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SWFNavedCenterViewController.h"
+#import "SWFTrackedViewController.h"
 #import "SWFNewsDelegates.h"
 
-@interface SWFDiscoverViewController : SWFNavedCenterViewController
+@interface SWFDiscoverViewController : SWFTrackedViewController
 
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 

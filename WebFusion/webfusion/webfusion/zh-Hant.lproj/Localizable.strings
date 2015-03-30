@@ -17,6 +17,10 @@
 "Dismiss" = "確定";
 
 
+"ui.tab.news" = "新鮮事";
+"ui.tab.topic" = "主題";
+"ui.tab.contact" = "聯繫人";
+"ui.tab.my" = "我的";
 "ui.ok" = "確定";
 "ui.messages-no" = "條消息";
 "ui.cancel" = "取消";
@@ -264,3 +268,6 @@
 "svr.xmpp" = "XMPP";
 "svr.yahoo" = "雅虎通";
 "svr.yiban" = "易班";
+"ui.discovery.empt" = "请选择你希望发现的分类";
+"ui.discover.nothing" = "没有发现任何内容";
+"ui.news.nothing" = "没有任何新鲜事符合您的要求";

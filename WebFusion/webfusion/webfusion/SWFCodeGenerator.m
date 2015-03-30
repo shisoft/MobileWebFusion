@@ -44,12 +44,20 @@ static NSMutableString *convPageTemplate = nil;
     NSMutableString *refer = [NSMutableString stringWithString:@""];
     if([newsItem.refer isKindOfClass:[SWFNews class]]){
         level++;
-        if (level<2) {
+        if (level < 2) {
             [refer appendString:@"<blockquote>"];
             [refer appendString:[self generateForNews:newsItem.refer level:level]];
             [refer appendString:@"</blockquote>"];
-        }else{
-            [refer appendString:[NSString stringWithFormat:NSLocalizedString(@"ui.moreRefer", @""),[self calculateReferedNews:newsItem level:0]]];
+        } else if (level == 2) {
+            NSArray *referedNews = [self calculateReferedNews:newsItem.refer levels:[[NSMutableArray alloc] init]];
+            if ([referedNews count] != nil) {
+                [refer appendFormat:@"<a href='javascript:dispChain(\"%@\")'>%@</a>", newsItem.ID, [NSString stringWithFormat:NSLocalizedString(@"ui.moreRefer", @""), [referedNews count]]];
+                [refer appendString:[NSString stringWithFormat:@"<div style='display: none' class='newsChain' id='divNewsChan%@'>", newsItem.ID]];
+                for (SWFNews *news in referedNews) {
+                    [refer appendString:[self generateForNews:news level:level + 1]];
+                }
+                [refer appendString:@"</div>"];
+            }
         }
     }
     NSDictionary *vars = @{
@@ -108,12 +116,12 @@ static NSMutableString *convPageTemplate = nil;
     return itemHTML;
 }
 
-+ (int) calculateReferedNews:(SWFNews*)news level:(int)level{
++ (NSMutableArray*)calculateReferedNews:(SWFNews *)news levels:(NSMutableArray*)levels{
     if([news.refer isKindOfClass:[SWFNews class]]){
-        level++;
-        level = [self calculateReferedNews:news.refer level:level];
+        [levels addObject:news];
+        levels = [self calculateReferedNews:news.refer levels:levels];
     }
-    return level;
+    return levels;
 }
 
 + (NSString*)generateForPostPage : (SWFPost*) post{

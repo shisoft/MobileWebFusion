@@ -58,14 +58,14 @@ UIActionSheet *actionSheet;
                     if ([news.tag isKindOfClass:[NSArray class]] || [(NSArray *)news.tag count] != 0){
                         @try{
                             NSArray *catsNames = [Underscore.arrayMap(news.tag, ^(NSDictionary *catDir) {
-                                return catDir[@"name"];
+                                return [NSString stringWithFormat:@"<span class='label label-success'>%@</span>", catDir[@"name"]];
                             }) subarrayWithRange:NSMakeRange(0, MIN([(NSArray *)news.tag count], 5))];
-                            NSString *catExp = [catsNames componentsJoinedByString:@","];
+                            NSString *catExp = [catsNames componentsJoinedByString:@" "];
                             if (news.content == nil){
                                 news.content = @"";
                             }
                             NSMutableString *newsContentWithCats = [[NSMutableString alloc] initWithString: news.content];
-                            [newsContentWithCats appendFormat:@"<div class='alert-success'><b>%@</b></div>", catExp];
+                            [newsContentWithCats appendFormat:@"<div>%@</div>", catExp];
                             news.content = newsContentWithCats;
                         }
                         @catch (NSException *exception){

@@ -374,7 +374,6 @@
 		F5CB634017F3FAE100545F62 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5CB633F17F3FAE100545F62 /* Images.xcassets */; };
 		F5CB635A17F4228300545F62 /* bootstrap-theme.css in Resources */ = {isa = PBXBuildFile; fileRef = F5CB634E17F4228300545F62 /* bootstrap-theme.css */; };
 		F5CB635B17F4228300545F62 /* bootstrap-theme.min.css in Resources */ = {isa = PBXBuildFile; fileRef = F5CB634F17F4228300545F62 /* bootstrap-theme.min.css */; };
-		F5CB635C17F4228300545F62 /* bootstrap.css in Resources */ = {isa = PBXBuildFile; fileRef = F5CB635017F4228300545F62 /* bootstrap.css */; };
 		F5CB635D17F4228300545F62 /* bootstrap.min.css in Resources */ = {isa = PBXBuildFile; fileRef = F5CB635117F4228300545F62 /* bootstrap.min.css */; };
 		F5CB635E17F4228300545F62 /* glyphicons-halflings-regular.eot in Resources */ = {isa = PBXBuildFile; fileRef = F5CB635317F4228300545F62 /* glyphicons-halflings-regular.eot */; };
 		F5CB635F17F4228300545F62 /* glyphicons-halflings-regular.svg in Resources */ = {isa = PBXBuildFile; fileRef = F5CB635417F4228300545F62 /* glyphicons-halflings-regular.svg */; };
@@ -904,7 +903,6 @@
 		F57749DB18217AD2003CD833 /* SWFTopicMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWFTopicMessageViewController.h; sourceTree = "<group>"; };
 		F57749DC18217AD2003CD833 /* SWFTopicMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFTopicMessageViewController.m; sourceTree = "<group>"; };
 		F57749DD18217AD2003CD833 /* SWFTopicMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWFTopicMessageViewController.xib; sourceTree = "<group>"; };
-		F57753E3177DE594006A86C1 /* webfusion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = webfusion.entitlements; path = webfusion/webfusion.entitlements; sourceTree = "<group>"; };
 		F57BA66E188A8D91001DB35B /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		F57BA66F188A8D91001DB35B /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
 		F57BA670188A8D91001DB35B /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
@@ -1059,7 +1057,6 @@
 		F5CB633F17F3FAE100545F62 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = webfusion/Images.xcassets; sourceTree = "<group>"; };
 		F5CB634E17F4228300545F62 /* bootstrap-theme.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "bootstrap-theme.css"; sourceTree = "<group>"; };
 		F5CB634F17F4228300545F62 /* bootstrap-theme.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "bootstrap-theme.min.css"; sourceTree = "<group>"; };
-		F5CB635017F4228300545F62 /* bootstrap.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = bootstrap.css; sourceTree = "<group>"; };
 		F5CB635117F4228300545F62 /* bootstrap.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = bootstrap.min.css; sourceTree = "<group>"; };
 		F5CB635317F4228300545F62 /* glyphicons-halflings-regular.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "glyphicons-halflings-regular.eot"; sourceTree = "<group>"; };
 		F5CB635417F4228300545F62 /* glyphicons-halflings-regular.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "glyphicons-halflings-regular.svg"; sourceTree = "<group>"; };
@@ -1177,6 +1174,7 @@
 		F5EC9F65177A0CDA0077E797 /* NSURL+SWFPersistance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+SWFPersistance.m"; path = "SWFCore/NSURL+SWFPersistance.m"; sourceTree = "<group>"; };
 		F5EC9F66177A0CDA0077E797 /* zh-Hans.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "zh-Hans.lproj"; path = "SWFCore/zh-Hans.lproj"; sourceTree = "<group>"; };
 		F5EC9F88177A0DE20077E797 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F5F0D5741AC9B2F9001F530D /* webfusion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = webfusion.entitlements; path = webfusion/webfusion.entitlements; sourceTree = "<group>"; };
 		F5F436D717EF270900E65888 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		F5F8D60219DD721C00ECB5E6 /* CGIJSONObject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CGIJSONObject.framework; path = "../../../CGIKit.E/build/Debug-iphoneos/CGIJSONObject.framework"; sourceTree = "<group>"; };
 		F5F8D60A19DD72AF00ECB5E6 /* MSRoundedRectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRoundedRectButton.m; sourceTree = "<group>"; };
@@ -2387,7 +2385,6 @@
 			children = (
 				F5CB634E17F4228300545F62 /* bootstrap-theme.css */,
 				F5CB634F17F4228300545F62 /* bootstrap-theme.min.css */,
-				F5CB635017F4228300545F62 /* bootstrap.css */,
 				F5CB635117F4228300545F62 /* bootstrap.min.css */,
 				F58482BF179EB68300F52F59 /* jquery.mobile-1.2.0.min.css */,
 				F58482EA179EEC6800F52F59 /* ios_inspired.css */,
@@ -2451,11 +2448,11 @@
 		F5EC9EBE177A0C140077E797 = {
 			isa = PBXGroup;
 			children = (
+				F5F0D5741AC9B2F9001F530D /* webfusion.entitlements */,
 				F5CB633F17F3FAE100545F62 /* Images.xcassets */,
 				F500AF341785DC6100EC5061 /* Default.png */,
 				F500AF321785DC5300EC5061 /* Icon-72@2x.png */,
 				F500AF301785DC5000EC5061 /* Icon.png */,
-				F57753E3177DE594006A86C1 /* webfusion.entitlements */,
 				F5297A8A1781CCEE00FADE35 /* Keychain */,
 				F5EC9F24177A0C700077E797 /* SWFCore */,
 				F5EC9ED0177A0C140077E797 /* MobileWebFusion */,
@@ -2834,6 +2831,9 @@
 					F5EC9EC6177A0C140077E797 = {
 						DevelopmentTeam = FLH3XAT32D;
 						SystemCapabilities = {
+							com.apple.DataProtection = {
+								enabled = 1;
+							};
 							com.apple.SafariKeychain = {
 								enabled = 1;
 							};
@@ -3092,7 +3092,6 @@
 				F58482F7179EED7400F52F59 /* arrow_right@2x.png in Resources */,
 				F58482F8179EED7400F52F59 /* backButtonSprite.png in Resources */,
 				F58482F9179EED7400F52F59 /* backButtonSprite@2x.png in Resources */,
-				F5CB635C17F4228300545F62 /* bootstrap.css in Resources */,
 				F58482FA179EED7400F52F59 /* iconSprite.png in Resources */,
 				F58482FC179EED7400F52F59 /* tabSprite.png in Resources */,
 				F58482FD179EED7400F52F59 /* tick.png in Resources */,

@@ -1,62 +1,62 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1,maximum-scale=1">
-        <!-- Bootstrap -->
-        <link href="bootstrap.min.css" rel="stylesheet" />
-        <link href="speech-bubble.css" rel="stylesheet" />
-        <style>
-            body{
-                white-space: wrap;
-                wrap: break-word;
-            }
-            .text{
-                width: 100%;
-                overflow: hidden;
-            }
-            img{
-                max-width: 100%;
-            }
-        </style>
-        <script src="jquery-2.0.3.min.js"></script>
-        <script src="jquery.easing.js"></script>
-        <script src="sys.js"></script>
-        <script>
-            $(document).ready(function() {
-                $.ajaxSetup({cache: false});
-                $("#body").hide().fadeIn(500);
-                toTail();
-            });
+<head>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1,maximum-scale=1">
+    <!-- Bootstrap -->
+    <link href="bootstrap.min.css" rel="stylesheet" />
+    <link href="speech-bubble.css" rel="stylesheet" />
+    <style>
+        body{
+            white-space: wrap;
+            wrap: break-word;
+        }
+        .text{
+            width: 100%;
+            overflow: hidden;
+        }
+        img{
+            max-width: 100%;
+        }
+    </style>
+    <script src="jquery-2.0.3.min.js"></script>
+    <script src="jquery.easing.js"></script>
+    <script src="sys.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({cache: false});
+            $("#body").hide().fadeIn(500);
+            toTail();
+        });
 
-            function append(path) {
-                //alert(document.location);
-                var $div = $("<div>").load("file:///" + path, function() {
-                    $("#body").append($($div.html())
-                            .css({top: 300, position: 'relative'})
-                            .animate({top: 0}, 500, "easeOutExpo", function() {
-                        toTail();
-                    }));
-                });
-            }
-            function prepend(path) {
-                //alert(document.location);
-                var $div = $("<div>").load("file:///" + path, function() {
-                    var detector = $("<div></div>");
-                    $("#body").prepend(detector).prepend($($div.html()).hide().fadeIn(500));
-                    setTimeout(function() {
-                        $("html, body").animate({scrollTop: $(detector).offset().top - 75}, 1000, "easeOutExpo");
-                        $(detector).remove();$("#body");
-                    }, 600);
-                });
-            }
-            function toTail() {
-                $("html, body").animate({scrollTop: $(document).height()}, 2000, "easeOutBack");
-            }
-        </script>
-    </head>
-    <body>
-        <div id="body">
-            $(LIST)
-        </div>
-    </body>
+        function append(path) {
+            //alert(document.location);
+            var $div = $("<div>").load("file:///" + path, function() {
+                $("#body").append($($div.html())
+                        .css({top: 300, position: 'relative'})
+                        .animate({top: 0}, 500, "easeOutExpo", function() {
+                            toTail();
+                        }));
+            });
+        }
+        function prepend(path) {
+            //alert(document.location);
+            var $div = $("<div>").load("file:///" + path, function() {
+                var detector = $("<div></div>");
+                $("#body").prepend(detector).prepend($($div.html()).hide().fadeIn(500));
+                setTimeout(function() {
+                    $("html, body").animate({scrollTop: $(detector).offset().top - 75}, 1000, "easeOutExpo");
+                    $(detector).remove();$("#body");
+                }, 600);
+            });
+        }
+        function toTail() {
+            $("html, body").animate({scrollTop: $(document).height()}, 2000, "easeOutBack");
+        }
+    </script>
+</head>
+<body>
+<div id="body">
+    $(LIST)
+</div>
+</body>
 </html>

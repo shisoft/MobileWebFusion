@@ -60,7 +60,7 @@
         snr.page = self.delegates.currentPage;
         snr.publish = [NSString stringWithFormat:@"[%lld TO %lld]",[self getTimeStart], [self getTimeEnd]];
         return [snr searchNews];
-    }];
+    } name:nil];
     __block SWFNewsTrendViewController *this = self;
     self.delegates.loadCompleted = ^(void){
         [this.searchBar resignFirstResponder];
@@ -86,9 +86,7 @@
             }
         });
     };
-    [self.delegates manualInsets];
-    //[super changeNavBarColor:[[UIColor alloc] initWithRed:169 / 255.0 green:0 / 255.0 blue:176 / 255.0 alpha:1.0]];
-    // Do any additional setup after loading the view from its nib.
+    [self.delegates manualBottomInsets];
 }
 
 -(void)handleRefresh:(UIRefreshControl *)refresh {

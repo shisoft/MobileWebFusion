@@ -22,13 +22,13 @@
 @implementation SWFNewsViewController
 
 @synthesize newsWebView;
-@synthesize navItem;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"func.news", @"");
+        [[SWFPoll defaultPoll] addDelegate:self forKey:@"newsc"];
     }
     return self;
 }
@@ -43,29 +43,27 @@
         newsRequest.count = SWFItemFetchCount;
         newsRequest.lastT = self.delegates.pageLastNewsDate;
         return [newsRequest getWhatzNew];
-    }];
-    [[SWFPoll defaultPoll] addDelegate:self
-                                forKey:@"newsc"];
+    } name:@"news"];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]  initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(compose)];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
     __block SWFNewsViewController *this = self;
     self.delegates.loadCompleted = ^{
-        this.unread = 0;
-        [this refreshBadge];
+        this.badgeNum = 0;
+        if (this.refBadge != nil){
+            this.refBadge();
+        }
         [[SWFPoll defaultPoll] repoll];
     };
-    
-    self.navItem.rightBarButtonItem = [[UIBarButtonItem alloc]  initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(compose)];
-    self.navItem.rightBarButtonItem.enabled = NO;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [self.delegates manualInsets];
-    });
     [self.delegates loadNews];
+    [self.delegates manualBottomInsets];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     dispatch_group_async([SWFAppDelegate getDefaultInstance].SWFBackgroundTasks, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
         bool canSend = [[SWFAppDelegate getDefaultInstance] hasFeature:@"CanBoradcast,CanBoradcastImage,CanBoradcastBlog"];
         dispatch_async(dispatch_get_main_queue(),^{
-            self.navItem.rightBarButtonItem.enabled = canSend;
+            self.navigationItem.rightBarButtonItem.enabled = canSend;
         });
     });
 }
@@ -87,7 +85,7 @@
     if (!self.delegates.isEmpty)
     {
         SWFNewsPoll *poll = [[SWFNewsPoll alloc] init];
-        poll.dvt = self.unread;
+        poll.dvt = self.badgeNum;
         poll.lt = self.delegates.latestNewsDate;
         return poll;
     }
@@ -101,22 +99,15 @@
 {
     if ([object respondsToSelector:@selector(integerValue)])
     {
-        self.unread = [object integerValue];
+        self.badgeNum = [object integerValue];
     }
-    [self refreshBadge];
+    if (self.refBadge != nil){
+        self.refBadge();
+    }
 }
 
-- (void)refreshBadge{
-    dispatch_async(dispatch_get_main_queue(), ^{
-//        SWFLeftSideMenuViewController *sideBar = [SWFAppDelegate getDefaultInstance].leftSidebar;
-//        if (self.unread > 0)
-//        {
-//            sideBar.newsBadge.badge = [NSString stringWithFormat:@"%d", self.unread];
-//        }else{
-//            sideBar.newsBadge.badge = nil;
-//        }
-//        [sideBar reloadList];
-    });
+- (NSInteger) getBadgeNum{
+    return self.badgeNum;
 }
 
 @end

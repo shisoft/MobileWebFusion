@@ -122,6 +122,7 @@
 "ui.confirmLogout"  = "您确定要注销 WebFusion 吗?";
 "ui.continue"       = "继续";
 "ui.noDiscoverContent"  = "没有发现到内容，我们缺少您的兴趣特征。";
+"ui.discovery.empt" = "请选择你希望发现的分类";
 "ui.deleteService"  = "您确定要删除此服务吗？删除后此服务相关的联系方式将一起被移除。";
 "ui.delete"  = "删除";
 
@@ -267,3 +268,6 @@
 "svr.xmpp"          = "XMPP";
 "svr.yahoo"         = "雅虎通";
 "svr.yiban"         = "易班";
+
+"ui.discover.nothing" = "没有发现任何内容";
+"ui.news.nothing" = "没有任何新鲜事符合您的要求";

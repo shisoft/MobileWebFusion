@@ -7,14 +7,7 @@
 //
 
 #import <Crashlytics/Crashlytics.h>
-#import <QuartzCore/QuartzCore.h>
-#import "SWFAppDelegate.h"
-#import <CGIJSONObject/CGIJSONObject.h>
 #import "SWFLoginRequest.h"
-#import "SWFWrapper.h"
-#import "SWFPoll.h"
-#import "SWFSplashViewController.h"
-#import "SWFRootViewController.h"
 #import "SWFGetFeaturedUserServicesRequest.h"
 #import "UIAlertView+MKBlockAdditions.h"
 #import "CHKeychain.h"
@@ -24,6 +17,7 @@
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <netdb.h>
 #import "GAI.h"
+#import "SWFAppMainViewConstructor.h"
 
 
 NSString *const SWFUserNameKeychainItemName = @"net.shisoft.webfusion.keychainUserName";
@@ -45,7 +39,7 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
 }
 
 + (UIViewController*) generateCenterView:(Class) class name:(NSString*)name{
-    return [self wrapCenterView: [[class alloc] initWithNibName:name bundle:nil]];
+    return [self wrapCenterView: [(UIViewController *) [class alloc] initWithNibName:name bundle:nil]];
 }
 
 + (void)logout{
@@ -65,9 +59,7 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
          });
          [[SWFPoll defaultPoll] stop];
          [CHKeychain delete:SWFUserPasswordKeychainContainerName];
-         SWFAppDelegate *delegate = [SWFAppDelegate getDefaultInstance];
-         SWFSplashViewController *splashViewController = [[SWFSplashViewController alloc] initWithNibName:@"SWFSplashViewController" bundle:nil];
-         delegate.window.rootViewController = splashViewController;
+         [SWFAppDelegate checkAndLoadAccount];
     } onCancel:^{
         
     }];
@@ -77,6 +69,27 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
     return [[UINavigationController alloc] initWithRootViewController:viewController];
 }
 
+
++ (void) checkAndLoadAccount {
+    if ([CHKeychain load:SWFUserPasswordKeychainContainerName] != nil) {
+        [SWFAppMainViewConstructor constructureMainView];
+        [[self getDefaultInstance] login:^{
+        } onWrong:^{
+            [SWFAppMainViewConstructor constructureLoginView];
+        } onFailed:^{
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"appName", @"")
+                                        message:NSLocalizedString(@"err.no-server", @"")
+                                       delegate:nil
+                              cancelButtonTitle:NSLocalizedString(@"ui.ok", @"")
+                              otherButtonTitles:nil] show];
+            [SWFAppMainViewConstructor constructureLoginView];
+        } onEmpty:^{
+            [SWFAppMainViewConstructor constructureLoginView];
+        }];
+    } else {
+        [SWFAppMainViewConstructor constructureLoginView];
+    }
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -94,11 +107,9 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
     self.userFeatures = [[NSMutableDictionary alloc] init];
     [self initializeClient];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    SWFSplashViewController *splashViewController = [[SWFSplashViewController alloc] initWithNibName:@"SWFSplashViewController" bundle:nil];
-    self.window.rootViewController = splashViewController;
     rootViewController = self.rootViewController;
     [self.window makeKeyAndVisible];
-    
+    [SWFAppDelegate checkAndLoadAccount];
     [[NSURLCache sharedURLCache] setMemoryCapacity:10*1024*1024];
     [[NSURLCache sharedURLCache] setDiskCapacity:100*1024*1024];
     
@@ -194,6 +205,7 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[SWFPoll defaultPoll] start];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -224,25 +236,15 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     NSLog(@"%@", userInfo);
-    /*
-     {
-     aps =     {
-     alert = "Samuel Yuan (Google+): Samuel Yuan\U5728 Google+ \U4e0a\U5206\U4eab\U4e86\U4e00\U6761\U4fe1\U606f";
-     badge = 1;
-     };
-     author = 52208938d66a02b1d679371a;
-     idpath = 5232dacfe4b02c48005496d8;
-     }
-    */
 }
 
 - (void) initializeClient
 {
     // Set up default connection.
     CGIRemoteConnection *connection = [[CGIRemoteConnection alloc] initWithServerRoot:@"https://www.shisoft.net/ajax/%@"];
-    //CGIRemoteConnection *connection = [[CGIRemoteConnection alloc] initWithServerRoot:@"http://10.0.1.35:8080/ajax/%@"];
+    //CGIRemoteConnection *connection = [[CGIRemoteConnection alloc] initWithServerRoot:@"http://10.0.0.130:8080/ajax/%@"];
     [connection makeDefaultServerRoot];
-    connection.timeoutSeconds = [[NSNumber alloc] initWithDouble:20.0];
+    connection.timeoutSeconds = [[NSNumber alloc] initWithDouble:30.0];
     connection.customUserAgent = @"Shisoft WebFusion iOS Client";
     connection.onError = ^(NSError* err, NSURLRequest* req){
         if ([[req.URL absoluteString] rangeOfString:@"Login"].location == NSNotFound && err != nil ) {
@@ -264,26 +266,22 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
         [[SWFAppDelegate getDefaultInstance].userFeatures removeAllObjects];
         SWFLoginRequest *login = [[SWFLoginRequest alloc] init];
         NSMutableDictionary *usernamepasswordKVPairs = (NSMutableDictionary *)[CHKeychain load:SWFUserPasswordKeychainContainerName];
-        login.user = [usernamepasswordKVPairs objectForKey:SWFUserNameKeychainItemName];
-        login.pass = [usernamepasswordKVPairs objectForKey:SWFUserPasswordKeychainItemName];
+        login.user = usernamepasswordKVPairs[SWFUserNameKeychainItemName];
+        login.pass = usernamepasswordKVPairs[SWFUserPasswordKeychainItemName];
         if ([login.user length] && [login.pass length])
         {
             SWFWrapper *rv = [login login];
             if ([rv isKindOfClass:[SWFWrapper class]])
             {
                 [SWFAppDelegate getDefaultInstance].connected = [rv boolValue];
-                if ([SWFAppDelegate getDefaultInstance].connected)
-                    [[SWFPoll defaultPoll] start];
                 dispatch_async(dispatch_get_main_queue(),^{
                     if ([SWFAppDelegate getDefaultInstance].connected)
                     {
                         [SWFAppDelegate getDefaultInstance].currentUser = login.user;
                         succeed();
-                        //[self gotoMainView];
                     }else{
                         [UIAlertView alertViewWithTitle:nil message:NSLocalizedString(@"err.wrongPassword", @"")  cancelButtonTitle:NSLocalizedString(@"ui.ok", @"") otherButtonTitles:nil onDismiss:nil onCancel:^{
                             wrong();
-                            //[self gotoLoginView];
                         }];
                     }
                 });
@@ -293,8 +291,6 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
             {
                 dispatch_async(dispatch_get_main_queue(),^{
                     failed();
-                    //logging = NO;
-                    //[self hideLogging];
                 });
                 [SWFAppDelegate getDefaultInstance].connected = NO;
             }
@@ -303,8 +299,6 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
         {
             dispatch_async(dispatch_get_main_queue(),^{
                 empty();
-                //logging = NO;
-                //[self hideLogging];
             });
         }
     });

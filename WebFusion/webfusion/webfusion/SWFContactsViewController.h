@@ -25,6 +25,7 @@
 @property NSString *currentSearchQuery;
 @property BOOL searchToTail;
 @property BOOL contactToTail;
+@property BOOL isFirstLoad;
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UISearchDisplayController *searchController;

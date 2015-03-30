@@ -96,7 +96,7 @@
     _scrollEnabled = YES;
     _pagingEnabled = YES;
     _delaysContentTouches = YES;
-    _bounces = YES;
+    _bounces = NO;
     _wrapEnabled = NO;
     _itemsPerPage = 1;
     _truncateFinalPage = NO;
@@ -526,7 +526,7 @@
         CGPoint center = view.center;
         if (_vertical)
         {
-            center.y = ([self offsetForItemAtIndex:index] + 0.5f) * _itemSize.height + _scrollView.contentOffset.y;
+            center.y = 0;//([self offsetForItemAtIndex:index] + 0.5f) * _itemSize.height + _scrollView.contentOffset.y;
         }
         else
         {

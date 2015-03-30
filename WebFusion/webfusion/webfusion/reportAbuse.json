@@ -1,29 +1,29 @@
 {
-	"grouped": true,
-	"title": "ui.reportAbuse",
-    "controllerName": "ReportAbuseController",
-	"sections": [
-                 {
-                 "elements": [
-                              {
-                              "type":"QRadioElement", "title":"ui.reason", "key":"reason",
-                              "items":[
-                                       "ui.reportAbuse.reason-0",
-                                       "ui.reportAbuse.reason-1",
-                                       "ui.reportAbuse.reason-2",
-                                       "ui.reportAbuse.reason-3",
-                                       "ui.reportAbuse.reason-4",
-                                       "ui.reportAbuse.reason-5",
-                                       "ui.reportAbuse.reason-6"
-                                       ]
-                              }
-                              ]
-                 },
-                 {
-                 "footer":"ui.reportAbuseIntro",
-                 "elements":[
-                             {"type":"QEntryElement", "title":"ui.comment", "key":"comment"}
-                             ]
-                 }
-                 ]
+  "grouped": true,
+  "title": "ui.reportAbuse",
+  "controllerName": "ReportAbuseController",
+  "sections": [
+    {
+      "elements": [
+        {
+          "type":"QRadioElement", "title":"ui.reason", "key":"reason",
+          "items":[
+            "ui.reportAbuse.reason-0",
+            "ui.reportAbuse.reason-1",
+            "ui.reportAbuse.reason-2",
+            "ui.reportAbuse.reason-3",
+            "ui.reportAbuse.reason-4",
+            "ui.reportAbuse.reason-5",
+            "ui.reportAbuse.reason-6"
+          ]
+        }
+      ]
+    },
+    {
+      "footer":"ui.reportAbuseIntro",
+      "elements":[
+        {"type":"QEntryElement", "title":"ui.comment", "key":"comment"}
+      ]
+    }
+  ]
 }

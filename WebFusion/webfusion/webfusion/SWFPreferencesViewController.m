@@ -18,15 +18,16 @@
 #import "SWFWebBrowserViewController.h"
 #import "Appirater.h"
 #import "SWFNavedCenterViewController.h"
-#import <MessageUI/MessageUI.h>
-#import "QElement+Appearance.h"
-#import "QLabelElement.h"
+#import "SWFCachePolicy.h"
 
-@interface SWFPreferencesViewController ()
+        @interface SWFPreferencesViewController ()
 
 @end
 
 @implementation SWFPreferencesViewController
+
+static NSString *SWFUserNickNameCacheFileName = @"userNickName";
+static NSString *SWFUserNumberOfServiceCacheFileName = @"userNumberOfService";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,17 +58,25 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [self loadServerData];
-    [self loading:YES];
 }
 
 - (void) loadServerData{
+    NSString *cachedNickName = [SWFCachePolicy cacheOutWithFileName:SWFUserNickNameCacheFileName];
+    NSString *cachedNumberOfService = [SWFCachePolicy cacheOutWithFileName:SWFUserNumberOfServiceCacheFileName];
+    if (cachedNickName != nil){
+        self.originalDisplayName = cachedNickName;
+        self.nickname.textValue = cachedNickName;
+        self.nickname.enabled = NO;
+    } else {
+        [self loading:YES];
+    }
+    if (cachedNumberOfService != nil){
+        self.services.value = cachedNumberOfService;
+    }
+    NSMutableDictionary *usernamepasswordKVPairs = (NSMutableDictionary *)[CHKeychain load:SWFUserPasswordKeychainContainerName];
+    NSString *loginName = [usernamepasswordKVPairs objectForKey:SWFUserNameKeychainItemName];
+    self.username.value = loginName;
     dispatch_group_async([SWFAppDelegate getDefaultInstance].SWFBackgroundTasks,dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
-        NSMutableDictionary *usernamepasswordKVPairs = (NSMutableDictionary *)[CHKeychain load:SWFUserPasswordKeychainContainerName];
-        NSString *loginName = [usernamepasswordKVPairs objectForKey:SWFUserNameKeychainItemName];
-        dispatch_async(dispatch_get_main_queue(),^{
-            self.username.value = loginName;
-        });
-        
         if (!self.originalDisplayName)
         {
             SWFGetUserNicknameRequest *dispNameRequest = [[SWFGetUserNicknameRequest alloc] init];
@@ -79,6 +88,7 @@
                     self.nickname.textValue = [response stringValue];
                     self.nickname.placeholder = [response stringValue];
                     self.nickname.enabled = YES;
+                    [SWFCachePolicy cacheInWithData:[response stringValue] fileName:SWFUserNickNameCacheFileName];
                 });
             }
             else
@@ -102,11 +112,14 @@
         dispatch_async(dispatch_get_main_queue(),^{
             if ([nosw isKindOfClass:[SWFWrapper class]]) {
                 self.services.value = [NSString stringWithFormat:NSLocalizedString(@"ui.numServices", @""),[nosw stringValue]];
+                [SWFCachePolicy cacheInWithData:self.services.value fileName:SWFUserNumberOfServiceCacheFileName];
             }
         });
         dispatch_async(dispatch_get_main_queue(),^{
             [self.quickDialogTableView reloadData];
-            [self loading:NO];
+            if (cachedNickName == nil){
+                [self loading:NO];
+            }
         });
     });
 }
@@ -185,9 +198,6 @@
         NSArray *toRecipients = [NSArray arrayWithObjects:@"shisoftgenius@hotmail.com", @"shisoftgenius@gmail.com", nil];
         [mailer setToRecipients:toRecipients];
         [self presentViewController:mailer animated:YES completion:nil];
-    }
-    else
-    {
     }
 }
 

@@ -21,6 +21,7 @@
 #import "SWFPostDetailsViewController.h"
 #import "NSString+SWFUtilities.h"
 #import "SWFDeleteBookmarkRequest.h"
+#import "SWFUIModifiers.h"
 
 @interface SWFBookmarkViewController ()
 

@@ -12,12 +12,14 @@
 #import "SWFNewsDelegates.h"
 #import "SWFPoll.h"
 
+typedef void(^refreshBadge)();
+
 @interface SWFNewsViewController : SWFTrackedViewController <SWFPollDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWebView *newsWebView;
-@property int unread;
+@property NSInteger badgeNum;
 
 @property SWFNewsDelegates *delegates;
-@property UINavigationItem* navItem;
+@property (strong, nonatomic) refreshBadge refBadge;
 
 @end

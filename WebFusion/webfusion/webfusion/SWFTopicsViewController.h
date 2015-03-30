@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CGIJSONObject/CGICommon.h>
 #import "SWFNavedCenterViewController.h"
 
 
 
-@interface SWFTopicsViewController : SWFNavedCenterViewController <UITableViewDelegate, UITableViewDataSource>
+@interface SWFTopicsViewController : SWFNavedCenterViewController <UITableViewDelegate, UITableViewDataSource, SWFPollDelegate>
 
 @property UIRefreshControl *refreshControl;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -22,6 +23,11 @@
 @property NSMutableArray *topics;
 @property BOOL toTail;
 @property NSTimer *ticker;
+
+@property BOOL isFirstLoad;
+@property NSString *cachedFile;
+
+@property NSInteger badgeNum;
 
 - (void) refresh;
 

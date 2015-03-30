@@ -39,12 +39,12 @@
         snr.kw = self.kw;
         snr.page = self.delegates.currentPage;
         return [snr searchNews];
-    }];
+    } name:nil];
     __block SWFSearchNewsViewController *this = self;
     self.delegates.loadCompleted = ^(void){
         [this.searchBar resignFirstResponder];
     };
-    [self.delegates manualInsets];
+    [self.delegates manualBottomInsets];
     //[super changeNavBarColor:[[UIColor alloc] initWithRed:27 / 255.0 green:110 / 255.0 blue:177 / 255.0 alpha:1.0]];
     // Do any additional setup after loading the view from its nib.
 }

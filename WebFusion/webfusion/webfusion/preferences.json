@@ -1,39 +1,39 @@
 {
-	"grouped": true,
-	"title": "func.preferences",
-    "controllerName": "PreferencesController",
-	"sections": [
-                 {"title":"ui.basic",
-                 "elements": [
-                              {"type":"QLabelElement","bind":"value:user", "title":"ui.username", "key":"username"},
-                              {"type":"QEntryElement", "title":"ui.nickname", "bind":"textValue:nickname","key":"nickname"},
-                              {"type":"QLabelElement", "key":"services", "title":"ui.services", "value":"N/A", "controllerAction":"onServices:"}
-                              ]
-                 },
-                 {"title":"ui.operability",
-                 "elements":[
-                             {"type":"QBooleanElement", "title":"ui.pushNotifications", "boolValue":1},
-                             {"type":"QBooleanElement", "title":"ui.soundEffects", "boolValue":1},
-                             {"type":"QBooleanElement", "title":"ui.vibration", "boolValue":1}
-                             ]
-                 },
-                 {"title":"ui.security",
-                  "footer":"ui.securityFooter",
-                  "elements":[
-                               { "type":"QButtonElement", "key":"button", "title":"func.alterPassword", "controllerAction":"alterPassword:"}
-                               ]
-                 },
-                 { "elements":[
-                               { "type":"QButtonElement", "key":"button", "title":"func.logout", "controllerAction":"onLogout:"}
-                               ]
-                 },
-                 { "elements":[
-                               {"type":"QWebElement",  "title":"ui.EULA", "url":"EULA.html"},
-                               { "type":"QButtonElement", "key":"button", "title":"ui.privacyPolicy", "controllerAction":"pricacyPolicy:"},
-                               { "type":"QButtonElement", "key":"button", "title":"ui.rateUS", "controllerAction":"rateUS:"},
-                               { "type":"QButtonElement", "key":"button", "title":"ui.aboutWebFusion", "controllerAction":"aboutWebFusion:"},
-                               { "type":"QButtonElement", "key":"button", "title":"ui.aboutMobile", "controllerAction":"aboutMobile:"}
-                               ]
-                 }
-                 ]
+  "grouped": true,
+  "title": "func.preferences",
+  "controllerName": "PreferencesController",
+  "sections": [
+    {"title":"ui.basic",
+      "elements": [
+        {"type":"QLabelElement","bind":"value:user", "title":"ui.username", "key":"username"},
+        {"type":"QEntryElement", "title":"ui.nickname", "bind":"textValue:nickname","key":"nickname"},
+        {"type":"QLabelElement", "key":"services", "title":"ui.services", "value":"N/A", "controllerAction":"onServices:"}
+      ]
+    },
+    {"title":"ui.operability",
+      "elements":[
+        {"type":"QBooleanElement", "title":"ui.pushNotifications", "boolValue":1},
+        {"type":"QBooleanElement", "title":"ui.soundEffects", "boolValue":1},
+        {"type":"QBooleanElement", "title":"ui.vibration", "boolValue":1}
+      ]
+    },
+    {"title":"ui.security",
+      "footer":"ui.securityFooter",
+      "elements":[
+        { "type":"QButtonElement", "key":"button", "title":"func.alterPassword", "controllerAction":"alterPassword:"}
+      ]
+    },
+    { "elements":[
+      { "type":"QButtonElement", "key":"button", "title":"func.logout", "controllerAction":"onLogout:"}
+    ]
+    },
+    { "elements":[
+      {"type":"QWebElement",  "title":"ui.EULA", "url":"EULA.html"},
+      { "type":"QButtonElement", "key":"button", "title":"ui.privacyPolicy", "controllerAction":"pricacyPolicy:"},
+      { "type":"QButtonElement", "key":"button", "title":"ui.rateUS", "controllerAction":"rateUS:"},
+      { "type":"QButtonElement", "key":"button", "title":"ui.aboutWebFusion", "controllerAction":"aboutWebFusion:"},
+      { "type":"QButtonElement", "key":"button", "title":"ui.aboutMobile", "controllerAction":"aboutMobile:"}
+    ]
+    }
+  ]
 }

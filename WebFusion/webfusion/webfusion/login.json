@@ -1,20 +1,20 @@
 {
-	"grouped": true,
-	"title": "ui.loginTitle",
-    "controllerName": "LoginController",
-	"sections": [
-                 { "title":"ui.loginTitle", "headerImage":"logo", "elements": [
-                                                                                                                              { "type":"QEntryElement", "keyboardType":"EmailAddress","placeholder":"ui.username", "bind":"textValue:user", "key":"username"},
-                                                                                                                              {  "type":"QEntryElement", "placeholder":"ui.password",  "secureTextEntry":true, "bind":"textValue:pass" }
-                                                                                                                              ]
-                 },
-                 { "elements":[
-                               { "type":"QButtonElement", "key":"button", "title":"ui.login", "controllerAction":"onLogin:"}
-                               ], "footer":"ui.inputLogin"
-                 },
-                 { "headerImage":"blankSepraterForRegister","footer":" ","elements":[
-                                                  { "type":"QButtonElement", "key":"button", "title":"ui.register", "controllerAction":"onRegister:"}
-                                                  ]
-                 }
-                 ]
+  "grouped": true,
+  "title": "ui.loginTitle",
+  "controllerName": "LoginController",
+  "sections": [
+    { "title":"ui.loginTitle", "headerImage":"logo", "elements": [
+      { "type":"QEntryElement", "keyboardType":"EmailAddress","placeholder":"ui.username", "bind":"textValue:user", "key":"username"},
+      {  "type":"QEntryElement", "placeholder":"ui.password",  "secureTextEntry":true, "bind":"textValue:pass" }
+    ]
+    },
+    { "elements":[
+      { "type":"QButtonElement", "key":"button", "title":"ui.login", "controllerAction":"onLogin:"}
+    ], "footer":"ui.inputLogin"
+    },
+    { "headerImage":"blankSepraterForRegister","footer":" ","elements":[
+      { "type":"QButtonElement", "key":"button", "title":"ui.register", "controllerAction":"onRegister:"}
+    ]
+    }
+  ]
 }

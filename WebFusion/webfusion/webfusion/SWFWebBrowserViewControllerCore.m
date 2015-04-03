@@ -45,7 +45,7 @@ UIActionSheet *actionSheet;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [SWFUIModifiers manualBottomTabBarInsetsFor:self.webView.scrollView];
+    [SWFUIModifiers manualBottomToolBartInsetsFor:self.webView.scrollView];
 }
 
 

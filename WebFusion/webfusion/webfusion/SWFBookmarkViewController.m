@@ -6,28 +6,24 @@
 //  Copyright (c) 2013年 Shisoft Corporation. All rights reserved.
 //
 
+#import <CGIJSONObject/CGICommon.h>
 #import "SWFBookmarkViewController.h"
 #import "SWFGetUserBookmarksRequest.h"
 #import "SWFBookmarkWrapper.h"
-#import "SWFBookmark.h"
 #import "SWFBookmarkCell.h"
-#import "SWFAvatarHelper.h"
-#import "SWFUserContact.h"
-#import "SWFUniversalContact.h"
-#import "SWFCodeGenerator.h"
 #import "NSString+SWFUtilities.h"
-#import "SWFBookmarkCellViewController.h"
 #import "SWFSingleNewsViewController.h"
 #import "SWFPostDetailsViewController.h"
-#import "NSString+SWFUtilities.h"
 #import "SWFDeleteBookmarkRequest.h"
-#import "SWFUIModifiers.h"
+#import "SWFCachePolicy.h"
 
 @interface SWFBookmarkViewController ()
 
 @end
 
-@implementation SWFBookmarkViewController
+@implementation SWFBookmarkViewController {
+    NSMutableArray *_bookmarks;
+}
 
 static NSString *SWFBookmarkCellTableIdentifier = @"BookmarkCellTableIdentifier";
 static NSString *SWFTableCellLoadingIdentifer = @"CellTableLoadingIdentifier";
@@ -56,7 +52,7 @@ static NSString *SWFTableCellLoadingIdentifer = @"CellTableLoadingIdentifier";
     [self.tableView registerNib:[UINib nibWithNibName:@"SWFUILoadingCell" bundle:nil] forCellReuseIdentifier:SWFTableCellLoadingIdentifer];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"ui.edit", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(edit)];
     [self loadBookmarks];
-    [super changeNavBarColor:[[UIColor alloc] initWithRed:193 / 255.0 green:32 / 255.0 blue:81 / 255.0 alpha:1.0]];
+    [super changeNavBarColor:[[UIColor alloc] initWithRed:(CGFloat) (193 / 255.0) green:(CGFloat) (32 / 255.0) blue:(CGFloat) (81 / 255.0) alpha:1.0]];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -64,30 +60,6 @@ static NSString *SWFTableCellLoadingIdentifer = @"CellTableLoadingIdentifier";
     [super viewDidAppear:animated];
     NSIndexPath *selected = [self.tableView indexPathForSelectedRow];
     if(selected) [self.tableView deselectRowAtIndexPath:selected animated:YES];
-    [self startTicker];
-}
-
-- (void)viewWillDisappear:(BOOL)animated{
-    [self stopTicker];
-}
-
-- (void) startTicker{
-    [self.ticker invalidate];
-    self.ticker = [NSTimer scheduledTimerWithTimeInterval:1
-                                                   target:self
-                                                 selector:@selector(tick:)
-                                                 userInfo:nil
-                                                  repeats:YES];
-}
-
-- (void)stopTicker{
-    [self.ticker invalidate];
-}
-
-- (void) tick:(NSTimer *) timer {
-    if ([self.cell count]) {
-        [self.tableView reloadData];
-    }
 }
 
 - (void)edit{
@@ -117,12 +89,29 @@ static NSString *SWFTableCellLoadingIdentifer = @"CellTableLoadingIdentifier";
     [self loadBookmarks];
 }
 
+- (void) addCellsByArray:(NSArray *)list{
+    for (SWFBookmarkWrapper *bw in list) {
+        [self.bookmarks addObject:bw];
+        [self.cells addObject:[[SWFBookmarkCellViewController alloc] initWithBookmarkWrapper:bw]];
+    }
+}
+
 - (void)loadBookmarks{
-    if (self.busy == YES) {
+    if (self.busy) {
         [self.refreshControl endRefreshing];
         return;
     }else{
         self.busy = YES;
+    }
+    NSString *cacheName = @"bookmarks";
+    if(self.currentPage==0){
+        NSArray *cache = (id) [SWFCachePolicy cacheOutWithFileName:cacheName];
+        self.bookmarks = [NSMutableArray array];
+        self.cells = [NSMutableArray array];
+        if (cache){
+            [self addCellsByArray:cache];
+        }
+        //[SWFCachePolicy cacheInWithData:newsResponse fileName:cacheName];
     }
     dispatch_group_async([SWFAppDelegate getDefaultInstance].SWFBackgroundTasks, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         SWFGetUserBookmarksRequest *r = [[SWFGetUserBookmarksRequest alloc] init];
@@ -132,14 +121,12 @@ static NSString *SWFTableCellLoadingIdentifer = @"CellTableLoadingIdentifier";
             return;
             self.busy = NO;
         }
-        if(self.currentPage==0){
+        if (self.currentPage==0){
             self.bookmarks = [NSMutableArray arrayWithCapacity:[bookmarksResponse count]];
-            self.cell = [NSMutableArray arrayWithCapacity:[bookmarksResponse count]];
+            self.cells = [NSMutableArray arrayWithCapacity:[bookmarksResponse count]];
+            [SWFCachePolicy cacheInWithData:(id) bookmarksResponse fileName:cacheName];
         }
-        for (SWFBookmarkWrapper *bw in bookmarksResponse) {
-            [self.bookmarks addObject:bw];
-            [self.cell addObject:[[SWFBookmarkCellViewController alloc] initWithBookmarkWrapper:bw]];
-        }
+        [self addCellsByArray:bookmarksResponse];
         if ([bookmarksResponse count] < 20) {
             self.toTail = YES;
         }
@@ -196,7 +183,7 @@ static NSString *SWFTableCellLoadingIdentifer = @"CellTableLoadingIdentifier";
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row < [self.bookmarks count]){
         SWFBookmarkCell *cell = [tableView dequeueReusableCellWithIdentifier:SWFBookmarkCellTableIdentifier];
-        SWFBookmarkCellViewController *bcvc = [self.cell objectAtIndex:indexPath.row];
+        SWFBookmarkCellViewController *bcvc = self.cells[(NSUInteger) indexPath.row];
         [bcvc displayInCell:cell];
         return cell;
     }else{
@@ -222,15 +209,16 @@ static NSString *SWFTableCellLoadingIdentifer = @"CellTableLoadingIdentifier";
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {    
-    SWFBookmarkWrapper *bw = [self.bookmarks objectAtIndex:indexPath.row];
+    SWFBookmarkWrapper *bw = self.bookmarks[(NSUInteger) indexPath.row];
     if(editingStyle == UITableViewCellEditingStyleDelete) {
         dispatch_group_async([SWFAppDelegate getDefaultInstance].SWFBackgroundTasks, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             SWFDeleteBookmarkRequest *dbr = [[SWFDeleteBookmarkRequest alloc] init];
             dbr.ID = bw.bm.ID;
             [dbr deleteBookmark];
             [self.bookmarks removeObject:bw];
+            [self.cells removeObjectAtIndex:(NSUInteger) indexPath.row];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+                [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:YES];
             });
         });
     }

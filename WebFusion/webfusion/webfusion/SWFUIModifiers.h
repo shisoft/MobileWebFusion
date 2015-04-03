@@ -9,5 +9,7 @@
 @interface SWFUIModifiers : NSObject
 
 + (void)manualBottomTabBarInsetsFor: (UIView*) view;
++ (void)manualBottomToolBartInsetsFor: (UIView*) view;
++ (void)manualButtonInsetFor: (UIView*)view With:(int)height;
 
 @end

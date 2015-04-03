@@ -13,6 +13,7 @@
 #import "SWFGetPostIDForUserContactPrivateConversationRequest.h"
 #import "SWFGetPostsFromUserContactPrivateConversationRequest.h"
 #import "SWFThreadReplyPoll.h"
+#import "SWFWebBrowserViewControllerCore.h"
 #import "SWFWebBrowserViewController.h"
 
 @interface SWFTopicMessageViewController ()
@@ -290,7 +291,7 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     if (navigationType == UIWebViewNavigationTypeLinkClicked) {
-        SWFWebBrowserViewController *browser = [[SWFWebBrowserViewController alloc] initWithNibName:@"SWFWebBrowserViewController" bundle:nil];
+        SWFWebBrowserViewController *browser = [[SWFWebBrowserViewController alloc] init];
         [self presentViewController:browser animated:YES completion:nil];
         [browser.webView loadRequest:request];
         return NO;

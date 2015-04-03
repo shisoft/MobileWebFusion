@@ -54,7 +54,7 @@
  }
  }
  
- // Non-ES5 (or broken) browser; just set the property
+ // Non-ES5 (or broken) webView; just set the property
  jQuery._definePropertyBroken = true;
  obj[ prop ] = value;
  }
@@ -228,8 +228,8 @@
  
  jQuery.browser = browser;
  
- // Warn if the code tries to get jQuery.browser
- migrateWarnProp( jQuery, "browser", browser, "jQuery.browser is deprecated" );
+ // Warn if the code tries to get jQuery.webView
+ migrateWarnProp( jQuery, "browser", browser, "jQuery.webView is deprecated" );
  
  jQuery.sub = function() {
  function jQuerySub( selector, context ) {

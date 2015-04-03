@@ -9,9 +9,10 @@
 #import "SWFPostDetailsViewController.h"
 #import "SWFGetPostsByBIDRequest.h"
 #import "SWFCodeGenerator.h"
-#import "SWFWebBrowserViewController.h"
+#import "SWFWebBrowserViewControllerCore.h"
 #import "SWFInputActionViewController.h"
 #import "NSString+SWFUtilities.h"
+#import "SWFWebBrowserViewController.h"
 
 @interface SWFPostDetailsViewController ()
 
@@ -127,7 +128,8 @@
             [self.navigationController pushViewController:pdvc animated:YES];
         }
     }else{
-        if (navigationType == UIWebViewNavigationTypeLinkClicked) {            SWFWebBrowserViewController *browser = [[SWFWebBrowserViewController alloc] initWithNibName:@"SWFWebBrowserViewController" bundle:nil];
+        if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+            SWFWebBrowserViewController *browser = [[SWFWebBrowserViewController alloc] init];
             [self presentViewController:browser animated:YES completion:nil];
             [browser.webView loadRequest:request];
         }

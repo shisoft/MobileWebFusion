@@ -21,7 +21,7 @@
  
  // default settings
  Hammer.defaults = {
- // add styles and attributes to the element to prevent the browser from doing
+ // add styles and attributes to the element to prevent the webView from doing
  // its native behavior. this doesnt prevent the scrolling, but cancels
  // the contextmenu, tap highlighting etc
  // set to false to disable this
@@ -128,7 +128,7 @@
                                     Hammer.utils.extend({}, Hammer.defaults),
                                     options || {});
  
- // add some css to the element to prevent the browser from doing its native behavoir
+ // add some css to the element to prevent the webView from doing its native behavoir
  if(this.options.stop_browser_behavior) {
  Hammer.utils.stopDefaultBrowserBehavior(this.element, this.options.stop_browser_behavior);
  }
@@ -343,7 +343,7 @@
  
  
  /**
-  * we have different events for each device/browser
+  * we have different events for each device/webView
   * determine what we need and set them in the Hammer.EVENT_TYPES constant
   */
  determineEventTypes: function determineEventTypes() {
@@ -427,8 +427,8 @@
  srcEvent    : ev,
  
  /**
-  * prevent the browser default actions
-  * mostly used to disable scrolling of the browser
+  * prevent the webView default actions
+  * mostly used to disable scrolling of the webView
   */
  preventDefault: function() {
  if(this.srcEvent.preventManipulation) {
@@ -698,7 +698,7 @@
  
  
  /**
-  * stop browser default behavior with css props
+  * stop webView default behavior with css props
   * @param   {HtmlElement}   element
   * @param   {Object}        css_props
   */
@@ -1171,7 +1171,7 @@
  drag_min_distance : 10,
  // set 0 for unlimited, but this can conflict with transform
  drag_max_touches  : 1,
- // prevent default browser behavior when dragging occurs
+ // prevent default webView behavior when dragging occurs
  // be careful with it, it makes the element a blocking element
  // when you are using the drag gesture, it is a good practice to set this true
  drag_block_horizontal   : false,
@@ -1242,7 +1242,7 @@
  // direction event, like dragdown
  inst.trigger(this.name + ev.direction, ev);
  
- // block the browser events
+ // block the webView events
  if( (inst.options.drag_block_vertical && Hammer.utils.isVertical(ev.direction)) ||
     (inst.options.drag_block_horizontal && !Hammer.utils.isVertical(ev.direction))) {
  ev.preventDefault();
@@ -1275,7 +1275,7 @@
  transform_min_scale     : 0.01,
  // rotation in degrees
  transform_min_rotation  : 1,
- // prevent default browser behavior when two touches are on the screen
+ // prevent default webView behavior when two touches are on the screen
  // but it makes the element a blocking element
  // when you are using the transform gesture, it is a good practice to set this true
  transform_always_block  : false

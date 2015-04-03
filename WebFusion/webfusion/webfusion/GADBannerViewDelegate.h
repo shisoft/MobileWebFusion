@@ -33,7 +33,7 @@
 
 #pragma mark Click-Time Lifecycle Notifications
 
-// Sent just before presenting the user a full screen view, such as a browser,
+// Sent just before presenting the user a full screen view, such as a webView,
 // in response to clicking on an ad.  Use this opportunity to stop animations,
 // time sensitive interactions, etc.
 //

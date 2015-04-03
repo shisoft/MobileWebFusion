@@ -32,7 +32,7 @@
 
 #pragma mark Click-Time Lifecycle Notifications
 
-/// Called just before presenting the user a full screen view, such as a browser, in response to
+/// Called just before presenting the user a full screen view, such as a webView, in response to
 /// clicking on an ad. Use this opportunity to stop animations, time sensitive interactions, etc.
 ///
 /// Normally the user looks at the ad, dismisses it, and control returns to your application by

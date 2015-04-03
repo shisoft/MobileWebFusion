@@ -8,11 +8,10 @@
 
 #import "SWFLoginViewController.h"
 #import "SWFLoginRequest.h"
-#import "SWFWrapper.h"
 #import "CHKeychain.h"
 #import "SWFRegisterViewController.h"
-#import "SWFWebBrowserViewController.h"
 #import "SWFLoginAppeal.h"
+#import "SWFWebBrowserViewController.h"
 
 @interface SWFLoginViewController ()
 
@@ -31,7 +30,7 @@
 
 -(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
     if (inType == UIWebViewNavigationTypeLinkClicked) {
-        SWFWebBrowserViewController *browser = [[SWFWebBrowserViewController alloc] initWithNibName:@"SWFWebBrowserViewController" bundle:nil];
+        SWFWebBrowserViewController *browser = [[SWFWebBrowserViewController alloc] init];
         [self presentViewController:browser animated:YES completion:nil];
         browser.webView.dataDetectorTypes = UIDataDetectorTypeNone;
         browser.webView.scrollView.bounces = NO;

@@ -58,6 +58,18 @@
     if(selected) [self.tableView deselectRowAtIndexPath:selected animated:YES];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController.tabBarController.tabBar setHidden:YES];
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController.tabBarController.tabBar setHidden:NO];
+}
+
+
 - (void)edit{
     [self.tableView setEditing:!self.tableView.editing animated:YES];
     if (self.tableView.editing) {

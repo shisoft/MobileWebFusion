@@ -24,7 +24,7 @@
     self.quickDialogTableView.bounces = NO;
     self.root.appearance = [[SWFLoginAppeal alloc] initWithViewController:self];   //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
     NSMutableDictionary *usernamepasswordKVPairs = (NSMutableDictionary *)[CHKeychain load:SWFUserPasswordKeychainContainerName];
-    NSString *loginName = [usernamepasswordKVPairs objectForKey:SWFUserNameKeychainItemName];
+    NSString *loginName = usernamepasswordKVPairs[SWFUserNameKeychainItemName];
     ((QEntryElement *)[self.root elementWithKey:@"username"]).textValue = loginName;
 }
 

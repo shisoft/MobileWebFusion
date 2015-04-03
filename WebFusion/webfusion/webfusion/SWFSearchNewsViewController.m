@@ -10,7 +10,7 @@
 #import "SWFSearchNewsRequest.h"
 #import "SWFNews.h"
 #import "SWFCodeGenerator.h"
-#import "SWFWebBrowserViewController.h"
+#import "SWFWebBrowserViewControllerCore.h"
 #import "SWFNewsDelegates.h"
 
 @interface SWFSearchNewsViewController ()

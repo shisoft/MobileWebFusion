@@ -11,7 +11,7 @@
 #import "SWFNewsTrendsRequest.h"
 #import "SWFSearchNewsRequest.h"
 #import "SWFNews.h"
-#import "SWFWebBrowserViewController.h"
+#import "SWFWebBrowserViewControllerCore.h"
 #import "SWFCodeGenerator.h"
 #import "SWFWrapper.h"
 #import "UIImage+SWFUtilities.h"

@@ -8,12 +8,13 @@
 
 #import <CGIJSONObject/CGICommon.h>
 #import "SWFNewsDelegates.h"
-#import "SWFWebBrowserViewController.h"
+#import "SWFWebBrowserViewControllerCore.h"
 #import "SWFInputActionViewController.h"
 #import "SWFCodeGenerator.h"
 #import "SWFReportAbuseViewController.h"
 #import "SWFCachePolicy.h"
 #import "SWFUIModifiers.h"
+#import "SWFWebBrowserViewController.h"
 
 @implementation SWFNewsDelegates
 
@@ -37,7 +38,7 @@
         if ([view isKindOfClass:[UIImageView class]]) view.hidden = YES;
     }
     
-    newsWebView.backgroundColor = [[UIColor alloc] initWithRed:211 /255.0 green:211 / 255.0 blue:211 / 255.0 alpha:1.0];
+    newsWebView.backgroundColor = [[UIColor alloc] initWithRed:(CGFloat) (211 / 255.0) green:(CGFloat) (211 / 255.0) blue:(CGFloat) (211 / 255.0) alpha:1.0];
     [newsWebView setOpaque:NO];
     return self;
 }
@@ -199,9 +200,9 @@
         }
     }else{
         if (navigationType == UIWebViewNavigationTypeLinkClicked) {
-            SWFWebBrowserViewController *browser = [[SWFWebBrowserViewController alloc] initWithNibName:@"SWFWebBrowserViewController" bundle:nil];
+            SWFWebBrowserViewController *browser = [[SWFWebBrowserViewController alloc] init];
             [self.viewController presentViewController:browser animated:YES completion:nil];
-            [browser.webView loadRequest:request];
+             [browser.webView loadRequest:request];
         }
     }
     return NO;
@@ -221,7 +222,7 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
     if(buttonIndex == 4){
         SWFReportAbuseViewController *ravc;
-        ravc = [[SWFReportAbuseViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"reportAbuse"]];
+        ravc = (SWFReportAbuseViewController *) [[SWFReportAbuseViewController alloc] initWithRoot:[[QRootElement alloc] initWithJSONFile:@"reportAbuse"]];
         ravc.type = 0;
         ravc.obj = self.activeNewsId;
         UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:ravc];

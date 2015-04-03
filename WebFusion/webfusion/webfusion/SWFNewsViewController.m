@@ -7,12 +7,8 @@
 //
 
 #import "SWFNewsRequest.h"
-#import "SWFCodeGenerator.h"
 #import "SWFNewsViewController.h"
-#import "SWFAppDelegate.h"
 #import "SWFComposeNewsViewController.h"
-#import "SWFWebBrowserViewController.h"
-#import "SWFNewsDelegates.h"
 #import "SWFNewsPoll.h"
 
 @interface SWFNewsViewController ()

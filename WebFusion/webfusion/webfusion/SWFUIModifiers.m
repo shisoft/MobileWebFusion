@@ -11,15 +11,22 @@
 }
 
 + (void)manualBottomTabBarInsetsFor: (UIView*) view{
-    int tabBarHeight = 49;
+    [self manualButtonInsetFor:view With:49];
+}
+
++ (void)manualBottomToolBartInsetsFor: (UIView*) view{
+    [self manualButtonInsetFor:view With:44];
+}
+
++ (void)manualButtonInsetFor: (UIView*)view With:(int)height {
     if ([view respondsToSelector:@selector(scrollIndicatorInsets)]){
         UIEdgeInsets scrollBarInsets = [(UIScrollView *) view scrollIndicatorInsets];
-        UIEdgeInsets scrollBarInsetsCorrection = UIEdgeInsetsMake(scrollBarInsets.top, scrollBarInsets.left, tabBarHeight, scrollBarInsets.right);
+        UIEdgeInsets scrollBarInsetsCorrection = UIEdgeInsetsMake(scrollBarInsets.top, scrollBarInsets.left, height, scrollBarInsets.right);
         [(UIScrollView *) view setScrollIndicatorInsets:scrollBarInsetsCorrection];
     }
     if ([view respondsToSelector:@selector(contentInset)]){
         UIEdgeInsets contentInsets = [(UIScrollView *) view contentInset];
-        UIEdgeInsets contentInsetsCorrection = UIEdgeInsetsMake(contentInsets.top, contentInsets.left, tabBarHeight, contentInsets.right);
+        UIEdgeInsets contentInsetsCorrection = UIEdgeInsetsMake(contentInsets.top, contentInsets.left, height, contentInsets.right);
         [(UIScrollView *) view setContentInset:contentInsetsCorrection];
     }
 }

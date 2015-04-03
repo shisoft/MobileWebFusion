@@ -15,10 +15,11 @@
 #import "SWFServicesViewController.h"
 #import "SWFAlterPasswordViewController.h"
 #import "UIAlertView+MKBlockAdditions.h"
-#import "SWFWebBrowserViewController.h"
+#import "SWFWebBrowserViewControllerCore.h"
 #import "Appirater.h"
 #import "SWFNavedCenterViewController.h"
 #import "SWFCachePolicy.h"
+#import "SWFWebBrowserViewController.h"
 
         @interface SWFPreferencesViewController ()
 
@@ -166,7 +167,7 @@ static NSString *SWFUserNumberOfServiceCacheFileName = @"userNumberOfService";
 }
 
 - (void)onEULA:(QLabelElement *)buttonElement {
-    SWFWebBrowserViewController *browser = [[SWFWebBrowserViewController alloc] initWithNibName:@"SWFWebBrowserViewController" bundle:nil];
+    SWFWebBrowserViewController *browser = [[SWFWebBrowserViewController alloc] init];
     [self presentViewController:browser animated:YES completion:nil];
     browser.webView.dataDetectorTypes = UIDataDetectorTypeNone;
     browser.webView.scrollView.bounces = NO;
@@ -176,7 +177,7 @@ static NSString *SWFUserNumberOfServiceCacheFileName = @"userNumberOfService";
 }
 
 - (void)aboutMobile:(QLabelElement *)buttonElement {
-    SWFWebBrowserViewController *browser = [[SWFWebBrowserViewController alloc] initWithNibName:@"SWFWebBrowserViewController" bundle:nil];
+    SWFWebBrowserViewController *browser = [[SWFWebBrowserViewController alloc] init];
     [self presentViewController:browser animated:YES completion:nil];
     browser.webView.dataDetectorTypes = UIDataDetectorTypeNone;
     browser.webView.scrollView.bounces = NO;

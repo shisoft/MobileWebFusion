@@ -44,29 +44,37 @@ static NSMutableString *convPageTemplate = nil;
     NSMutableString *refer = [NSMutableString stringWithString:@""];
     if([newsItem.refer isKindOfClass:[SWFNews class]]){
         level++;
-        if (level<2) {
+        if (level < 2) {
             [refer appendString:@"<blockquote>"];
             [refer appendString:[self generateForNews:newsItem.refer level:level]];
             [refer appendString:@"</blockquote>"];
-        }else{
-            [refer appendString:[NSString stringWithFormat:NSLocalizedString(@"ui.moreRefer", @""),[self calculateReferedNews:newsItem level:0]]];
+        } else if (level == 2) {
+            NSArray *referedNews = [self flattenReferedNews:newsItem levels:[[NSMutableArray alloc] init]];
+            if ([referedNews count] != nil) {
+                [refer appendFormat:@"<a href='javascript:dispChain(\"%@\")'>%@</a>", newsItem.ID, [NSString stringWithFormat:NSLocalizedString(@"ui.moreRefer", @""), [referedNews count]]];
+                [refer appendString:[NSString stringWithFormat:@"<div style='display: none' class='newsChain' id='divNewsChan%@'>", newsItem.ID]];
+                for (SWFNews *news in referedNews) {
+                    [refer appendString:[self generateForNews:news level:level + 1]];
+                }
+                [refer appendString:@"</div>"];
+            }
         }
     }
     NSDictionary *vars = @{
-                           @"avatar":   [[newsItem.authorUC.avatar absoluteString] urlencode],
-                           @"author":   [self authorDescription:newsItem.authorUC],
-                           @"title":    [self titleDescription:newsItem.title],
-                           @"time":     [self timeDescription:newsItem.publishTime],
-                           @"timestamp":[NSString stringWithFormat:@"%f",[newsItem.publishTime timeIntervalSince1970]  * 1000],
-                           @"content":  [self contentFromNews:newsItem],
-                           @"refer":    refer,
-                           @"id":       newsItem.ID,
-                           @"svr":      [newsItem.svr lowercaseString]
-                           };
+            @"avatar":   [[newsItem.authorUC.avatar absoluteString] urlencode],
+            @"author":   [self authorDescription:newsItem.authorUC],
+            @"title":    [self titleDescription:newsItem.title],
+            @"time":     [self timeDescription:newsItem.publishTime],
+            @"timestamp":[NSString stringWithFormat:@"%f",[newsItem.publishTime timeIntervalSince1970]  * 1000],
+            @"content":  [self contentFromNews:newsItem],
+            @"refer":    refer,
+            @"id":       newsItem.ID,
+            @"svr":      [newsItem.svr lowercaseString]
+    };
     for (NSString *var in vars)
     {
         NSString *value = vars[var];
-        
+
         [nItemTemplate replaceOccurrencesOfString:[NSString stringWithFormat:@"$(%@)", [var uppercaseString]]
                                        withString:value
                                           options:0
@@ -87,19 +95,19 @@ static NSMutableString *convPageTemplate = nil;
     }
     NSMutableString *itemHTML = [NSMutableString stringWithString:convItemTemplate];
     NSDictionary *vars = @{
-                           @"avatar":   [([post.authorUC.avatar absoluteString]?[post.authorUC.avatar absoluteString]:@"default-user.png") urlencode],
-                           @"author":   [self authorDescription:post.authorUC],
-                           @"title":    (title?title:@""),
-                           @"time":     [self timeDescription:post.posttime],
-                           @"timestamp":[NSString stringWithFormat:@"%f",[post.posttime timeIntervalSince1970]  * 1000],
-                           @"content":  [self contentFromPost:content news:post.news],
-                           @"id":       post.ID,
-                           @"side":     [[post.authorUC.svr lowercaseString] isEqualToString:@"user"] ? @"right" : @"left"
-                           };
+            @"avatar":   [([post.authorUC.avatar absoluteString]?[post.authorUC.avatar absoluteString]:@"default-user.png") urlencode],
+            @"author":   [self authorDescription:post.authorUC],
+            @"title":    (title?title:@""),
+            @"time":     [self timeDescription:post.posttime],
+            @"timestamp":[NSString stringWithFormat:@"%f",[post.posttime timeIntervalSince1970]  * 1000],
+            @"content":  [self contentFromPost:content news:post.news],
+            @"id":       post.ID,
+            @"side":     [[post.authorUC.svr lowercaseString] isEqualToString:@"user"] ? @"right" : @"left"
+    };
     for (NSString *var in vars)
     {
         NSString *value = vars[var];
-        
+
         [itemHTML replaceOccurrencesOfString:[NSString stringWithFormat:@"$(%@)", [var uppercaseString]]
                                   withString:value
                                      options:0
@@ -108,12 +116,12 @@ static NSMutableString *convPageTemplate = nil;
     return itemHTML;
 }
 
-+ (int) calculateReferedNews:(SWFNews*)news level:(int)level{
++ (NSMutableArray*)flattenReferedNews:(SWFNews *)news levels:(NSMutableArray*)levels{
     if([news.refer isKindOfClass:[SWFNews class]]){
-        level++;
-        level = [self calculateReferedNews:news.refer level:level];
+        [levels addObject:news.refer];
+        levels = [self flattenReferedNews:news.refer levels:levels];
     }
-    return level;
+    return levels;
 }
 
 + (NSString*)generateForPostPage : (SWFPost*) post{
@@ -121,7 +129,7 @@ static NSMutableString *convPageTemplate = nil;
     NSMutableString *html = [NSMutableString stringWithString:postPageTemplate];
     [html replaceOccurrencesOfString:@"$(LIST)" withString:[self generateForPost:post] options:0 range:NSMakeRange(0, [html length])];
     return html;
-    
+
 }
 
 + (NSString*)hideHideTags : (NSString*) str{
@@ -147,24 +155,24 @@ static NSMutableString *convPageTemplate = nil;
     }
     NSMutableString *itemHTML = [NSMutableString stringWithString:postItemTemplate];
     NSDictionary *vars = @{
-                           @"avatar":   [([post.authorUC.avatar absoluteString]?[post.authorUC.avatar absoluteString]:@"default-user.png") urlencode],
-                           @"author":   [self authorDescription:post.authorUC],
-                           @"title":    (title?title:@""),
-                           @"time":     [self timeDescription:post.posttime],
-                           @"timestamp":[NSString stringWithFormat:@"%f",[post.posttime timeIntervalSince1970]  * 1000],
-                           @"content":  [self contentFromPost:content news:post.news],
-                           @"refer":    @"",
-                           @"id":       post.ID,
-                           @"subpost":  subpost
-                           };
+            @"avatar":   [([post.authorUC.avatar absoluteString]?[post.authorUC.avatar absoluteString]:@"default-user.png") urlencode],
+            @"author":   [self authorDescription:post.authorUC],
+            @"title":    (title?title:@""),
+            @"time":     [self timeDescription:post.posttime],
+            @"timestamp":[NSString stringWithFormat:@"%f",[post.posttime timeIntervalSince1970]  * 1000],
+            @"content":  [self contentFromPost:content news:post.news],
+            @"refer":    @"",
+            @"id":       post.ID,
+            @"subpost":  subpost
+    };
     for (NSString *var in vars)
     {
         NSString *value = vars[var];
-        
+
         [itemHTML replaceOccurrencesOfString:[NSString stringWithFormat:@"$(%@)", [var uppercaseString]]
-                                       withString:value
-                                          options:0
-                                            range:NSMakeRange(0, [itemHTML length])];
+                                  withString:value
+                                     options:0
+                                       range:NSMakeRange(0, [itemHTML length])];
     }
     return itemHTML;
 }
@@ -184,18 +192,18 @@ static NSMutableString *convPageTemplate = nil;
 }
 
 + (NSString*)generateForNewsArray:(NSArray*)news{
-    
+
     if(![news isKindOfClass:[NSArray class]]){
         return [NSString stringWithFormat: @"<div style='text-align:center'>%@</div>",NSLocalizedString(@"err.no-server", @"")];
     }
-    
+
     [self readyForTemplate];
-    
+
     NSMutableString *items = [NSMutableString stringWithString:@""];
     for (SWFNews *newsItem in news)
     {
         [items appendString:[self generateForNews:newsItem level:0]];
-        
+
     }
     NSMutableString *list = [NSMutableString stringWithString:newsListTemplate];
     [list replaceOccurrencesOfString:@"$(LIST)" withString:items options:0 range:NSMakeRange(0, [list length])];
@@ -207,14 +215,14 @@ static NSMutableString *convPageTemplate = nil;
     if(![posts isKindOfClass:[NSArray class]]){
         return [NSString stringWithFormat: @"<div style='text-align:center'>%@</div>",NSLocalizedString(@"err.no-server", @"")];
     }
-    
+
     [self readyForTemplate];
-    
+
     NSMutableString *items = [NSMutableString stringWithString:@""];
     for (SWFPost *postItem in [posts reverseObjectEnumerator])
     {
         [items appendString:[self generateForConversationPOST:postItem]];
-        
+
     }
     NSMutableString *list = [NSMutableString stringWithString:convPageTemplate];
     [list replaceOccurrencesOfString:@"$(LIST)" withString:items options:0 range:NSMakeRange(0, [list length])];
@@ -258,57 +266,57 @@ static NSMutableString *convPageTemplate = nil;
     if (timediff < 60.0)
     {
         return [NSString stringWithFormat:@"%.0lf %@",
-                timediff,
-                NSLocalizedString(@"ui.secs-ago",
-                                  @"secs ago")];
+                                          timediff,
+                        NSLocalizedString(@"ui.secs-ago",
+                                @"secs ago")];
     }
     else if (timediff < 3600.0)
     {
         return [NSString stringWithFormat:@"%.0lf %@",
-                timediff / 60.0,
-                NSLocalizedString(@"ui.minutes-ago",
-                                  @"mins ago")];
+                                          timediff / 60.0,
+                        NSLocalizedString(@"ui.minutes-ago",
+                                @"mins ago")];
     }
     else if (timediff < 86400.0)
     {
         return [NSString stringWithFormat:@"%.0lf %@",
-                timediff / 3600.0,
-                NSLocalizedString(@"ui.hours-ago",
-                                  @"hrs ago")];
+                                          timediff / 3600.0,
+                        NSLocalizedString(@"ui.hours-ago",
+                                @"hrs ago")];
     }
     else if (timediff < 172400.0)
     {
         return NSLocalizedString(@"ui.yesterday",
-                                 @"yesterday");
+                @"yesterday");
     }
     else if (timediff < 604800.0)
     {
         return [NSString stringWithFormat:@"%.0lf %@",
-                timediff / 86400.0,
-                NSLocalizedString(@"ui.days-ago",
-                                  @"days ago")];;
+                                          timediff / 86400.0,
+                        NSLocalizedString(@"ui.days-ago",
+                                @"days ago")];;
     }
     else if (timediff < 2592000.0)
     {
         return [NSString stringWithFormat:@"%.0lf %@",
-                timediff / 604800.0,
-                NSLocalizedString(@"ui.weeks-ago",
-                                  @"days ago")];
+                                          timediff / 604800.0,
+                        NSLocalizedString(@"ui.weeks-ago",
+                                @"days ago")];
     }else if (timediff < 29030400.0){
         return [NSString stringWithFormat:@"%.0lf %@",
-                timediff / 2419200.0,
-                NSLocalizedString(@"ui.month-ago",
-                                  @"month ago")];
+                                          timediff / 2419200.0,
+                        NSLocalizedString(@"ui.month-ago",
+                                @"month ago")];
     }else if (timediff < 2903040000.0){
         return [NSString stringWithFormat:@"%.0lf %@",
-                timediff / 29030400.0,
-                NSLocalizedString(@"ui.years-ago",
-                                  @"years ago")];
+                                          timediff / 29030400.0,
+                        NSLocalizedString(@"ui.years-ago",
+                                @"years ago")];
     }else if (timediff < 58060800000.0){
         return [NSString stringWithFormat:@"%.0lf %@",
-                timediff / 2903040000.0,
-                NSLocalizedString(@"ui.centries-ago",
-                                  @"centries ago")];
+                                          timediff / 2903040000.0,
+                        NSLocalizedString(@"ui.centries-ago",
+                                @"centries ago")];
     }
 
     else
@@ -324,12 +332,12 @@ static NSMutableString *convPageTemplate = nil;
 {
     // Set up author name:
     if ([authorUC.dispName length] &&
-        [authorUC.scrName length] &&
-        ![authorUC.dispName isEqualToString:authorUC.scrName])
+            [authorUC.scrName length] &&
+            ![authorUC.dispName isEqualToString:authorUC.scrName])
     {
         return [NSString stringWithFormat:@"%@ (%@)",
-                authorUC.dispName,
-                authorUC.scrName];
+                                          authorUC.dispName,
+                                          authorUC.scrName];
     }
     else if ([authorUC.dispName length])
     {
@@ -342,7 +350,7 @@ static NSMutableString *convPageTemplate = nil;
     else
     {
         return NSLocalizedString(@"ui.no-name",
-                                 @"Unnamed");
+                @"Unnamed");
     }
 }
 
@@ -355,13 +363,13 @@ static NSMutableString *convPageTemplate = nil;
         }
     }
     @catch (NSException *exception) {
-        
+
     }
     @finally {
-        
+
     }
     return NSLocalizedString(@"ui.no-title",
-                             @"Untitled");
+            @"Untitled");
 }
 
 + (NSString *) getPostTitle : (SWFPost*) post{
@@ -370,7 +378,7 @@ static NSMutableString *convPageTemplate = nil;
             return post.news.title;
         }else if ([post.news.content isKindOfClass:[NSString class]] ? [post.news.content length] : NO){
             return post.news.content;
-       }
+        }
     }else{
         if ([post.title isKindOfClass:[NSString class]] ? [post.title length] : NO){
             return post.title;

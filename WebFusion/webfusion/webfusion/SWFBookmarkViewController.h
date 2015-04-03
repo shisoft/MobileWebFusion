@@ -14,7 +14,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property UIRefreshControl *refreshControl;
 @property NSMutableArray *bookmarks;
-@property NSMutableArray *cell;
+@property NSMutableArray *cells;
 @property BOOL busy;
 @property BOOL isEmpty;
 @property int currentPage;

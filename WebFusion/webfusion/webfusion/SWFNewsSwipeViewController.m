@@ -22,7 +22,7 @@
     self = [self initWithNibName:@"SWFNewsSwipeViewController" bundle:nil];
     self.views = vcs;
     for (int i = 0; i < [self.views count]; ++i) {
-        id view = [[self.views objectAtIndex:i] viewControllers].firstObject;
+        id view = [self.views[i] viewControllers].firstObject;
         if ([view  respondsToSelector:@selector(setRefBadge:)]){
             [view setRefBadge:^{
                 if (self.swipeView.currentItemIndex == i){

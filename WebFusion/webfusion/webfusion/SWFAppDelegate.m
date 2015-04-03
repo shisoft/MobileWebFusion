@@ -175,7 +175,7 @@ NSString *const SWFKeychainGroup = @"net.shisoft.webfusion.keychainGroup";
         gfusr.feature = feature;
         NSArray *r = [gfusr getFeaturedUserServices];
         if ([r isKindOfClass:[NSArray class]]){
-            [self.userFeatures setObject:[NSNumber numberWithBool:YES] forKey:feature];
+            self.userFeatures[feature] = @YES;
         } else {
             return NO;
         }
